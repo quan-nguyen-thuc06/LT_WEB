@@ -1,6 +1,6 @@
 # LT_WEB
 
-# Task 1: <br/>
+## Task 1: <br/>
 
 (1) Tìm hiểu web công ty - doanh nghiệp<br/>
 (2) Tìm hiểu về SEO và ứng dụng<br/>
