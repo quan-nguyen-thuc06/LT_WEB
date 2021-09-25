@@ -1,2 +1,4 @@
+(3)Tìm hiểu về ReactJS, ưu điểm và nhược điểm
+https://docs.google.com/document/d/14-cwMlvZzPzI9pkwVIZ82C-Rd7BgYFzs/edit?usp=sharing&ouid=112320757609477791860&rtpof=true&sd=true
 (4)Tìm hiểu về các lỗ hổng bảo mật trong ứng dụng web và cách phòng chống:
 https://docs.google.com/document/d/1q5f1vpzKLOrZUbaPnyjVfWsPyAhlmLuaNgrvFwexe9c/edit?usp=sharing
