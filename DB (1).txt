@@ -1,0 +1,113 @@
+-Khách:
+	+ username (id)
+	+ password
+	+ Họ và tên
+	+ Sđt
+	+ Email
+	+ Ngày sinh
+	+ Địa chỉ
+	+ ảnh
+
+-Quản trị viên:
+	+ username (id)
+	+ password
+	+ Họ và tên
+	+ Sđt
+	+ Email
+	+ Ngày sinh
+	+ Địa chỉ
+	+ Chức vụ
+	+ ảnh
+
+-Bình luận:
+	+ id
+	+ Id sản phẩm
+	+ Đánh giá
+	+ Nội dung
+	+ username
+	+ Time
+	+ Hình ảnh
+
+-Sản phẩm:
+	+ id 
+	+ số lượng
+	+ Tên
+	+ Giá
+	+ Nhà cung cấp
+	+ điểm đánh giá
+	+ Hình ảnh
+	+ Thể loại (Trong danh mục)
+// có thể sửa theo form thêm sản phẩm
+-Thông tin sản phẩm:
+	+ id_sp
+	+ Thương hiệu
+	+ Series
+	+ Màu sắc
+	+ xuất xứ
+	+ Thời gian ra mắt
+	+ Thời gian bảo hành
+	+ Khuyến mãi
+	+ Tính năng đặt biệt
+	+ Sản phẩm liên quan
+
+-Cấu hình chi tiết:
+	+ id
+	+ Màn hình
+	+ Hệ điều hành
+	+ Camera
+	+ Bộ nhớ trong
+	+ RAM
+	+ Sim
+	+ Pin
+	+ Kích thước
+	+ Khối lượng
+
+-Đơn hàng:
+	+ Id đơn hàng
+	+ Id khách hàng
+	+ Số lượng
+	+ Tiền sản phẩm
+	+ Vận chuyển
+	+ Tổng tiền
+	+ Trạng thái đơn hàng
+	+ Phương thức thanh toán
+	
+-Tuyển dụng:
+	+ Stt (id)
+	+ Vị trí
+	+ Hạn nộp
+	+ Địa điểm
+
+-Tin tức:
+	+ Id tin tức
+	+ Tiêu đề
+	+ Hình ảnh
+	+ Tóm tắt
+	+ Nội dung
+	+ Thể loại
+	+ Tác giả (nguồn)
+	+ Trạng thái (ẩn/hiện)
+
+-Giới thiệu doanh nghiệp:
+	+ Ảnh
+	+ Video
+	+ Lời giới thiệu
+	+ Lịch sử phát triển
+	+ Ban lãnh đạo
+	+ Nhân lực
+	+ Thế mạnh
+	+ Sứ mệnh
+	+ Mục tiêu
+
+-Thông tin doanh nghiệp (header/footer):
+	+ Tên
+	+ Logo
+	+ Sđt
+	+ Email
+	+ Địa chỉ
+	+ Dịch vụ
+	+ Hỗ trợ khách hàng
+	+ Vận chuyển
+	+ Thanh toán
+	+ Url Facebook
+	+ Url Instagram
