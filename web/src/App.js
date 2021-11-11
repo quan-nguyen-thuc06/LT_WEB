@@ -1,8 +1,8 @@
 import './App.css';
-import ShoppingCarts from './Components/ShoppingCarts'
+import OrderConfirm from './Components/OrderConfirm'
 function App() {
   return (
-    <ShoppingCarts/>
+    <OrderConfirm/>
   );
 }
 
