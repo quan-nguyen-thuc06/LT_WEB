@@ -1,9 +1,9 @@
 import './App.css';
-// import About from './Pages/About'
+import ShoppingCarts from './Pages/ShoppingCarts'
 import Header from './Components/Header'
 function App() {
   return (
-    <Header/>
+    <ShoppingCarts/>
   );
 }
 
