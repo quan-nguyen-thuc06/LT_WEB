@@ -1,8 +1,8 @@
 import './App.css';
-import OrderConfirm from './Components/OrderConfirm'
+import About from './Pages/About'
 function App() {
   return (
-    <OrderConfirm/>
+    <About/>
   );
 }
 
