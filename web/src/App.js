@@ -1,9 +1,9 @@
 import './App.css';
-import ShoppingCarts from './Pages/ShoppingCarts'
+import OrderConfirm from './Pages/OrderConfirm'
 import Header from './Components/Header'
 function App() {
   return (
-    <ShoppingCarts/>
+    <OrderConfirm/>
   );
 }
 
