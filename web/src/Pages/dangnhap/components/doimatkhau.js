@@ -46,15 +46,15 @@ export default function Doimatkhau() {
                                 
                                 <Grid item xs={12}>
                                     <Grid item xs={12}><Typography>Mật khẩu hiện tại</Typography></Grid>
-                                    <Textfield name="email" placehoder="In put mật khẩu" />
+                                    <Textfield name="oldpass" placehoder="In put mật khẩu" />
                                 </Grid>
                                 <Grid item xs={12}>
                                     <Grid item xs={12} ><Typography>Mật khẩu mới</Typography></Grid>
-                                    <Textfield name="phone" placehoder="Input mật khẩu mới" />
+                                    <Textfield name="newpass" placehoder="Input mật khẩu mới" />
                                 </Grid>
                                 <Grid item xs={12}>
                                     <Grid item xs={12}><Typography>Nhập lại mật khẩu mới</Typography></Grid>
-                                    <Textfield name='name' placehoder='nhập lại mật khẩu mới' />
+                                    <Textfield name='renewpass' placehoder='nhập lại mật khẩu mới' />
                                 </Grid>
                 
                                 <Grid item xs={12} style={{paddingTop: "10px"}} >
