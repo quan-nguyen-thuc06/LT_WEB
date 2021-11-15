@@ -8,9 +8,11 @@ import Hiring from './Pages/Hiring'
 import ProductPortfolio from './Pages/ProductPortfolio'
 import ManageCustomer from './Pages/ManageCustomer'
 import ManageWebsite from './Pages/ManageWebsite'
+import OrderConfirm from './Pages/OrderConfirm'
+import Header from './Components/Header'
 function App() {
   return (
-    <HomeAdmin />
+    <OrderConfirm/>
   );
 }
 
