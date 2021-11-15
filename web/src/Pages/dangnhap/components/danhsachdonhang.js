@@ -23,10 +23,6 @@ const item = {
 
 export default function Danhsachdonhang() {
 
-    function OnClick(){
-        alert("Xác nhận đơn hàng");
-    }
-
     return (
         <Grid container direction="row" spacing={5} justifyContent="center" style={{marginBottom:"5%"}}>
             <Grid item xs={4} sm={4} md={3} lg={2} >
@@ -61,7 +57,7 @@ export default function Danhsachdonhang() {
                             <Grid item xs={12} style={{textAlign: "left", padding: "20px"}}>
                                 <Grid container style={{paddingBottom: "10px"}}>
                                     <Grid item xs={10} ><Typography style={{fontWeight: "600"}}>{item.i1.code}</Typography></Grid>
-                                    <Grid item xs={2}><Typography onClick={() => OnClick()} style={{color: "#1AC67E",fontWeight: "600", textAlign:"right"}}>Hoàn thành</Typography></Grid>
+                                    <Grid item xs={2}><Typography onClick={() => {alert("Xác nhận đơn hàng");}} style={{color: "#1AC67E",fontWeight: "600", textAlign:"right"}}>Hoàn thành</Typography></Grid>
                                 </Grid>
                                 
                                 <Grid container direction="row" spacing={1}>
@@ -135,7 +131,7 @@ export default function Danhsachdonhang() {
                             <Grid item xs={12} style={{textAlign: "left", padding: "20px"}}>
                                 <Grid container style={{paddingBottom: "10px"}}>
                                     <Grid item xs={10} ><Typography style={{fontWeight: "600"}}>{item.i2.code}</Typography></Grid>
-                                    <Grid item xs={2}><Typography onClick={() => OnClick()} style={{color: "#1AC67E",fontWeight: "600", textAlign:"right"}}>Hoàn thành</Typography></Grid>
+                                    <Grid item xs={2}><Typography onClick={() => {alert("Xác nhận đơn hàng");}} style={{color: "#1AC67E",fontWeight: "600", textAlign:"right"}}>Hoàn thành</Typography></Grid>
                                 </Grid>
                                 
                                 <Grid container direction="row" spacing={1}>

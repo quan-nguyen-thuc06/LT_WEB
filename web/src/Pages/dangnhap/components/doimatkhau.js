@@ -6,10 +6,6 @@ import Textfield from '@atlaskit/textfield';
 
 export default function Doimatkhau() {
 
-    function OnClick(){
-        alert("Đổi mật khẩu thành công");
-    }
-
     return (
         <Grid container direction="row" spacing={3} justifyContent="center" style={{marginBottom:"5%"}}>
             <Grid item xs={4} sm={4} md={3} lg={2} >
@@ -58,7 +54,7 @@ export default function Doimatkhau() {
                                 </Grid>
                 
                                 <Grid item xs={12} style={{paddingTop: "10px"}} >
-                                    <button onClick={() => OnClick()} style={{backgroundColor: "#1AC67E", color: "white", borderRadius: "15px", height: "50px",width: "150px"}}>Đổi mật khẩu</button>
+                                    <button onClick={() => {alert("Đổi mật khẩu thành công");}} style={{backgroundColor: "#1AC67E", color: "white", borderRadius: "15px", height: "50px",width: "150px"}}>Đổi mật khẩu</button>
                                 </Grid>
                             </Grid>
                         </Grid>

@@ -7,10 +7,6 @@ import Textfield from '@atlaskit/textfield';
 
 export default function Thongtincanhan() {
 
-    function OnClick(){
-        alert("Đã lưu thông tin");
-    }
-
     return (
         <Grid container direction="row" spacing={3} justifyContent="center" style={{marginBottom:"5%"}}>
             <Grid item xs={4} sm={4} md={3} lg={2} >
@@ -63,7 +59,7 @@ export default function Thongtincanhan() {
                                 </Grid>
                 
                                 <Grid item xs={12} style={{paddingTop: "10px"}}>       
-                                    <Grid item ><button onClick={() => OnClick()} style={{backgroundColor: "#1AC67E", color: "white", borderRadius: "15px", height: "50px",width: "150px"}}>Lưu thông tin</button></Grid>
+                                    <Grid item ><button onClick={() => {alert("Đã lưu thông tin");}} style={{backgroundColor: "#1AC67E", color: "white", borderRadius: "15px", height: "50px",width: "150px"}}>Lưu thông tin</button></Grid>
                                 </Grid>
                             </Grid>
                         </Grid>

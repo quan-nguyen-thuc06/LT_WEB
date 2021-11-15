@@ -19,15 +19,27 @@ const diachi = {
     },
 }
 
+function DiachiCard({Opt}){
+    return(
+            <Card style={{boxShadow: "0 10px 20px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23)", borderRadius: "15px"}}>
+                            <Grid item xs={12} style={{textAlign: "left", padding: "20px"}}>
+                                <Grid item xs={12} container style={{paddingBottom: "10px"}}>
+                                    <Grid item xs={6} lg={10}><Typography style={{fontWeight: "600"}}>{Opt.name}</Typography></Grid>
+                                    <Grid item xs={6} lg={2}><Typography onClick={() => {alert("Xóa địa chỉ");}} style={{color: "red"}}>Xóa địa chỉ</Typography></Grid>
+                                </Grid>
+                                <Grid item xs={12}><Typography style={{ paddingBottom: "10px"}}>{Opt.duong}</Typography></Grid>
+                                <Grid item xs={12}><Typography style={{ paddingBottom: "10px"}}>{Opt.phuong}</Typography></Grid>
+                                <Grid item xs={12}><Typography style={{ paddingBottom: "10px"}}>{Opt.quan}</Typography></Grid>
+                                <Grid item xs={12} container >
+                                    <Grid item xs={9} lg={10}><Typography style={{paddingBottom: "10px"}}>{Opt.tp}</Typography></Grid>
+                                    <Grid item xs={2} lg={2}><Typography style={{color: "#1AC67E",fontWeight: "600"}}>Mặc định</Typography></Grid>
+                                </Grid>
+                            </Grid>
+                        </Card>
+    )
+}
+
 export default function Diachithanhtoan() {
-
-    function AddClick(){
-        alert("Modal thêm địa chỉ");
-    }
-
-    function DeleteClick(){
-        alert("Xóa địa chỉ");
-    }
 
     return (
         <Grid container direction="row" spacing={3} justifyContent="center" style={{marginBottom:"5%"}}>
@@ -58,81 +70,28 @@ export default function Diachithanhtoan() {
                         <Grid item xs={12} style={{paddingTop: "10px"}} ><Typography style={{fontWeight: "600",textAlign: "left"}}>ĐỊA CHỈ THANH TOÁN</Typography></Grid>
                     </Grid>
                     <Grid item xs={3} lg={2} style={{ paddingTop: "10px"}}>
-                        <Grid item xs={12} ><button onClick={() => AddClick()} style={{backgroundColor: "#1AC67E", color: "white", borderRadius: "15px", height: "50px",width: "150px"}}>Thêm địa chỉ</button></Grid>
+                        <Grid item xs={12} ><button onClick={() => {alert("Modal thêm địa chỉ");}} style={{backgroundColor: "#1AC67E", color: "white", borderRadius: "15px", height: "50px",width: "150px"}}>Thêm địa chỉ</button></Grid>
                     </Grid>
                 </Grid>
                 
                 <Grid container direction="row" spacing={10} justifyContent="center">
                     <Grid item xs={6} sm={6} md={6} lg={6} >
-                        <Card style={{boxShadow: "0 10px 20px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23)", borderRadius: "15px"}}>
-                            <Grid item xs={12} style={{textAlign: "left", padding: "20px"}}>
-                                <Grid item xs={12} container style={{paddingBottom: "10px"}}>
-                                    <Grid item xs={6} lg={10}><Typography style={{fontWeight: "600"}}>{diachi.o1.name}</Typography></Grid>
-                                    <Grid item xs={6} lg={2}><Typography onClick={() => DeleteClick()} style={{color: "red"}}>Xóa địa chỉ</Typography></Grid>
-                                </Grid>
-                                <Grid item xs={12}><Typography style={{ paddingBottom: "10px"}}>{diachi.o1.duong}</Typography></Grid>
-                                <Grid item xs={12}><Typography style={{ paddingBottom: "10px"}}>{diachi.o1.phuong}</Typography></Grid>
-                                <Grid item xs={12}><Typography style={{ paddingBottom: "10px"}}>{diachi.o1.quan}</Typography></Grid>
-                                <Grid item xs={12} container >
-                                    <Grid item xs={9} lg={10}><Typography style={{paddingBottom: "10px"}}>{diachi.o1.tp}</Typography></Grid>
-                                    <Grid item xs={2} lg={2}><Typography style={{color: "#1AC67E",fontWeight: "600"}}>Mặc định</Typography></Grid>
-                                </Grid>
-                            </Grid>
-                        </Card>
+                        <DiachiCard Opt={diachi.o1} />
                     </Grid>
                     
                     <Grid item xs={6} sm={6} md={6} lg={6} >
-                        <Card style={{boxShadow: "0 10px 20px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23)", borderRadius: "15px"}}>
-                            <Grid item xs={12} style={{textAlign: "left", padding: "20px"}}>
-                                <Grid item xs={12} container style={{paddingBottom: "10px"}}>
-                                    <Grid item xs={6} lg={10}><Typography style={{fontWeight: "600"}}>{diachi.o2.name}</Typography></Grid>
-                                    <Grid item xs={6} lg={2}><Typography onClick={() => DeleteClick()} style={{color: "red"}}>Xóa địa chỉ</Typography></Grid>
-                                </Grid>
-                                <Grid item xs={12}><Typography style={{ paddingBottom: "10px"}}>{diachi.o2.duong}</Typography></Grid>
-                                <Grid item xs={12}><Typography style={{ paddingBottom: "10px"}}>{diachi.o2.phuong}</Typography></Grid>
-                                <Grid item xs={12}><Typography style={{ paddingBottom: "10px"}}>{diachi.o2.quan}</Typography></Grid>
-                                <Grid item xs={12} container >
-                                    <Grid item xs={9} lg={10}><Typography style={{paddingBottom: "10px"}}>{diachi.o2.tp}</Typography></Grid>
-                                </Grid>
-                            </Grid>
-                        </Card>
+                        <DiachiCard Opt={diachi.o2} />
                     </Grid>
                     
                 </Grid>
                 
                 <Grid container direction="row" spacing={10} justifyContent="center">
                     <Grid item xs={6} sm={6} md={6} lg={6} >
-                        <Card style={{boxShadow: "0 10px 20px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23)", borderRadius: "15px"}}>
-                            <Grid item xs={12} style={{textAlign: "left", padding: "20px"}}>
-                                <Grid item xs={12} container style={{paddingBottom: "10px"}}>
-                                    <Grid item xs={6} lg={10}><Typography style={{fontWeight: "600"}}>{diachi.o1.name}</Typography></Grid>
-                                    <Grid item xs={6} lg={2}><Typography onClick={() => DeleteClick()} style={{color: "red"}}>Xóa địa chỉ</Typography></Grid>
-                                </Grid>
-                                <Grid item xs={12}><Typography style={{ paddingBottom: "10px"}}>{diachi.o1.duong}</Typography></Grid>
-                                <Grid item xs={12}><Typography style={{ paddingBottom: "10px"}}>{diachi.o1.phuong}</Typography></Grid>
-                                <Grid item xs={12}><Typography style={{ paddingBottom: "10px"}}>{diachi.o1.quan}</Typography></Grid>
-                                <Grid item xs={12} container >
-                                    <Grid item xs={9} lg={10}><Typography style={{paddingBottom: "10px"}}>{diachi.o1.tp}</Typography></Grid>
-                                </Grid>
-                            </Grid>
-                        </Card>
+                        <DiachiCard Opt={diachi.o1} />
                     </Grid>
 
                     <Grid item xs={6} sm={6} md={6} lg={6} >
-                        <Card style={{boxShadow: "0 10px 20px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23)", borderRadius: "15px"}}>
-                            <Grid item xs={12} style={{textAlign: "left", padding: "20px"}}>
-                                <Grid item xs={12} container style={{paddingBottom: "10px"}}>
-                                    <Grid item xs={6} lg={10}><Typography style={{fontWeight: "600"}}>{diachi.o1.name}</Typography></Grid>
-                                    <Grid item xs={6} lg={2}><Typography onClick={() => DeleteClick()} style={{color: "red"}}>Xóa địa chỉ</Typography></Grid>
-                                </Grid>
-                                <Grid item xs={12}><Typography style={{ paddingBottom: "10px"}}>{diachi.o1.duong}</Typography></Grid>
-                                <Grid item xs={12}><Typography style={{ paddingBottom: "10px"}}>{diachi.o1.phuong}</Typography></Grid>
-                                <Grid item xs={12}><Typography style={{ paddingBottom: "10px"}}>{diachi.o1.quan}</Typography></Grid>
-                                <Grid item xs={12} container >
-                                    <Grid item xs={9} lg={10}><Typography style={{paddingBottom: "10px"}}>{diachi.o1.tp}</Typography></Grid>
-                                </Grid>
-                            </Grid>
-                        </Card>
+                        <DiachiCard Opt={diachi.o} />
                     </Grid>
                     
                 </Grid>

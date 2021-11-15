@@ -1,12 +1,13 @@
 import React from 'react'
-import { Grid,Card, CardMedia, Typography } from '@material-ui/core'
+import { Grid,Card, CardMedia, Typography } from '@material-ui/core';
 import Button from '@atlaskit/button';
-import Imagemain from '../Images/main1.png'
-import ImageItem from '../Images/Item.png'
-import Icon from '../Images/Star.png'
-
+import Imagemain from '../Images/main1.png';
+import ImageItem from '../Images/Item.png';
+import Icon from '../Images/Star.png';
+import Imagemain2 from '../Images/main2.png'
+ 
 const infor = {
-    image: Imagemain,
+    image: Imagemain2,
     name: "Điện thoại iphone 11 128GB",
     brand: "Apple",
     price: 26000000,
@@ -48,12 +49,23 @@ function SameProductCard({ Opt}){
     )
 }
 
-export default function Sanphamchitiet() {
+export default class Sanphamchitiet extends React.Component {
 
-    function MuahangClick(){
-        alert("Nhấn mua hàng");
+    constructor(props) {
+        super(props)
+        this.state = {
+            img: Imagemain
+        }
+        this.setImage = this.setImage.bind(this)
     }
 
+    setImage(image) {
+        this.setState({
+            img: image
+        })
+    }
+
+    render(){
     return (
         <Grid xs={12} container direction="row" spacing={2} justifyContent="left" style={{paddingTop:"50px",marginBottom:"5%"}}>
                 <Grid lg={5} container>
@@ -71,13 +83,13 @@ export default function Sanphamchitiet() {
                         </Grid>
 
                         <Grid container style={{paddingTop:"10px"}}>       
-                            <Grid item ><Button appearance="primary" style={{backgroundColor:"#1AC67E"}}>Trắng</Button></Grid>
-                            <Grid item ><Button appearance="primary" style={{backgroundColor:"#1AC67E", marginLeft:"10px"}}>Đen</Button></Grid>
+                            <Grid item ><Button onClick={() => this.setImage(Imagemain)} appearance="primary" style={{backgroundColor:"#1AC67E"}}>Trắng</Button></Grid>
+                            <Grid item ><Button onClick={() => this.setImage(Imagemain2)} appearance="primary" style={{backgroundColor:"#1AC67E", marginLeft:"10px"}}>Đen</Button></Grid>
                             <Grid item ><Button appearance="primary" style={{backgroundColor:"#1AC67E", marginLeft:"10px"}}>Vàng</Button></Grid>
                         </Grid>
 
                         <Grid item style={{color: "red", paddingTop:"10px", fontWeight:"700"}}><h2>{infor.price}đ</h2></Grid>
-                        <Grid ><h4>Ưu đãi khuyến mãi</h4></Grid>
+                        <Grid ><h4>Ưu đãi khuyến mãi </h4></Grid>
                         <Grid ><Typography>(áp dụng đến {infor.dlvoucher})</Typography></Grid>
                         <Grid>
                             <div>
@@ -91,7 +103,7 @@ export default function Sanphamchitiet() {
                                 </ul>
                             </div>
                         </Grid>
-                        <Grid item xs={2}><Button onClick={() => MuahangClick()} appearance="primary" style={{backgroundColor:"#1AC67E", marginLeft:"400px"}}>Mua ngay</Button></Grid>
+                        <Grid item xs={2}><Button onClick={() => {alert("Nhấn mua hàng");}} appearance="primary" style={{backgroundColor:"#1AC67E", marginLeft:"400px"}}>Mua ngay</Button></Grid>
                     </Grid>
                 </Grid>
 
@@ -160,4 +172,5 @@ export default function Sanphamchitiet() {
                 </Grid>
         </Grid>
     )
+    }
 }
