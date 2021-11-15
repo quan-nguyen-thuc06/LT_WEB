@@ -4,7 +4,29 @@ import { NavLink } from "react-router-dom";
 import Images1 from '../images/Item1.png'
 import Images2 from '../images/Item2.png'
 
+const item = {
+    i1: {
+        code: "#ORDER001",
+        name: "Điện thoại iphone 13 256GB",
+        price: 26000000 ,
+        image: Images1,
+        amout: 1
+    },
+    i2: {
+        code: "#ORDER002",
+        name: "Điện thoại Samsung Galaxy Z Fold3 5G 512GB",
+        price: 44000000 ,
+        image: Images2,
+        amout: 1
+    }
+}
+
 export default function Danhsachdonhang() {
+
+    function OnClick(){
+        alert("Xác nhận đơn hàng");
+    }
+
     return (
         <Grid container direction="row" spacing={5} justifyContent="center" style={{marginBottom:"5%"}}>
             <Grid item xs={4} sm={4} md={3} lg={2} >
@@ -38,51 +60,51 @@ export default function Danhsachdonhang() {
                         <Card style={{boxShadow: "0 10px 20px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23)", borderRadius: "15px"}}>
                             <Grid item xs={12} style={{textAlign: "left", padding: "20px"}}>
                                 <Grid container style={{paddingBottom: "10px"}}>
-                                    <Grid item xs={10} ><Typography style={{fontWeight: "00"}}>#ORDER001</Typography></Grid>
-                                    <Grid item xs={2}><Typography style={{color: "#1AC67E",fontWeight: "600", textAlign:"right"}}>Hoàn thành</Typography></Grid>
+                                    <Grid item xs={10} ><Typography style={{fontWeight: "600"}}>{item.i1.code}</Typography></Grid>
+                                    <Grid item xs={2}><Typography onClick={() => OnClick()} style={{color: "#1AC67E",fontWeight: "600", textAlign:"right"}}>Hoàn thành</Typography></Grid>
                                 </Grid>
                                 
                                 <Grid container direction="row" spacing={1}>
                                     <Grid item xs={2} sm={2} md={1} lg={1}>
-                                        <CardMedia component="img" image={Images1} />
+                                        <CardMedia component="img" image={item.i1.image} />
                                     </Grid>
 
                                     <Grid item xs={5} sm={7} lg={10}>
-                                        <Grid item xs={12}><Typography style={{paddingBottom: "5px"}}>Điện thoại iphone 13 256GB</Typography></Grid>
+                                        <Grid item xs={12}><Typography style={{paddingBottom: "5px"}}>{item.i1.name}</Typography></Grid>
                                         <Grid item xs={12} container direction="row">
                                             <Grid item xs={1.5}><Typography style={{paddingBottom:"5px"}}>Đơn giá: </Typography></Grid>
-                                            <Grid item xs={6} style={{color: "red", paddingLeft:"5px"}}><Typography>26.000.000đ</Typography></Grid>
+                                            <Grid item xs={6} style={{color: "red", paddingLeft:"5px"}}><Typography>{item.i1.price}đ</Typography></Grid>
                                         </Grid>
                                         <Grid item xs={12} container direction="row">
                                             <Grid item xs={1.5}><Typography >Số lượng: </Typography></Grid>
-                                            <Grid item xs={6} style={{paddingLeft:"5px"}}><Typography>1</Typography></Grid>
+                                            <Grid item xs={6} style={{paddingLeft:"5px"}}><Typography>{item.i1.amout}</Typography></Grid>
                                         </Grid>
                                     </Grid>
 
                                     <Grid item xs={2} sm={2} lg={1}>
-                                        <Grid item xs={6} style={{color: "red", textAlign:"left", paddingTop:"50px"}}><Typography>26.000.000đ</Typography></Grid>
+                                        <Grid item xs={6} style={{color: "red", textAlign:"left", paddingTop:"50px"}}><Typography>{item.i1.price}đ</Typography></Grid>
                                     </Grid>
                                 </Grid>
 
                                 <Grid container direction="row" spacing={2} style={{paddingTop:"10px", borderBottom:"1px solid #C0C0C0"}}>
                                     <Grid item xs={2} sm={2} lg={1} >
-                                        <CardMedia component="img" image={Images2} />
+                                        <CardMedia component="img" image={item.i2.image} />
                                     </Grid>
 
                                     <Grid item xs={8} sm={7} lg={10}>
-                                        <Grid item xs={12}><Typography style={{paddingBottom: "5px"}}>Điện thoại Samsung Galaxy Z Fold3 5G 512GB </Typography></Grid>
+                                        <Grid item xs={12}><Typography style={{paddingBottom: "5px"}}>{item.i2.name}</Typography></Grid>
                                         <Grid item xs={12} container direction="row">
                                             <Grid item xs={1.5}><Typography style={{paddingBottom:"5px"}}>Đơn giá: </Typography></Grid>
-                                            <Grid item xs={6} style={{color: "red", paddingLeft:"5px"}}><Typography>44.000.000đ</Typography></Grid>
+                                            <Grid item xs={6} style={{color: "red", paddingLeft:"5px"}}><Typography>{item.i2.price}đ</Typography></Grid>
                                         </Grid>
                                         <Grid item xs={12} container direction="row">
                                             <Grid item xs={1.5}><Typography >Số lượng: </Typography></Grid>
-                                            <Grid item xs={6} style={{paddingLeft:"5px"}}><Typography>1</Typography></Grid>
+                                            <Grid item xs={6} style={{paddingLeft:"5px"}}><Typography>{item.i2.amout}</Typography></Grid>
                                         </Grid>
                                     </Grid>
 
                                     <Grid item xs={2} sm={2} lg={1}>
-                                        <Grid item xs={6} style={{color: "red", textAlign:"left", paddingTop:"50px"}}><Typography>44.000.000đ</Typography></Grid>
+                                        <Grid item xs={6} style={{color: "red", textAlign:"left", paddingTop:"50px"}}><Typography>{item.i2.price}đ</Typography></Grid>
                                     </Grid>
                                 </Grid>
 
@@ -90,7 +112,7 @@ export default function Danhsachdonhang() {
                                     <Grid item xs={12} container direction="row">
                                         <Grid item xs={2} lg={2}></Grid>
                                         <Grid item xs={7} lg={9}><Typography style={{paddingBottom:"5px",textAlign:"right"}}>Tổng giá trị: </Typography></Grid>
-                                        <Grid item xs={2} lg={1} style={{color: "red", paddingLeft:"5px"}}><Typography>70.000.000đ</Typography></Grid>
+                                        <Grid item xs={2} lg={1} style={{color: "red", paddingLeft:"5px"}}><Typography>{item.i1.price+ item.i2.price}đ</Typography></Grid>
                                     </Grid>
                                     <Grid item xs={12} container direction="row" >
                                         <Grid item xs={2} lg={2}></Grid>
@@ -112,51 +134,51 @@ export default function Danhsachdonhang() {
                         <Card style={{boxShadow: "0 10px 20px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23)", borderRadius: "15px"}}>
                             <Grid item xs={12} style={{textAlign: "left", padding: "20px"}}>
                                 <Grid container style={{paddingBottom: "10px"}}>
-                                    <Grid item xs={10} ><Typography style={{fontWeight: "600"}}>#ORDER002</Typography></Grid>
-                                    <Grid item xs={2}><Typography style={{color: "#1AC67E",fontWeight: "600", textAlign:"right"}}>Hoàn thành</Typography></Grid>
+                                    <Grid item xs={10} ><Typography style={{fontWeight: "600"}}>{item.i2.code}</Typography></Grid>
+                                    <Grid item xs={2}><Typography onClick={() => OnClick()} style={{color: "#1AC67E",fontWeight: "600", textAlign:"right"}}>Hoàn thành</Typography></Grid>
                                 </Grid>
                                 
                                 <Grid container direction="row" spacing={1}>
                                     <Grid item xs={2} sm={2} lg={1}>
-                                        <CardMedia component="img" image={Images1} />
+                                        <CardMedia component="img" image={item.i1.image} />
                                     </Grid>
 
                                     <Grid item xs={5} sm={7} lg={10}>
-                                        <Grid item xs={12}><Typography style={{paddingBottom: "5px"}}>Điện thoại iphone 13 256GB</Typography></Grid>
+                                        <Grid item xs={12}><Typography style={{paddingBottom: "5px"}}>{item.i1.name}</Typography></Grid>
                                         <Grid item xs={12} container direction="row">
                                             <Grid item xs={1.5}><Typography style={{paddingBottom:"5px"}}>Đơn giá: </Typography></Grid>
-                                            <Grid item xs={6} style={{color: "red", paddingLeft:"5px"}}><Typography>26.000.000đ</Typography></Grid>
+                                            <Grid item xs={6} style={{color: "red", paddingLeft:"5px"}}><Typography>{item.i1.price}đ</Typography></Grid>
                                         </Grid>
                                         <Grid item xs={12} container direction="row">
                                             <Grid item xs={1.5}><Typography >Số lượng: </Typography></Grid>
-                                            <Grid item xs={6} style={{paddingLeft:"5px"}}><Typography>1</Typography></Grid>
+                                            <Grid item xs={6} style={{paddingLeft:"5px"}}><Typography>{item.i1.amout}</Typography></Grid>
                                         </Grid>
                                     </Grid>
 
                                     <Grid item xs={2} sm={2} lg={1}>
-                                        <Grid item xs={6} style={{color: "red", textAlign:"left", paddingTop:"50px"}}><Typography>26.000.000đ</Typography></Grid>
+                                        <Grid item xs={6} style={{color: "red", textAlign:"left", paddingTop:"50px"}}><Typography>{item.i1.price}đ</Typography></Grid>
                                     </Grid>
                                 </Grid>
 
                                 <Grid container direction="row" spacing={2} style={{paddingTop:"10px", borderBottom:"1px solid #C0C0C0"}}>
                                     <Grid item xs={2} sm={2} lg={1} >
-                                        <CardMedia component="img" image={Images2} />
+                                        <CardMedia component="img" image={item.i2.image} />
                                     </Grid>
 
                                     <Grid item xs={8} sm={7} lg={10}>
-                                        <Grid item xs={12}><Typography style={{paddingBottom: "5px"}}>Điện thoại Samsung Galaxy Z Fold3 5G 512GB </Typography></Grid>
+                                        <Grid item xs={12}><Typography style={{paddingBottom: "5px"}}>{item.i2.name}</Typography></Grid>
                                         <Grid item xs={12} container direction="row">
                                             <Grid item xs={1.5}><Typography style={{paddingBottom:"5px"}}>Đơn giá: </Typography></Grid>
-                                            <Grid item xs={6} style={{color: "red", paddingLeft:"5px"}}><Typography>44.000.000đ</Typography></Grid>
+                                            <Grid item xs={6} style={{color: "red", paddingLeft:"5px"}}><Typography>{item.i2.price}đ</Typography></Grid>
                                         </Grid>
                                         <Grid item xs={12} container direction="row">
                                             <Grid item xs={1.5}><Typography >Số lượng: </Typography></Grid>
-                                            <Grid item xs={6} style={{paddingLeft:"5px"}}><Typography>1</Typography></Grid>
+                                            <Grid item xs={6} style={{paddingLeft:"5px"}}><Typography>{item.i2.amout}</Typography></Grid>
                                         </Grid>
                                     </Grid>
 
                                     <Grid item xs={2} sm={2} lg={1}>
-                                        <Grid item xs={6} style={{color: "red", textAlign:"left", paddingTop:"50px"}}><Typography>44.000.000đ</Typography></Grid>
+                                        <Grid item xs={6} style={{color: "red", textAlign:"left", paddingTop:"50px"}}><Typography>{item.i2.price}đ</Typography></Grid>
                                     </Grid>
                                 </Grid>
 
@@ -164,7 +186,7 @@ export default function Danhsachdonhang() {
                                     <Grid item xs={12} container direction="row">
                                         <Grid item xs={2} lg={2}></Grid>
                                         <Grid item xs={7} lg={9}><Typography style={{paddingBottom:"5px",textAlign:"right"}}>Tổng giá trị: </Typography></Grid>
-                                        <Grid item xs={2} lg={1} style={{color: "red", paddingLeft:"5px"}}><Typography>70.000.000đ</Typography></Grid>
+                                        <Grid item xs={2} lg={1} style={{color: "red", paddingLeft:"5px"}}><Typography>{item.i1.price + item.i2.price}đ</Typography></Grid>
                                     </Grid>
                                     <Grid item xs={12} container direction="row" >
                                         <Grid item xs={2} lg={2}></Grid>
