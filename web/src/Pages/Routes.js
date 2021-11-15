@@ -9,25 +9,6 @@ export default function Routes(){
     return(
         <Router>
         <div>        
-          <nav>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/sanpham">Sanpham</Link>
-              </li>
-              <li>
-                <Link to="/tuyendung">Tuyendung</Link>
-              </li>
-              <li>
-                <Link to="/lienhe">Lienhe</Link>
-              </li>
-              <li>
-                <Link to="/dangnhap">Dangnhap</Link>
-              </li>
-            </ul>
-        </nav>
           <Switch>
             <Route exact path="/sanpham">
               <Sanpham />
@@ -39,7 +20,7 @@ export default function Routes(){
               <Lienhe />
             </Route>
             <Route exact path="/dangnhap">
-              <Dangnhap  />
+              <Dangnhap />
             </Route>
             <Route exact path="/">
               <Home />
