@@ -1,23 +1,73 @@
-// import Header from '../Header'
-// import Footer from '../Footer'
-// import { useNavigate } from 'react-router-dom'
-// import { useLocation } from "react-router-dom";
-// import RenderEditItem from "../RenderEditItem"
-
-// function EditItem(){
-// 	const location = useLocation();
-//    	const productData = location.state;
-// 	console.log(productData)
-// 	return (
-// 		<RenderEditItem productData={productData}/>
-// 	)
-// }
-// export default EditItem;
-
-import React from 'react'
+import './AddItem.css'
+import React, {Component } from 'react'
 import {Form, Button } from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
-export default function Edit(){
+class EditItem extends Component{
+	constructor(props) {
+		super(props);
+		this.index=""
+		this.state = {
+		  validated: false,
+		  textName: "",
+		  textType: "",
+		  textCost: "",
+		  textColor: "",
+		  txtMemory:"",
+		  textDiscount: "",
+		  textInfor: "",
+		  textSpeFeatures: "",
+		  textRelaPro: "",
+		  image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCzuDh9Fdpo9ntG5_YunFM2Wd_g_Kt4CyR8Q&usqp=CAU",
+		  image1: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCzuDh9Fdpo9ntG5_YunFM2Wd_g_Kt4CyR8Q&usqp=CAU",
+		  image2: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCzuDh9Fdpo9ntG5_YunFM2Wd_g_Kt4CyR8Q&usqp=CAU",
+		  image3: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCzuDh9Fdpo9ntG5_YunFM2Wd_g_Kt4CyR8Q&usqp=CAU",
+		  image4: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCzuDh9Fdpo9ntG5_YunFM2Wd_g_Kt4CyR8Q&usqp=CAU"
+		};
+		this.handleInputChange = this.handleInputChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.imageHandler = this.imageHandler.bind(this);
+		this.indexImage = this.indexImage.bind(this);
+	      }
+		  
+		handleSubmit = (event) => {
+		      const form = event.currentTarget;
+		      if (form.checkValidity() === false) {
+			event.preventDefault();
+			event.stopPropagation();
+		      }  
+		      this.setState({validated: true});
+		// var content = "Name: "+ this.state.textName;
+		// console.log(content)
+		};
+	    
+	      	handleInputChange(event) {
+			const target = event.target;
+			const value = target.value;
+			const name = target.name;
+			this.setState({
+			[name]: value
+			});
+	     	 };
+		imageHandler = (e) => {
+			var indexImage =this.index;
+			let reader = new FileReader();
+			let file = e.target.files[0];
+			reader.onloadend = () => {
+			this.setState({
+				[indexImage]: reader.result
+			});
+			}
+			reader.readAsDataURL(file)
+		  };
+		indexImage=(e)=>{
+			  const target = e.target;
+			  const name = target.name;
+			  this.index= name;
+			console.log("start")
+			document.getElementById("chosefile").click()
+		}
+	render() {
 
 	return(
 		<div class='container-fluid' id='product-list'>
@@ -129,8 +179,9 @@ export default function Edit(){
 			</div>
 		</div>
 		<div class="d-flex justify-content-end container mt-3">
-		<Button type="submit" variant="success">Lưu thay đổi</Button>
-        <Button type="submit" variant="success">Hủy </Button>
+		<Button type="submit" variant="Primary">Lưu thay đổi</Button>
+		<Button type="submit" variant="success">Hủy</Button>
+
 		{/* <button type="button" class="btn btn-success"  onClick={()=>{window.location.href = "/managerItem"}}>Hủy</button> */}
 		</div>
 		</Form>
@@ -139,4 +190,7 @@ export default function Edit(){
 		{/* <Footer/> */}
 		</div>
 	);
-            }
+	}
+}
+
+export default EditItem;

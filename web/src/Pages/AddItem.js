@@ -1,6 +1,8 @@
 import './AddItem.css'
 import React, {Component } from 'react'
 import {Form, Button } from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
+
 class AddItem extends Component{
 	constructor(props) {
 		super(props);
@@ -74,7 +76,7 @@ class AddItem extends Component{
 		<div class="col-md-8 col-sm-12" style={{margin:'auto'}} >
 		<Form noValidate validated={this.state.validated} onSubmit={this.handleSubmit}>
 		<div class ='row' style={{marginTop:'5px'}}>
-		<h4 class="text-center">Thông tin sản phâm</h4>
+		<h4 class="text-center">Thông tin sản phẩm</h4>
 			<div class="col-md-7 col-sm-12">
 				<Form.Group  controlId="validationCustom03" style={{margin:'0 0 2px'}}>
 				<Form.Label>Tên sản phẩm</Form.Label>
@@ -177,7 +179,7 @@ class AddItem extends Component{
 			</div>
 		</div>
 		<div class="d-flex justify-content-end container mt-3">
-		<Button type="submit" variant="success">Thêm sản phẩm</Button>
+		<Button type="submit" variant="primary">Thêm sản phẩm</Button>
 		<button type="button" class="btn btn-success"  onClick={()=>{window.location.href = "/managerItem"}}>Hủy</button>
 		</div>
 		</Form>
