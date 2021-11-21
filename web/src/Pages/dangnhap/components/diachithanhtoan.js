@@ -9,7 +9,7 @@ const diachi = {
         phuong: "Phường 14",
         quan: "Quận 10",
         tp: "Thành phố Hồ Chí Minh"
-    },
+        },
     o2: {
         name: "Trần Văn B",
         duong: "Tòa H6",
@@ -17,30 +17,44 @@ const diachi = {
         quan: "Thị xã Dĩ An",
         tp: "Tỉnh Bình Dương"
     },
+    o3: {
+        name: "Trần Văn B",
+        duong: "Tòa H6",
+        phuong: "Phường Đông Hòa",
+        quan: "Thị xã Dĩ An",
+        tp: "Tỉnh Bình Dương"
+    }
 }
+
+const diachis = [
+    diachi.o1,
+    diachi.o2,
+    diachi.o3
+]
 
 function DiachiCard({Opt}){
     return(
+        <Grid item xs={6} sm={6} md={6} lg={6} >
             <Card style={{boxShadow: "0 10px 20px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23)", borderRadius: "15px"}}>
-                            <Grid item xs={12} style={{textAlign: "left", padding: "20px"}}>
-                                <Grid item xs={12} container style={{paddingBottom: "10px"}}>
-                                    <Grid item xs={6} lg={10}><Typography style={{fontWeight: "600"}}>{Opt.name}</Typography></Grid>
-                                    <Grid item xs={6} lg={2}><Typography onClick={() => {alert("Xóa địa chỉ");}} style={{color: "red"}}>Xóa địa chỉ</Typography></Grid>
-                                </Grid>
-                                <Grid item xs={12}><Typography style={{ paddingBottom: "10px"}}>{Opt.duong}</Typography></Grid>
-                                <Grid item xs={12}><Typography style={{ paddingBottom: "10px"}}>{Opt.phuong}</Typography></Grid>
-                                <Grid item xs={12}><Typography style={{ paddingBottom: "10px"}}>{Opt.quan}</Typography></Grid>
-                                <Grid item xs={12} container >
-                                    <Grid item xs={9} lg={10}><Typography style={{paddingBottom: "10px"}}>{Opt.tp}</Typography></Grid>
-                                    <Grid item xs={2} lg={2}><Typography style={{color: "#1AC67E",fontWeight: "600"}}>Mặc định</Typography></Grid>
-                                </Grid>
-                            </Grid>
-                        </Card>
-    )
+                <Grid item xs={12} style={{textAlign: "left", padding: "20px"}}>
+                    <Grid item xs={12} container style={{paddingBottom: "10px"}}>
+                        <Grid item xs={6} lg={10}><Typography style={{fontWeight: "600"}}>{Opt.name}</Typography></Grid>
+                            <Grid item xs={6} lg={2}><Typography onClick={() => {alert("Xóa địa chỉ");}} style={{color: "red"}}>Xóa địa chỉ</Typography></Grid>
+                        </Grid>
+                    <Grid item xs={12}><Typography style={{ paddingBottom: "10px"}}>{Opt.duong}</Typography></Grid>
+                    <Grid item xs={12}><Typography style={{ paddingBottom: "10px"}}>{Opt.phuong}</Typography></Grid>
+                    <Grid item xs={12}><Typography style={{ paddingBottom: "10px"}}>{Opt.quan}</Typography></Grid>
+                    <Grid item xs={12} container >
+                        <Grid item xs={9} lg={10}><Typography style={{paddingBottom: "10px"}}>{Opt.tp}</Typography></Grid>
+                        <Grid item xs={2} lg={2}><Typography style={{color: "#1AC67E",fontWeight: "600"}}>Mặc định</Typography></Grid>
+                    </Grid>
+                </Grid>
+            </Card>
+        </Grid>
+    );
 }
 
 export default function Diachithanhtoan() {
-
     return (
         <Grid container direction="row" spacing={3} justifyContent="center" style={{marginBottom:"5%"}}>
             <Grid item xs={4} sm={4} md={3} lg={2} >
@@ -75,25 +89,23 @@ export default function Diachithanhtoan() {
                 </Grid>
                 
                 <Grid container direction="row" spacing={10} justifyContent="center">
-                    <Grid item xs={6} sm={6} md={6} lg={6} >
-                        <DiachiCard Opt={diachi.o1} />
-                    </Grid>
-                    
-                    <Grid item xs={6} sm={6} md={6} lg={6} >
-                        <DiachiCard Opt={diachi.o2} />
-                    </Grid>
-                    
-                </Grid>
-                
-                <Grid container direction="row" spacing={10} justifyContent="center">
-                    <Grid item xs={6} sm={6} md={6} lg={6} >
-                        <DiachiCard Opt={diachi.o1} />
-                    </Grid>
 
-                    <Grid item xs={6} sm={6} md={6} lg={6} >
-                        <DiachiCard Opt={diachi.o} />
-                    </Grid>
+                    <DiachiCard Opt={diachi.o1}/>
                     
+                    <DiachiCard Opt={diachi.o2}/>
+                
+                    <DiachiCard Opt={diachi.o1}/>
+                    
+                    <DiachiCard Opt={diachi.o2}/> 
+                    {/* <Grid container>
+                        {
+                            diachis.map(e => {
+                                return (
+                                    <DiachiCard Opt={diachis.e} />
+                                )
+                            })
+                        }
+                    </Grid> */}
                 </Grid>
 
             </Grid>
