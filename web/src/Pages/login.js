@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import './register.css'
 
-
-
 class Login extends Component {
     constructor(props) {
         super(props)
@@ -79,7 +77,6 @@ class Login extends Component {
     render() {
         return (
             <div class = "container">
-
                 <form onSubmit={this.handleSubmit}>
                     <h1>Sign In</h1>
                     <label>User Name :</label> <input type="text" value={this.state.userName} onChange={this.userhandler} placeholder="UserName..." /><br />

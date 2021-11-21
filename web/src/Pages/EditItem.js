@@ -179,7 +179,7 @@ class EditItem extends Component{
 			</div>
 		</div>
 		<div class="d-flex justify-content-end container mt-3">
-		<Button type="submit" variant="Primary">Lưu thay đổi</Button>
+		<Button type="submit" variant="primary">Lưu thay đổi</Button>
 		<Button type="submit" variant="success">Hủy</Button>
 
 		{/* <button type="button" class="btn btn-success"  onClick={()=>{window.location.href = "/managerItem"}}>Hủy</button> */}
