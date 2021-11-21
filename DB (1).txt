@@ -30,26 +30,17 @@
 
 -Sản phẩm:
 	+ id 
-	+ số lượng
 	+ Tên
 	+ Giá
-	+ Nhà cung cấp
 	+ điểm đánh giá
-	+ Hình ảnh
+	+ Hình ảnh 
 	+ Thể loại (Trong danh mục)
-// có thể sửa theo form thêm sản phẩm
--Thông tin sản phẩm:
-	+ id_sp
 	+ Thương hiệu
-	+ Series
+	+ Dung lượng
 	+ Màu sắc
-	+ xuất xứ
-	+ Thời gian ra mắt
-	+ Thời gian bảo hành
-	+ Khuyến mãi
-	+ Tính năng đặt biệt
+	+ Khuyến mãi 
 	+ Sản phẩm liên quan
-
+	
 -Cấu hình chi tiết:
 	+ id
 	+ Màn hình
@@ -60,7 +51,6 @@
 	+ Sim
 	+ Pin
 	+ Kích thước
-	+ Khối lượng
 
 -Đơn hàng:
 	+ Id đơn hàng
@@ -100,9 +90,14 @@
 	+ Mục tiêu
 
 -Thông tin doanh nghiệp (header/footer):
+	+ Tên
+	+ Logo
 	+ Sđt
 	+ Email
 	+ Địa chỉ
 	+ Dịch vụ
 	+ Hỗ trợ khách hàng
-
+	+ Vận chuyển
+	+ Thanh toán
+	+ Url Facebook
+	+ Url Instagram
