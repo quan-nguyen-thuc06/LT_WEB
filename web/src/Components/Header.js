@@ -14,16 +14,27 @@ export default function Header() {
                             <a class="nav-link active" aria-current="page" href="/">Giới thiệu chung</a>
                         </li>
 						<li class="nav-item">
+<<<<<<< HEAD
+                            <a class="nav-link active" href="/sanpham">Sản phẩm</a>
+                        </li>
+						<li class="nav-item">
+                            <a class="nav-link active" href="/tuyendung">Tuyển dụng</a>
+=======
                             <a class="nav-link active" href="/">Sản phẩm</a>
                         </li>
 						<li class="nav-item">
                             <a class="nav-link active" href="/">Tuyển dụng</a>
+>>>>>>> Official
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="#footer">Liên Hệ</a>
                         </li>
 						<li class="nav-item">
+<<<<<<< HEAD
+                            <a class="nav-link active" href="/dangnhap">Tin tức công nghệ</a>
+=======
                             <a class="nav-link active" href="/">Tin tức công nghệ</a>
+>>>>>>> Official
                         </li>
                     </ul>
                     <a class="nav-link text-danger" href="Cart">
