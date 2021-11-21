@@ -100,14 +100,9 @@
 	+ Mục tiêu
 
 -Thông tin doanh nghiệp (header/footer):
-	+ Tên
-	+ Logo
 	+ Sđt
 	+ Email
 	+ Địa chỉ
 	+ Dịch vụ
 	+ Hỗ trợ khách hàng
-	+ Vận chuyển
-	+ Thanh toán
-	+ Url Facebook
-	+ Url Instagram
+
