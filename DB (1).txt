@@ -7,26 +7,16 @@
 	+ Ngày sinh
 	+ Địa chỉ
 	+ ảnh
-
--Quản trị viên:
-	+ username (id)
-	+ password
-	+ Họ và tên
-	+ Sđt
-	+ Email
-	+ Ngày sinh
-	+ Địa chỉ
-	+ Chức vụ
-	+ ảnh
+	+ role: client/admin
 
 -Bình luận:
-	+ id
-	+ Id sản phẩm
+	+ id /key
+	+ Id sản phẩm /key
+	+ username /key
 	+ Đánh giá
 	+ Nội dung
-	+ username
 	+ Time
-	+ Hình ảnh
+
 
 -Sản phẩm:
 	+ id 
@@ -41,26 +31,21 @@
 	+ Khuyến mãi 
 	+ Sản phẩm liên quan
 	
--Cấu hình chi tiết:
+Cấu hình chi tiết:
 	+ id
 	+ Màn hình
-	+ Hệ điều hành
-	+ Camera
-	+ Bộ nhớ trong
-	+ RAM
 	+ Sim
 	+ Pin
 	+ Kích thước
 
 -Đơn hàng:
 	+ Id đơn hàng
-	+ Id khách hàng
-	+ Số lượng
-	+ Tiền sản phẩm
-	+ Vận chuyển
-	+ Tổng tiền
-	+ Trạng thái đơn hàng
-	+ Phương thức thanh toán
+	+ Mục tiêu
+
+-BelongCart:
+	+id_product:
+	+quantity
+	+id_cart
 	
 -Tuyển dụng:
 	+ Stt (id)
@@ -72,32 +57,18 @@
 	+ Id tin tức
 	+ Tiêu đề
 	+ Hình ảnh
-	+ Tóm tắt
 	+ Nội dung
-	+ Thể loại
-	+ Tác giả (nguồn)
-	+ Trạng thái (ẩn/hiện)
 
 -Giới thiệu doanh nghiệp:
-	+ Ảnh
-	+ Video
+	+ Ảnh: string(image1+image2)
 	+ Lời giới thiệu
-	+ Lịch sử phát triển
-	+ Ban lãnh đạo
-	+ Nhân lực
-	+ Thế mạnh
+	+ Lịch sử phát triển (2013:....+2014:...
 	+ Sứ mệnh
 	+ Mục tiêu
 
 -Thông tin doanh nghiệp (header/footer):
-	+ Tên
-	+ Logo
 	+ Sđt
 	+ Email
 	+ Địa chỉ
 	+ Dịch vụ
 	+ Hỗ trợ khách hàng
-	+ Vận chuyển
-	+ Thanh toán
-	+ Url Facebook
-	+ Url Instagram
