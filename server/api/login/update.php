@@ -26,4 +26,7 @@
 	else{
 		echo json_encode('fail');
 	}
+
+	//fetch() : tra ve doi tuong theo dang array
+			//PDO::FETCH_ASSOC: Trả về dữ liệu dạng mảng với key là tên của column (column của các table trong database)
 ?>
