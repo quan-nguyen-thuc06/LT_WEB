@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 24, 2021 at 03:06 PM
+-- Generation Time: Nov 21, 2021 at 06:13 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -44,17 +44,12 @@ CREATE TABLE `client` (
   `username` varchar(30) NOT NULL,
   `password` varchar(30) DEFAULT NULL,
   `fullname` varchar(50) DEFAULT NULL,
-  `phone` char(10) DEFAULT NULL,
+  `phone` int(11) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `b_day` date DEFAULT NULL,
   `image` varchar(1000) DEFAULT NULL,
   `role` varchar(30) DEFAULT NULL
 ) ;
-
---
--- Dumping data for table `client`
---
-
 
 -- --------------------------------------------------------
 
@@ -65,14 +60,10 @@ CREATE TABLE `client` (
 CREATE TABLE `comment` (
   `id` int(11) NOT NULL,
   `id_product` int(11) NOT NULL,
-  `username` varchar(30) NOT NULL,
+  `usename` varchar(30) NOT NULL,
   `rating` int(11) DEFAULT NULL,
   `content` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `comment`
---
 
 -- --------------------------------------------------------
 
@@ -83,13 +74,9 @@ CREATE TABLE `comment` (
 CREATE TABLE `employment` (
   `id` int(11) NOT NULL,
   `area` text DEFAULT NULL,
-  `deadline` date DEFAULT NULL,
+  `deadline` text DEFAULT NULL,
   `address` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `employment`
---
 
 -- --------------------------------------------------------
 
@@ -157,7 +144,7 @@ CREATE TABLE `product` (
   `product_name` varchar(100) NOT NULL,
   `price` float NOT NULL,
   `images` text NOT NULL,
-  `type` varchar(100) NOT NULL,
+  `tyle` varchar(100) NOT NULL,
   `brand` varchar(100) NOT NULL,
   `capacity` int(11) NOT NULL,
   `color` varchar(100) NOT NULL,
@@ -168,28 +155,6 @@ CREATE TABLE `product` (
   `Ram` int(11) DEFAULT NULL,
   `battery` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `product`
---
-
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tb_address`
---
-
-CREATE TABLE `tb_address` (
-  `id` int(11) NOT NULL,
-  `username` varchar(30) NOT NULL,
-  `address` varchar(500) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tb_address`
---
-
 
 --
 -- Indexes for dumped tables
@@ -213,8 +178,8 @@ ALTER TABLE `client`
 -- Indexes for table `comment`
 --
 ALTER TABLE `comment`
-  ADD PRIMARY KEY (`id`,`id_product`,`username`),
-  ADD KEY `usename` (`username`),
+  ADD PRIMARY KEY (`id`,`id_product`,`usename`),
+  ADD KEY `usename` (`usename`),
   ADD KEY `id_product` (`id_product`);
 
 --
@@ -255,21 +220,8 @@ ALTER TABLE `product`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_address`
---
-ALTER TABLE `tb_address`
-  ADD PRIMARY KEY (`id`,`username`),
-  ADD KEY `username` (`username`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `employment`
---
-ALTER TABLE `employment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `News`
@@ -287,7 +239,7 @@ ALTER TABLE `order_product`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -304,7 +256,7 @@ ALTER TABLE `belong_to_cart`
 -- Constraints for table `comment`
 --
 ALTER TABLE `comment`
-  ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`username`) REFERENCES `client` (`username`),
+  ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`usename`) REFERENCES `client` (`username`),
   ADD CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`);
 
 --
@@ -312,6 +264,32 @@ ALTER TABLE `comment`
 --
 ALTER TABLE `order_product`
   ADD CONSTRAINT `order_product_ibfk_1` FOREIGN KEY (`usename`) REFERENCES `client` (`username`);
+COMMIT;
+
+--
+-- Table structure for table `tb_address`
+--
+
+CREATE TABLE `tb_address` (
+  `id` int(11) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `address` varchar(500) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `tb_address`
+--
+ALTER TABLE `tb_address`
+  ADD PRIMARY KEY (`id`,`username`),
+  ADD KEY `username` (`username`);
+
+--
+-- Constraints for dumped tables
+--
 
 --
 -- Constraints for table `tb_address`
@@ -319,6 +297,7 @@ ALTER TABLE `order_product`
 ALTER TABLE `tb_address`
   ADD CONSTRAINT `tb_address_ibfk_1` FOREIGN KEY (`username`) REFERENCES `client` (`username`);
 COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
