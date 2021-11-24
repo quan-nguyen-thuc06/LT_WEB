@@ -117,7 +117,7 @@ CREATE TABLE `product` (
   `product_name` varchar(100) NOT NULL,
   `price` float NOT NULL,
   `images` text NOT NULL,
-  `tyle` varchar(100) NOT NULL,
+  `type` varchar(100) NOT NULL,
   `brand` varchar(100) NOT NULL,
   `capacity` int(11) NOT NULL,
   `color` varchar(100) NOT NULL,

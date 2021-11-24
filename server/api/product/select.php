@@ -12,11 +12,35 @@
 
 	$product = new Product($connect);
 	$data = json_decode(file_get_contents("php://input"));
-	$product->id = $data->id;
-    
-	if($product->select()) {
-		echo json_encode('success');
-	}
+    //echo $data->product_name;
+	//$product->product_name = $data->product_name;
+    $select = $product->select($data->product_name);
+    $num = $select->rowCount();
+	if($num>0) {
+        $select_arr = [];
+		
+        while($row = $select->fetch(PDO::FETCH_ASSOC)){
+            extract($row);
+            $select_item= array(
+                "id" => $id,
+                "product_name" => $product_name,
+                "price" => $price,
+                "images" => $images,
+                "type" => $type,
+                "brand" => $brand,
+                "capacity" => $capacity,
+                "color" => $color,
+                "promotion" => $promotion,
+                "same_product" => $same_product,
+                "screen" => $screen,
+                "Rom" => $Rom,
+                "Ram" => $Ram,
+                "battery" => $battery
+            );
+            array_push($select_arr,$select_item);
+        }
+        echo json_encode( $select_arr );
+    }
 	else{
 		echo json_encode('fail');
 	}

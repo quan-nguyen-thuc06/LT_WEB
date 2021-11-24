@@ -23,19 +23,19 @@ class Product{
 		}
 
 		//read data
-		public function select(){
-			$query = "SELECT * FROM product WHERE id=:id";
+		public function select($fragment){
+			$query = "SELECT * FROM product WHERE product_name LIKE  '%{$fragment}%'";
 			$stmt = $this->conn->prepare($query);
-			$this->id = htmlspecialchars(strip_tags($this->id));
-			
-			$stmt->bindParam(':id',$this->id);
-
+            
+			//$this->product_name = htmlspecialchars(strip_tags($this->product_name));
+			//$stmt->bindParam(':fragment',$this->product_name);
+            // echo $query;
 			$stmt->execute();
-			$result = $stmt->fetch(PDO::FETCH_ASSOC);
-			if($result&&$result['id']!=''){
-				return true;
-			}
-			return false;
+			//$result = $stmt->fetch(PDO::FETCH_ASSOC);
+			//if($result&&$result['product_name']!=''){
+			return $stmt;
+			//}
+			//return false;
 		}
 
         public function create(){
@@ -121,14 +121,22 @@ class Product{
 		}   
         
         public function delete(){
-			$query = "DELETE FROM product WHERE id=:id";
-			$stmt = $this->conn->prepare($query);
+            
+            $query0 = "DELETE FROM belong_to_cart WHERE Product_id =:id";
+            $query1 = "DELETE FROM comment WHERE id_product =:id";
+            $query2 = "DELETE FROM product WHERE id =:id";
+			//$query = "DELETE belong_to_cart, product, comment FROM belong_to_cart JOIN product ON belong_to_cart.Product_id = product.id JOIN comment ON comment.id_product = product.id WHERE product.id=:id";
+			$stmt0 = $this->conn->prepare($query0);
+            $stmt1 = $this->conn->prepare($query1);
+            $stmt2 = $this->conn->prepare($query2);
 			//clean data
 			$this->id = htmlspecialchars(strip_tags($this->id));
 
-			$stmt->bindParam(':id',$this->id);
+			$stmt0->bindParam(':id',$this->id);
+            $stmt1->bindParam(':id',$this->id);
+            $stmt2->bindParam(':id',$this->id);
 
-			if($stmt->execute()){
+			if($stmt0->execute()&&$stmt1->execute()&&$stmt2->execute()){
 				return true;
 			}
 			printf("error %s.\n",$stmt->error);
