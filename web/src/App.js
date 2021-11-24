@@ -6,15 +6,16 @@ import Routes from './Pages/Routes';
 import Header from './Components/Header'
 import Footer from './Components/Footer'
 import EditItem from './Pages/EditItem'
-
+import ManageWebsite from './Pages/ManageWebsite';
+import ProductPortfolio from './Pages/ProductPortfolio'
 class App extends Component {
   render(){
     return (
         <div className="App">        
-          
-          <Header/>
+          <ManageWebsite/>
+          {/* <Header/>
           <Routes />
-          <Footer/>
+          <Footer/> */}
         </div>
     );
   }
