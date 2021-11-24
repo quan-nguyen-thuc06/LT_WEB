@@ -4,7 +4,7 @@ import Sanpham from './sanpham/Sanpham'
 import Tuyendung from './tuyendung/Tuyendung';
 import Lienhe from './lienhe/Lienhe';
 import Dangnhap from './dangnhap/Hoso';
-import EditItem from './EditItem'
+import EditItem from './Pages/EditItem'
 export default function Routes(){
     return(
         <Router>
