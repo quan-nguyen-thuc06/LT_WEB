@@ -16,7 +16,7 @@
 	$product->product_name = $data->product_name;
 	$product->price = $data->price;
 	$product->images = $data->images;
-	$product->tyle = $data->tyle;
+	$product->type = $data->type;
 	$product->brand = $data->brand;
 	$product->capacity = $data->capacity;
 	$product->color = $data->color;

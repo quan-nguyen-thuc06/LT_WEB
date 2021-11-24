@@ -6,7 +6,7 @@ class Product{
 		public $product_name;
 		public $price;
 		public $images;
-		public $tyle;
+		public $type;
 		public $brand;
 		public $capacity;
 		public $color;
@@ -39,14 +39,14 @@ class Product{
 		}
 
         public function create(){
-			$query = "INSERT INTO product SET id=:id , product_name=:product_name, price=:price, images=:images, tyle=:tyle, brand=:brand, capacity=:capacity , color=:color, promotion=:promotion, same_product=:same_product, screen=:screen, Rom=:Rom, Ram=:Ram , battery=:battery";
+			$query = "INSERT INTO product SET id=:id , product_name=:product_name, price=:price, images=:images, type=:type, brand=:brand, capacity=:capacity , color=:color, promotion=:promotion, same_product=:same_product, screen=:screen, Rom=:Rom, Ram=:Ram , battery=:battery";
 			$stmt = $this->conn->prepare($query);
 			//clean data
 			$this->id = htmlspecialchars(strip_tags($this->id));
 			$this->product_name = htmlspecialchars(strip_tags($this->product_name));
 			$this->price = htmlspecialchars(strip_tags($this->price));
 			$this->images = htmlspecialchars(strip_tags($this->images));
-			$this->tyle = htmlspecialchars(strip_tags($this->tyle));
+			$this->type = htmlspecialchars(strip_tags($this->type));
 			$this->brand = htmlspecialchars(strip_tags($this->brand));
 			$this->capacity = htmlspecialchars(strip_tags($this->capacity));
 			$this->color = htmlspecialchars(strip_tags($this->color));
@@ -61,7 +61,7 @@ class Product{
 			$stmt->bindParam(':product_name',$this->product_name);
 			$stmt->bindParam(':price',$this->price);
 			$stmt->bindParam(':images',$this->images);
-			$stmt->bindParam(':tyle',$this->tyle);
+			$stmt->bindParam(':type',$this->type);
 			$stmt->bindParam(':brand',$this->brand);
 			$stmt->bindParam(':capacity',$this->capacity);
 			$stmt->bindParam(':color',$this->color);
@@ -80,14 +80,14 @@ class Product{
 		}
         
         public function update(){
-			$query = "UPDATE product SET product_name=:product_name, price=:price, images=:images, tyle=:tyle, brand=:brand, capacity=:capacity , color=:color, promotion=:promotion, same_product=:same_product, screen=:screen, Rom=:Rom, Ram=:Ram , battery=:battery WHERE id=:id";
+			$query = "UPDATE product SET product_name=:product_name, price=:price, images=:images, type=:type, brand=:brand, capacity=:capacity , color=:color, promotion=:promotion, same_product=:same_product, screen=:screen, Rom=:Rom, Ram=:Ram , battery=:battery WHERE id=:id";
 			$stmt = $this->conn->prepare($query);
 			//clean data
 			$this->id = htmlspecialchars(strip_tags($this->id));
 			$this->product_name = htmlspecialchars(strip_tags($this->product_name));
 			$this->price = htmlspecialchars(strip_tags($this->price));
 			$this->images = htmlspecialchars(strip_tags($this->images));
-			$this->tyle = htmlspecialchars(strip_tags($this->tyle));
+			$this->type = htmlspecialchars(strip_tags($this->type));
 			$this->brand = htmlspecialchars(strip_tags($this->brand));
 			$this->capacity = htmlspecialchars(strip_tags($this->capacity));
 			$this->color = htmlspecialchars(strip_tags($this->color));
@@ -102,7 +102,7 @@ class Product{
 			$stmt->bindParam(':product_name',$this->product_name);
 			$stmt->bindParam(':price',$this->price);
 			$stmt->bindParam(':images',$this->images);
-			$stmt->bindParam(':tyle',$this->tyle);
+			$stmt->bindParam(':type',$this->type);
 			$stmt->bindParam(':brand',$this->brand);
 			$stmt->bindParam(':capacity',$this->capacity);
 			$stmt->bindParam(':color',$this->color);
