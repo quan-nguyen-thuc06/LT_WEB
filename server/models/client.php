@@ -92,5 +92,20 @@ class Client{
 			printf("error %s.\n",$stmt->error);
 			return false;
 		}
+
+		public function delete(){
+			$query = "DELETE a,c FROM tb_address a JOIN client c ON c.username = a.username WHERE c.username=:username";
+			$stmt = $this->conn->prepare($query);
+			//clean data
+			$this->username = htmlspecialchars(strip_tags($this->username));
+
+			$stmt->bindParam(':username',$this->username);
+
+			if($stmt->execute()){
+				return true;
+			}
+			printf("error %s.\n",$stmt->error);
+		}
+		
 	}
 ?>
