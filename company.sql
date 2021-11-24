@@ -266,6 +266,39 @@ ALTER TABLE `order_product`
   ADD CONSTRAINT `order_product_ibfk_1` FOREIGN KEY (`usename`) REFERENCES `client` (`username`);
 COMMIT;
 
+--
+-- Table structure for table `tb_address`
+--
+
+CREATE TABLE `tb_address` (
+  `id` int(11) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `address` varchar(500) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `tb_address`
+--
+ALTER TABLE `tb_address`
+  ADD PRIMARY KEY (`id`,`username`),
+  ADD KEY `username` (`username`);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `tb_address`
+--
+ALTER TABLE `tb_address`
+  ADD CONSTRAINT `tb_address_ibfk_1` FOREIGN KEY (`username`) REFERENCES `client` (`username`);
+COMMIT;
+
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
