@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
 
-// import './App.css';
+//import './App.css';
 import Demo from './Components/Demo';
 import Routes from './Pages/Routes';
-import Header from './Components/Header'
-import Footer from './Components/Footer'
-import EditItem from './Pages/EditItem'
+import Header from './Components/Header';
+import Footer from './Components/Footer';
+import EditItem from './Pages/EditItem';
 import ManageWebsite from './Pages/ManageWebsite';
-import ProductPortfolio from './Pages/ProductPortfolio'
+import ManageProduct from './Pages/ManageProduct';
+import ProductPortfolio from './Pages/ProductPortfolio';
+import HomeAdmin from './Pages/HomeAdmin';
+import Hiring from './Pages/Hiring';
+import Login from './Pages/Login';
+import Register from './Pages/Register';
 class App extends Component {
   render(){
     return (
         <div className="App">        
-          <ManageWebsite/>
+          <Register/>
           {/* <Header/>
           <Routes />
           <Footer/> */}
