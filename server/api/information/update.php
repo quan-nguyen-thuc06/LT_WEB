@@ -19,7 +19,7 @@
 	$infor->Support = $data->Support;
 
 
-	if($infor->infor()){
+	if($infor->update()){
 		echo json_encode('success');
 	}
 	else{

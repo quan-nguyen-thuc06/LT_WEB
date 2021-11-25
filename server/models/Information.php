@@ -17,8 +17,9 @@ class Information{
 		//read data
 
         public function update(){
-			$query = "UPDATE product SET Email=:Email, Address=:Address, Service=:Service, Support=:Support WHERE Phone=:Phone";
+			$query = "UPDATE Information SET Email=:Email, Address=:Address, Service=:Service, Support=:Support WHERE Phone=:Phone";
 			$stmt = $this->conn->prepare($query);
+			
 			//clean data
 			$this->Phone = htmlspecialchars(strip_tags($this->Phone));
 			$this->Email = htmlspecialchars(strip_tags($this->Email));
@@ -27,11 +28,11 @@ class Information{
 			$this->Support = htmlspecialchars(strip_tags($this->Support));
 
 
-			$stmt->bindParam(':id',$this->Phone);
-			$stmt->bindParam(':product_name',$this->Email);
-			$stmt->bindParam(':price',$this->Address);
-			$stmt->bindParam(':images',$this->Service);
-			$stmt->bindParam(':tyle',$this->Support);
+			$stmt->bindParam(':Phone',$this->Phone);
+			$stmt->bindParam(':Email',$this->Email);
+			$stmt->bindParam(':Address',$this->Address);
+			$stmt->bindParam(':Service',$this->Service);
+			$stmt->bindParam(':Support',$this->Support);
 
 
 			if($stmt->execute()){
