@@ -17,13 +17,13 @@ export default function Header() {
                             <a class="nav-link active" href="/sanpham">Sản phẩm</a>
                         </li>
 						<li class="nav-item">
-                            <a class="nav-link active" href="/tuyendung">Tuyển dụng</a>
+                            <a class="nav-link active" href="/dangnhap">Tuyển dụng</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="#footer">Liên Hệ</a>
                         </li>
 						<li class="nav-item">
-                            <a class="nav-link active" href="/dangnhap">Tin tức công nghệ</a>
+                            <a class="nav-link active" href="/tintuccongnghe">Tin tức công nghệ</a>
                         </li>
                     </ul>
                     <a class="nav-link text-danger" href="Cart">

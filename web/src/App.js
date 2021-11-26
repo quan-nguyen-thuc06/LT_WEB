@@ -12,15 +12,15 @@ import HomeAdmin from './Pages/HomeAdmin'
 import Hiring from './Pages/Hiring'
 import ProductPortfolio from './Pages/ProductPortfolio'
 import ManageCustomer from './Pages/ManageCustomer'
-import ManageWebsite from './Pages/ManageWebsite'
 import OrderConfirm from './Pages/OrderConfirm'
+import ManageWebsite from './Pages/ManageWebsite'
 
 function App() {
   return (
     <div>
         <Header/>
         <Routes />
-        
+
         <Footer/>
         
     </div>

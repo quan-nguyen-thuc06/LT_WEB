@@ -25,7 +25,8 @@ export default function Danhsachdonhang() {
 
     return (
         <Grid container direction="row" spacing={5} justifyContent="center" style={{marginBottom:"5%"}}>
-            <Grid item xs={4} sm={4} md={3} lg={2} >
+
+            <Grid item xs={6} sm={4} md={3} lg={2} >
                 <Card style={{
                     marginTop: "50px",
                     boxShadow: "0 10px 20px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23)",
@@ -46,7 +47,7 @@ export default function Danhsachdonhang() {
                 </Card>
             </Grid>
 
-            <Grid item xs={7} sm={7} md={8} lg={9} style={{paddingTop: "70px"}}>
+            <Grid item xs={12} sm={12} md={8} lg={9} style={{paddingTop: "70px"}}>
                 <Grid item xs={12}>
                     <Grid item xs={12}><Typography style={{fontWeight: "600",textAlign: "left", paddingBottom: "20px"}}>DANH SÁCH ĐƠN HÀNG</Typography></Grid>
                 </Grid>

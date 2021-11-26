@@ -4,6 +4,7 @@ import Sanpham from './sanpham/Sanpham'
 import Tuyendung from './tuyendung/Tuyendung';
 import Lienhe from './lienhe/Lienhe';
 import Dangnhap from './dangnhap/Hoso';
+import Tintuc from './tintuc/Tintuc'
 
 export default function Routes(){
     return(
@@ -21,6 +22,9 @@ export default function Routes(){
             </Route>
             <Route exact path="/dangnhap">
               <Dangnhap />
+            </Route>
+            <Route exact path="/tintuccongnghe">
+              <Tintuc />
             </Route>
             <Route exact path="/">
               <Home />
