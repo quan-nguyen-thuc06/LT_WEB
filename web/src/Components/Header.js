@@ -45,14 +45,23 @@ export default function Header() {
                     <div>
                         <button class="btn btn-outline-success me-2 " type="submit" id='search'>Search</button>
                     </div>
-                    <button class="btn btn-outline-primary me-3" type="submit" onClick={() => window.location.href = "/Login"}>
+                    {/* <button class="btn btn-outline-primary me-3" type="submit" onClick={() => window.location.href = "/Login"}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-people-fill mb-1 me-1" viewBox="0 0 16 16">
                             <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                             <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z" />
                             <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
                         </svg>
                         Đăng nhập
-                    </button>
+                    </button> */}
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Dropdown</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Link</a></li>
+                        <li><a class="dropdown-item" href="#">Another link</a></li>
+                        <li><a class="dropdown-item" href="#">A third link</a></li>
+                    </ul>
+                    </li>
+                    <img src="https://scontent-sin6-2.xx.fbcdn.net/v/t1.6435-9/38658524_2085985321652461_6541998076784017408_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=2xVt0QWDpQQAX86nrxx&_nc_ht=scontent-sin6-2.xx&oh=6ae78b1306d18be0174db59d69a2ec0b&oe=61C656C2" alt="Logo" style={{width:'40px'}} class="rounded-pill mx-3"/>
                 </div>
             </div >
             {/* <ToastContainer /> */}
