@@ -8,28 +8,29 @@ export default function Doimatkhau() {
 
     return (
         <Grid container direction="row" spacing={3} justifyContent="center" style={{marginBottom:"5%"}}>
-            <Grid item xs={4} sm={4} md={3} lg={2} >
-            <Card style={{
-                    marginTop: "50px",
-                    boxShadow: "0 10px 20px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23)",
-                    borderRadius: "15px"
-                }}>
-                    <Grid container direction="row" spacing={2} justifyContent="space-between">
-                        <Grid item xs={12} style={{textAlign: "left", padding: "20px"}}>
-                            <Grid item xs={12}> <Typography style={{fontWeight: "600", paddingBottom: "10px"}}>TÀI KHOẢN</Typography></Grid>
-                            <Grid>
-                            <NavLink style={{textDecoration: "none"}} to={"/thongtincanhan"}><Typography style={{paddingBottom: "10px",color:"black"}}>Thông tin cá nhân</Typography></NavLink> 
-                            <NavLink style={{textDecoration: "none"}} to={"/diachithanhtoan"}><Typography style={{paddingBottom: "10px",color:"black"}}>Địa chỉ thanh toán</Typography></NavLink> 
-                            <NavLink style={{textDecoration: "none"}} to={"/danhsachdonhang"}><Typography style={{paddingBottom: "10px",color:"black"}}>Danh sách đơn hàng</Typography></NavLink> 
-                            <NavLink style={{textDecoration: "none"}} to={"/doimatkhau"}><Typography style={{paddingBottom: "10px",color:"black"}}>Đổi mật khẩu</Typography></NavLink> 
-                            <NavLink style={{textDecoration: "none"}} to={"/"}><Typography style={{color: "red"}}>Đăng xuất</Typography></NavLink> 
+
+            <Grid item xs={6} sm={4} md={3} lg={2} >
+                <Card style={{
+                        marginTop: "50px",
+                        boxShadow: "0 10px 20px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23)",
+                     borderRadius: "15px"
+                  }}>
+                        <Grid container direction="row" spacing={2} justifyContent="space-between">
+                            <Grid item xs={12} style={{textAlign: "left", padding: "20px"}}>
+                                <Grid item xs={12}> <Typography style={{fontWeight: "600", paddingBottom: "10px"}}>TÀI KHOẢN</Typography></Grid>
+                                <Grid>
+                                <NavLink style={{textDecoration: "none"}} to={"/thongtincanhan"}><Typography style={{paddingBottom: "10px",color:"black"}}>Thông tin cá nhân</Typography></NavLink> 
+                                <NavLink style={{textDecoration: "none"}} to={"/diachithanhtoan"}><Typography style={{paddingBottom: "10px",color:"black"}}>Địa chỉ thanh toán</Typography></NavLink> 
+                                <NavLink style={{textDecoration: "none"}} to={"/danhsachdonhang"}><Typography style={{paddingBottom: "10px",color:"black"}}>Danh sách đơn hàng</Typography></NavLink> 
+                                <NavLink style={{textDecoration: "none"}} to={"/doimatkhau"}><Typography style={{paddingBottom: "10px",color:"black"}}>Đổi mật khẩu</Typography></NavLink> 
+                                <NavLink style={{textDecoration: "none"}} to={"/"}><Typography style={{color: "red"}}>Đăng xuất</Typography></NavLink> 
+                                </Grid>
                             </Grid>
                         </Grid>
-                    </Grid>
                 </Card>
             </Grid>
 
-            <Grid item xs={7} sm={7} md={8} lg={9}>
+            <Grid item xs={12} sm={7} md={8} lg={9}>
                 <Card style={{
                     marginTop: "50px",
                     boxShadow: "0 10px 20px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23)",
