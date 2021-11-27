@@ -1,7 +1,10 @@
 import Banner from '../Components/Banner';
+import Header from '../Components/Header';
+import Footer from '../Components/Footer';
 function Hiring (){
     return (
       <div className="container">
+            <Header/>
             <Banner/>
             <div className="container mt-5">
                 <table class="table table-bordered">
@@ -65,6 +68,7 @@ function Hiring (){
                 </tbody>
                 </table>
             </div>
+            <Footer/>
       </div>
     );
   }

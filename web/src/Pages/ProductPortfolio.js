@@ -1,10 +1,13 @@
 //import './Aside.css'
 //import '../Contex/Sidebar.js'
 import React from 'react'
+import Header from '../Components/Header';
+import Footer from '../Components/Footer';
 function ProductPortfolio(){
   return(
 
 <div class="container-fluid">
+<Header/>
 <div class="row">
 <div class="col-xs-12 col-sm-4 col-md-3 col-xl-2 l-navbar active-nav" id="sidebarMenu" >
 <nav class=" px-sm-2 px-0 bg-white">
@@ -66,7 +69,9 @@ function ProductPortfolio(){
               <input type="number" class="form-control" id="exampleInput2"></input>
             </div>
           </div>
-          <button type="button" class="btn btn-success my-2">Áp dụng</button>
+          <div class="col text-center">
+            <button type="button" class="btn btn-success my-2">Áp dụng</button>
+          </div>
         </div>
         <h3>Màu sắc</h3>
         <div class="btn-group row row-sm border-bottom" role="group" aria-label="Basic radio toggle button group">
@@ -214,6 +219,7 @@ function ProductPortfolio(){
         </section>
         </div>
   </div>
+  <Footer/>
 </div>
   )
   

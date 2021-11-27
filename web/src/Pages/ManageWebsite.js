@@ -1,7 +1,14 @@
+import './ManageProduct.css'
+import Header from '../Components/HeaderAdmin';
+import Footer from '../Components/Footer';
 import React from 'react'
+
 function ManageWebsite(){
+
   return(
     <div class="container">
+        <Header/>
+        
         <div class="table-responsive">
             <div class="table-wrapper">
                 <div class="table-title">
@@ -102,25 +109,30 @@ function ManageWebsite(){
                 </table>
             </div>
         </div>
+
+
+
         <div class="table-wrapper">
+        <form>
             <div class="table-title row">
-                <div class="col-sm-8"><h2>Tuyển dụng</h2></div>
+                <div class="col-sm-8"><h2>Liên hệ</h2></div>
                 <div class="col-sm-4">
-                    <button type="button" class="btn btn-info add-new">Thay đổi</button>
+                    <button type="submit" class="btn btn-info add-new">Thay đổi</button>
                 </div>
                 <div class="col-12 col-sm-6">
                     <label for="exampleInput1">Số điện thoại</label>
-                    <input type="number" class="form-control" id="exampleInput1"></input>
+                    <input type="number" class="form-control" id="exampleInput1" required></input>
                 </div>
                 <div class="col-12 col-sm-6">
                     <label for="exampleInput2">Email</label>
-                    <input type="email" class="form-control" id="exampleInput2"></input>
+                    <input type="email" class="form-control" id="exampleInput2" required></input>
                 </div>
                 <div class="col-12">
                     <label for="exampleInput3">Địa chỉ</label>
-                    <input class="form-control" id="exampleInput3"></input>
+                    <input type="text" class="form-control" id="exampleInput3" required></input>
                 </div>
-            </div>       
+            </div>
+        </form>       
         </div>
         <div class="table-wrapper">
         <div class="table-title">
@@ -279,6 +291,7 @@ function ManageWebsite(){
                     </tbody>
                 </table>      
         </div>
+        <Footer/>
     </div>     
   )
 }

@@ -1,9 +1,11 @@
 import React from 'react'
-import './ManageCustomer.css'
-//import './test.js'
+import './ManageProduct.css'
+import Header from '../Components/HeaderAdmin';
+import Footer from '../Components/Footer';
 function ManageCustomer(){
   return(
     <div class="container">
+    <Header/>
     <div class="table-responsive">
         <div class="table-wrapper">
             <div class="table-title">
@@ -120,6 +122,7 @@ function ManageCustomer(){
             </table>
         </div>
     </div>
+    <Footer/>
 </div>     
   )
 }
