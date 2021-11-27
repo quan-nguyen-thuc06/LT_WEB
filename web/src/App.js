@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-//import './App.css';
+// import './App.css';
 import Demo from './Components/Demo';
 import Routes from './Pages/Routes';
-import Header from './Components/Header';
-import Footer from './Components/Footer';
-import EditItem from './Pages/EditItem';
+import Header from './Components/Header'
+import Footer from './Components/Footer'
+import EditItem from './Pages/EditItem'
 import ManageWebsite from './Pages/ManageWebsite';
 import ManageProduct from './Pages/ManageProduct';
 import ManageUser from './Pages/ManageUser';
