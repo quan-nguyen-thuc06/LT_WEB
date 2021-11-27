@@ -1,9 +1,9 @@
 import './ManageProduct.css'
 import Header from '../Components/HeaderAdmin';
 import Footer from '../Components/Footer';
-import React from 'react'
-
+import React, { useContext, useEffect, useState }  from 'react'
 function ManageWebsite(){
+
 
   return(
     <div class="container">
@@ -15,9 +15,50 @@ function ManageWebsite(){
                     <div class="row">
                         <div class="col-sm-8"><h2>Tuyển dụng</h2></div>
                         <div class="col-sm-4">
-                            <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Thêm mới</button>
+                            <button type="button" class="btn btn-info add-new" data-bs-toggle="modal" data-bs-target="#addHiring"><i class="fa fa-plus" ></i> Thêm mới</button>
                         </div>
                     </div>
+
+                    <div class="modal" id="addHiring">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h4 class="modal-title">Thêm vị trí tuyển dụng</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+
+                            <div class="modal-body">
+                            <form>
+                                <div class="table-title row">
+                                    <div class="col-12">
+                                        <label for="exampleInput3">Vị trí tuyển dụng</label>
+                                        <input type="text" class="form-control" id="exampleInput1" required></input>
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="exampleInput3">STT</label>
+                                        <input type="number" class="form-control" id="exampleInput0" required></input>
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="exampleInput3">Han nộp</label>
+                                        <input type="date" class="form-control" id="exampleInput2" required></input>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="exampleInput3">Địa điểm</label>
+                                        <input type="text" class="form-control" id="exampleInput3" required></input>
+                                    </div>
+                                </div>
+                            </form> 
+                                
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Đóng</button>
+                            </div>
+
+                            </div>
+                        </div>
+                    </div>   
                 </div>
                 <table class="table table-bordered">
                     <thead>
@@ -108,7 +149,7 @@ function ManageWebsite(){
                     </tbody>
                 </table>
             </div>
-        </div>
+        
 
 
 
@@ -139,9 +180,42 @@ function ManageWebsite(){
                     <div class="row">
                         <div class="col-sm-8"><h2>Hỗ trợ khách hàng</h2></div>
                         <div class="col-sm-4">
-                            <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Thêm mới</button>
+                            <button type="button" class="btn btn-info add-new" data-bs-toggle="modal" data-bs-target="#addSupport"><i class="fa fa-plus"></i> Thêm mới</button>
                         </div>
                     </div>
+                    <div class="modal" id="addSupport">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h4 class="modal-title">Thêm dịch vụ hỗ trợ khách hàng</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+
+                            <div class="modal-body">
+                            <form>
+                                <div class="table-title row">
+                                    <div class="col-12">
+                                        <label for="exampleInput3">STT</label>
+                                        <input type="text" class="form-control" id="exampleInput1" required></input>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="exampleInput3">Dịch vụ</label>
+                                        <input type="text" class="form-control" id="exampleInput2" required></input>
+                                    </div>
+                                </div>
+                            </form> 
+                                
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Đóng</button>
+                            </div>
+
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 <table class="table table-bordered">
                     <thead>
@@ -206,9 +280,43 @@ function ManageWebsite(){
                     <div class="row">
                         <div class="col-sm-8"><h2>Dịch vụ cung cấp</h2></div>
                         <div class="col-sm-4">
-                            <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Thêm mới</button>
+                            <button type="button" class="btn btn-info add-new" data-bs-toggle="modal" data-bs-target="#addService"><i class="fa fa-plus"></i> Thêm mới</button>
                         </div>
                     </div>
+
+                    <div class="modal" id="addService">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h4 class="modal-title">Thêm dịch vụ cung cấp</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+
+                            <div class="modal-body">
+                            <form>
+                                <div class="table-title row">
+                                    <div class="col-12">
+                                        <label for="exampleInput3">STT</label>
+                                        <input type="text" class="form-control" id="exampleInput1" required></input>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="exampleInput3">Dịch vụ</label>
+                                        <input type="text" class="form-control" id="exampleInput2" required></input>
+                                    </div>
+                                </div>
+                            </form> 
+                                
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Đóng</button>
+                            </div>
+
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 <table class="table table-bordered">
                     <thead>
@@ -290,6 +398,7 @@ function ManageWebsite(){
                         </tr>      
                     </tbody>
                 </table>      
+        </div>
         </div>
         <Footer/>
     </div>     
