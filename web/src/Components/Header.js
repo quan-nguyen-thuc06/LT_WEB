@@ -1,7 +1,8 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 export default function Header() {
 
-    return (<div class="row">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    return (<>
+        <nav class=" navbar navbar-expand-lg navbar-light bg-light">
 
             <div class="container-fluid">
                 <a class="navbar-brand " href="/" style={{ fontFamily: "Roboto", fontSize: "36px" }}>Logo</a>
@@ -53,18 +54,53 @@ export default function Header() {
                         </svg>
                         Đăng nhập
                     </button> */}
-                    <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Dropdown</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Link</a></li>
-                        <li><a class="dropdown-item" href="#">Another link</a></li>
-                        <li><a class="dropdown-item" href="#">A third link</a></li>
-                    </ul>
-                    </li>
-                    <img src="https://scontent-sin6-2.xx.fbcdn.net/v/t1.6435-9/38658524_2085985321652461_6541998076784017408_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=2xVt0QWDpQQAX86nrxx&_nc_ht=scontent-sin6-2.xx&oh=6ae78b1306d18be0174db59d69a2ec0b&oe=61C656C2" alt="Logo" style={{width:'40px'}} class="rounded-pill mx-3"/>
+                   <div class="dropdown ms-3 float-end">
+                        <a class="dropdown-toggle" data-bs-toggle="dropdown">
+                            <img src="https://scontent-sin6-2.xx.fbcdn.net/v/t1.6435-9/38658524_2085985321652461_6541998076784017408_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=2xVt0QWDpQQAX86nrxx&_nc_ht=scontent-sin6-2.xx&oh=6ae78b1306d18be0174db59d69a2ec0b&oe=61C656C2" alt="Logo" style={{width:"40px"}} class="rounded-pill" />
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                        <li><h5 class="dropdown-header">Đang đăng nhập với</h5></li>
+                        <li><a class="dropdown-item" href="#">
+                            Lê Ngọc Tiến
+                            </a></li>
+                        <li><hr class="dropdown-divider"></hr></li>
+                        <li><a class="dropdown-item" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-phone" viewBox="0 0 16 16">
+                                <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z"/>
+                                <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                                </svg>
+                            Quản lý sản phẩm</a>
+                            </li>
+                        <li><a class="dropdown-item" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+                                <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
+                                <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                                </svg>
+                            Quản lý khách hàng
+                            </a></li>
+                        <li><a class="dropdown-item" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                </svg>
+                            Quản lý website
+                            </a></li>
+                        <li><hr class="dropdown-divider"></hr></li>
+                        <li><a class="dropdown-item text-danger" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+                        <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                        </svg>
+                               Đăng xuất
+                        </a>
+                        </li>
+                        </ul>
+                    </div>
+                    {/* <img src="https://scontent-sin6-2.xx.fbcdn.net/v/t1.6435-9/38658524_2085985321652461_6541998076784017408_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=2xVt0QWDpQQAX86nrxx&_nc_ht=scontent-sin6-2.xx&oh=6ae78b1306d18be0174db59d69a2ec0b&oe=61C656C2" alt="Logo" style={{width:'40px'}} class="rounded-pill mx-3"/> */}
                 </div>
             </div >
             {/* <ToastContainer /> */}
         </nav >
-    </div>)
+    </>)
 }
