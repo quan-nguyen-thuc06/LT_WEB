@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 24, 2021 at 03:06 PM
+-- Generation Time: Nov 27, 2021 at 03:34 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -34,6 +34,9 @@ CREATE TABLE `belong_to_cart` (
   `Quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `belong_to_cart`
+--
 -- --------------------------------------------------------
 
 --
@@ -53,7 +56,6 @@ CREATE TABLE `client` (
 
 --
 -- Dumping data for table `client`
---
 
 
 -- --------------------------------------------------------
@@ -113,12 +115,16 @@ CREATE TABLE `Information` (
 
 CREATE TABLE `Introduction` (
   `Id` int(11) NOT NULL,
-  `Image` varchar(500) NOT NULL,
+  `Image` varchar(1000) NOT NULL,
   `Intro` varchar(100) NOT NULL,
   `Develop` text NOT NULL,
   `Mission` text NOT NULL,
   `Aim` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `Introduction`
+--
 
 -- --------------------------------------------------------
 
@@ -130,7 +136,8 @@ CREATE TABLE `News` (
   `Id` int(11) NOT NULL,
   `Tilte` varchar(100) NOT NULL,
   `Image` varchar(100) NOT NULL,
-  `Content` varchar(500) NOT NULL
+  `Content` varchar(500) NOT NULL,
+  `Link` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -141,10 +148,14 @@ CREATE TABLE `News` (
 
 CREATE TABLE `order_product` (
   `id` int(11) NOT NULL,
-  `usename` varchar(30) NOT NULL,
+  `username` varchar(30) NOT NULL,
   `shipment` int(11) DEFAULT NULL,
   `pay_method` varchar(30) DEFAULT 'COD'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `order_product`
+--
 
 -- --------------------------------------------------------
 
@@ -189,7 +200,6 @@ CREATE TABLE `tb_address` (
 --
 -- Dumping data for table `tb_address`
 --
-
 
 --
 -- Indexes for dumped tables
@@ -245,8 +255,8 @@ ALTER TABLE `News`
 -- Indexes for table `order_product`
 --
 ALTER TABLE `order_product`
-  ADD PRIMARY KEY (`id`,`usename`),
-  ADD KEY `usename` (`usename`);
+  ADD PRIMARY KEY (`id`,`username`),
+  ADD KEY `usename` (`username`);
 
 --
 -- Indexes for table `product`
@@ -281,7 +291,7 @@ ALTER TABLE `News`
 -- AUTO_INCREMENT for table `order_product`
 --
 ALTER TABLE `order_product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -311,16 +321,13 @@ ALTER TABLE `comment`
 -- Constraints for table `order_product`
 --
 ALTER TABLE `order_product`
-  ADD CONSTRAINT `order_product_ibfk_1` FOREIGN KEY (`usename`) REFERENCES `client` (`username`);
-<<<<<<< HEAD
-=======
+  ADD CONSTRAINT `order_product_ibfk_1` FOREIGN KEY (`username`) REFERENCES `client` (`username`);
 
 --
 -- Constraints for table `tb_address`
 --
 ALTER TABLE `tb_address`
   ADD CONSTRAINT `tb_address_ibfk_1` FOREIGN KEY (`username`) REFERENCES `client` (`username`);
->>>>>>> 6d31dc69f927eb2b00d84bbc1d5f1fc7216f66a5
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
