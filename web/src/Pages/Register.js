@@ -1,9 +1,7 @@
-import Header from '../Components/Header';
-import Footer from '../Components/Footer';
+
 function Hiring (){
     return (
       <div className="container">
-            <Header/>
             <section class="vh-200" >
                 <div class="container py-5 h-200">
                     <div class="row d-flex justify-content-center align-items-center h-200">
@@ -52,7 +50,7 @@ function Hiring (){
                             
                             <div class="container-fluid row">
                                 <div class="col-6 mt-3">
-                                    <a href="#" style={{color: "black"}}>Đăng nhập tại đây</a>
+                                    <a href="/login" style={{color: "black"}}>Đăng nhập tại đây</a>
                                 </div>
                                 <div class="col-6">
                                     <button class="btn btn-success btn-lg btn-block" type="submit">Đăng ký</button>
@@ -65,8 +63,6 @@ function Hiring (){
                     </div>
                 </div>
                 </section>
-
-            <Footer/>
       </div>
     );
   }

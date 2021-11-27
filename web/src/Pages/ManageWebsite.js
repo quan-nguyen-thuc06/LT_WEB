@@ -7,8 +7,6 @@ function ManageWebsite(){
 
   return(
     <div class="container">
-        <Header/>
-        
         <div class="table-responsive">
             <div class="table-wrapper">
                 <div class="table-title">
@@ -400,7 +398,6 @@ function ManageWebsite(){
                 </table>      
         </div>
         </div>
-        <Footer/>
     </div>     
   )
 }

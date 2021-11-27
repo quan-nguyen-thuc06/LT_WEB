@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 import './ManageProduct.css'
-import Header from '../Components/HeaderAdmin';
-import Footer from '../Components/Footer';
 function ManageCustomer(){
     const [userstate, setUserState] = useState(true);
     function handleUserState(){
@@ -9,7 +7,6 @@ function ManageCustomer(){
     }
   return(
     <div class="container">
-    <Header/>
     <div class="table-wrapper">
         <div class="table-title">
                         <div><h2>Quản lý khách hàng</h2></div>
@@ -75,9 +72,6 @@ function ManageCustomer(){
                     </tbody>
                 </table>      
         </div>
-        
-    
-    <Footer/>
 </div>     
   )
 }

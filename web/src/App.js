@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-
+//using for bootstrap
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
 // import './App.css';
 import Demo from './Components/Demo';
 import Routes from './Pages/Routes';
@@ -18,10 +20,10 @@ class App extends Component {
   render(){
     return (
         <div className="App">        
-          <ManageUser/>
-          {/* <Header/>
+          <Header/>
+          {/* <ManageUser/> */}
           <Routes />
-          <Footer/> */}
+          <Footer/>
         </div>
     );
   }

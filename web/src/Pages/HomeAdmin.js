@@ -5,10 +5,8 @@ import Footer from '../Components/Footer';
 function HomeAdmin (){
     return (
       <div className="container">
-          <HeaderAdmin/>
           <Banner/>
           <HotProducts/>
-          <Footer/>
       </div>
     );
   }

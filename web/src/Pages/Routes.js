@@ -1,10 +1,18 @@
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
-import Home from './home/Home';
 import Sanpham from './sanpham/Sanpham'
-import Tuyendung from './tuyendung/Tuyendung';
 import Lienhe from './lienhe/Lienhe';
 import Dangnhap from './dangnhap/Hoso';
 import EditItem from './EditItem'
+import AddItem from './AddItem'
+import HomeAdmin from "./HomeAdmin";
+import ManageWebsite from "./ManageWebsite";
+import ManageCustomer from "./ManageProduct";
+import ManageUser from "./ManageUser"
+import About from "./About"
+import Hiring from "./Hiring"
+import Tintuc from "./tintuc/Tintuc"
+import Login from "./Login"
+import Register from "./Register"
 export default function Routes(){
     return(
         <Router>
@@ -14,7 +22,7 @@ export default function Routes(){
               <Sanpham />
             </Route>
             <Route exact path="/tuyendung">
-              <Tuyendung />
+              <Hiring />
             </Route>
             <Route exact path="/lienhe">
               <Lienhe />
@@ -22,8 +30,38 @@ export default function Routes(){
             <Route exact path="/dangnhap">
               <Dangnhap />
             </Route>
-            <Route exact path="/">
-              <Home />
+            <Route exact path="/tintuc">
+              <Tintuc />
+            </Route>
+            <Route exact path="/about">
+              <About />
+            </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route exact path="/register">
+              <Register />
+            </Route>
+            <Route exact path="/admin">
+              <HomeAdmin />
+            </Route>
+            <Route exact path="/admin/website">
+              <ManageWebsite />
+            </Route>
+            <Route exact path="/admin/product">
+              <ManageCustomer />
+            </Route>
+            <Route exact path="/admin/user">
+              <ManageUser />
+            </Route>
+            <Route exact path="/admin/user">
+              <ManageUser />
+            </Route>
+            <Route exact path="/admin/additem">
+              <AddItem />
+            </Route>
+            <Route exact path="/admin/edititem">
+              <EditItem />
             </Route>
           </Switch>
         </div>

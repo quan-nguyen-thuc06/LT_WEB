@@ -12,7 +12,7 @@ export default function Header() {
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/">Giới thiệu chung</a>
+                            <a class="nav-link active" aria-current="page" href="/about">Giới thiệu chung</a>
                         </li>
 						<li class="nav-item">
                             <a class="nav-link active" href="/sanpham">Sản phẩm</a>
@@ -24,7 +24,7 @@ export default function Header() {
                             <a class="nav-link active" href="#footer">Liên Hệ</a>
                         </li>
 						<li class="nav-item">
-                            <a class="nav-link active" href="/dangnhap">Tin tức công nghệ</a>
+                            <a class="nav-link active" href="/tintuc">Tin tức công nghệ</a>
                         </li>
                     </ul>
                     <a class="nav-link text-danger" href="Cart">
@@ -64,14 +64,14 @@ export default function Header() {
                             Lê Ngọc Tiến
                             </a></li>
                         <li><hr class="dropdown-divider"></hr></li>
-                        <li><a class="dropdown-item" href="#">
+                        <li><a class="dropdown-item" href="/admin/product">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-phone" viewBox="0 0 16 16">
                                 <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z"/>
                                 <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
                                 </svg>
                             Quản lý sản phẩm</a>
                             </li>
-                        <li><a class="dropdown-item" href="#">
+                        <li><a class="dropdown-item" href="/admin/user">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
                                 <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                                 <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
@@ -79,7 +79,7 @@ export default function Header() {
                                 </svg>
                             Quản lý khách hàng
                             </a></li>
-                        <li><a class="dropdown-item" href="#">
+                        <li><a class="dropdown-item" href="/admin/website">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
