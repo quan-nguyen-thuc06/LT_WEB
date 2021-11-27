@@ -8,6 +8,7 @@ import Footer from './Components/Footer';
 import EditItem from './Pages/EditItem';
 import ManageWebsite from './Pages/ManageWebsite';
 import ManageProduct from './Pages/ManageProduct';
+import ManageUser from './Pages/ManageUser';
 import ProductPortfolio from './Pages/ProductPortfolio';
 import HomeAdmin from './Pages/HomeAdmin';
 import Hiring from './Pages/Hiring';
@@ -17,7 +18,7 @@ class App extends Component {
   render(){
     return (
         <div className="App">        
-          <Register/>
+          <ManageUser/>
           {/* <Header/>
           <Routes />
           <Footer/> */}
