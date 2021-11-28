@@ -1,4 +1,7 @@
 import './About.css'
+import { Grid,Card, CardMedia, Typography } from '@material-ui/core';
+
+
 export default function About(){
 	return (
 	<div>
@@ -96,6 +99,14 @@ export default function About(){
 			</div>
 		</div>
 	</div>
+	
+	<Grid container direction="row" xs={10} style={{padding:"50px"}}>
+
+		<Grid item xs={6}> thanh</Grid>
+		<Grid item xs={6}> thanh</Grid>
+
+	</Grid>
+
 	</div>
 	)
 }

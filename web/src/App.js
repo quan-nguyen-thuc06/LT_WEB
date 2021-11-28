@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 //using for bootstrap
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
-import Demo from './Components/Demo';
+// import './App.css';
 import Routes from './Pages/Routes';
 import Header from './Components/Header'
 import Footer from './Components/Footer'
