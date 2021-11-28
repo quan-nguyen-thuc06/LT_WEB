@@ -51,7 +51,7 @@ class Product{
 		}
 
 		public function select($fragment){
-			$query = "SELECT * FROM product WHERE product_name LIKE  '%{$fragment}%'";
+			$query = "SELECT * FROM product WHERE brand LIKE  '%{$fragment}%'";
 			$stmt = $this->conn->prepare($query);
 			$stmt->execute();
 			return $stmt;

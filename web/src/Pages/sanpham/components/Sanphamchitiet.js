@@ -1,43 +1,13 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import { Grid,Card, CardMedia, Typography } from '@material-ui/core';
 import Button from '@atlaskit/button';
-import CommentBox from './comment'
-import './rating.css'
-import { FaStar } from 'react-icons/fa'
-
-const product = {
-    "product_name": "Điện thoại iphone 11 128GB",
-    "price": 26000000,
-    "image": {
-        "image1":"https://cdn.tgdd.vn/Products/Images/42/210644/iphone-11-xanh-la-1-org.jpg",
-        "image2":"https://cdn.tgdd.vn/Products/Images/42/210644/iphone-11-tim-1-1-org.jpg",
-        "image3":"https://cdn.tgdd.vn/Products/Images/42/210644/iphone-11-den-1-1-org.jpg",
-    },
-    "brand": "Apple",
-    "capacity":{
-        "capacity1":"128GB",
-        "capacity2":"256GB",
-        "capacity3":"512GB",
-    },
-    "color":{
-        "color1":"Xanh nhạt",
-        "color2":"Tím",
-        "color3":"Đen",
-    },
-    "promotion":[
-        "Tặng phiếu mua hàng 100.000đ, áp dụng mua thẻ cào, thẻ game.",
-        "Giảm thêm 5% khi mua cùng sản phẩm bất kì có giá cao hơn.",
-        "Giảm thêm 800.000đ khi tham gia thu cũ đổi mới.",
-        "Giảm 50% giá mua gói bảo hiểm rơi vỡ 6 tháng (trị giá đến 1.000.000đ).",
-        "Giảm 50% giá gói cước 1 năm (Vina350/Vina500) cho Sim Vinaphone trả sau (Trị giá đến 3.000.000đ).",
-        "Hoàn tiền 5% tối đa 500.000đ cho hóa đơn từ 500.000đ khi thanh toán qua ví Moca trên ứng dụng Grab.",
-    ],
-    "screen": "Màn hình: OLED6.7,Super Retina XDR, Hệ điều hành: iOS 14.",
-    "camera": "Camera sau: 3 camera 12 MP, Camera trước: 12 MP.",
-    "ram": "Chip: Apple A14 Bionic, RAM: 6 GB.",
-    "rom": "Bộ nhớ trong: 128 GB, SIM: 1 Nano SIM và 1 eSIMHỗ trợ 5G.",
-    "battery": "Pin, Sạc: 3687 mAh, 20 W.",
-}
+import Rating from './rating'
+import comment from './comment'
+import axios from 'axios';
+import {ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 // const comments = {
 //     "username":"Nguyễn Văn A",
@@ -45,71 +15,145 @@ const product = {
 //     "rating":5,
 // }
 
-const sameproduct = [
-    {
-        "image": "https://cdn.tgdd.vn/Products/Images/42/210644/iphone-11-xanhla-200x200.jpg",
-        "name": "iphone 12 mini",
-        "price": 18000000,
-    },
-    {
-        "image": "https://cdn.tgdd.vn/Products/Images/42/210644/iphone-11-xanhla-200x200.jpg",
-        "name": "iphone 12 mini",
-        "price": 18000000,
-    },
-    {
-        "image": "https://cdn.tgdd.vn/Products/Images/42/210644/iphone-11-xanhla-200x200.jpg",
-        "name": "iphone 12 mini",
-        "price": 18000000,
-    },
-    {
-        "image": "https://cdn.tgdd.vn/Products/Images/42/210644/iphone-11-xanhla-200x200.jpg",
-        "name": "iphone 12 mini",
-        "price": 18000000,
-    },
-    {
-        "image": "https://cdn.tgdd.vn/Products/Images/42/210644/iphone-11-xanhla-200x200.jpg",
-        "name": "iphone 12 mini",
-        "price": 18000000,
-    },
-    {
-        "image": "https://cdn.tgdd.vn/Products/Images/42/210644/iphone-11-xanhla-200x200.jpg",
-        "name": "iphone 12 mini",
-        "price": 18000000,
-    }
-]
 
 function SameProductCard({ Opt}){
     return(
-        <Grid item xs={4} lg={2}>
-            <Card>
-                <Grid container>
-                    <Grid item xs={3} lg={3}></Grid>
-                    <Grid item xs={6} lg={7} style={{paddingTop:"10px"}}><CardMedia component="img" image={Opt.image}/></Grid>
-                </Grid>
-                <Grid item xs={12} lg={12}><Typography style={{padding:"15px 0px 0px 15px"}}>{Opt.name}</Typography></Grid>
-                <Grid item xs={12} lg={12} style={{color: "red", fontWeight:"700"}}><h6>{Opt.price}đ</h6></Grid>
-            </Card>
-        </Grid>
+        <div class="col-xl-2 col-lg-3 col-md-4 col-6 ">
+            <div class="card card-sm card-product-grid shadow">
+                <a href="#" class="img-wrap"> <img src={Opt.image} /> </a>
+                <figcaption class="info-wrap">
+                    <a href="#" class="title">{Opt.name}</a>
+                    <div class="price mt-1">{Opt.price}</div> 
+                </figcaption>
+            </div>
+        </div>
     )
 }
 
-
-
 export default function Sanphamchitiet() {
+    const history = useHistory();
+    let location = useLocation();
+	let id = location.state.id;
+    const [product,setProduct] =useState(
+        {
+            "id": "",
+            "product_name": "",
+            "price": "",
+            "images": [],
+            "type": "",
+            "brand": "",
+            "capacity": [],
+            "color": [],
+            "promotion": [],
+            "Rom": "",
+            "Ram": "",
+            "screen": "",
+            "battery": "",
+            "same_product": []
+          }
+    )
+    const [sameproduct,setSameproduct] =useState([])
+    const [rom,setRom] =useState("")
+    const [color,setColor]= useState("")
+    let infor = {
+        "id": "",
+        "name": "",
+        "image": "",
+        "price": "",
+        "oldprice": "",
+        "color": "",
+        "rom": "",
+        "quantity":1
+    }
+    useEffect(
+		async function getdata() {
+
+			try {
+				const res = await axios.get('http://localhost/Official/LT_WEB/server/api/product/show.php'
+				,
+				{ 
+				  params:{
+					id: id
+				  }
+				}
+				)
+                // console.log(res.data)
+				setProduct(res.data)
+				setSameproduct(res.data.same_product)
+			  } catch (error) {
+				console.log(error.message)
+			  }
+	    
+    },[])
+    const handleSubmit= () =>{
+        toast.success('Sản phẩm đã thêm vào giỏ hàng', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+        infor.id = product.id
+        infor.name = product.product_name
+        infor.image = product.images[1]
+        infor.price = product.price
+        infor.oldprice = parseInt(product.price)-3000000
+        infor.color=color;
+        infor.rom = rom;
+        infor.name&&history.push('/Cart',infor)
+    }
+    const handCapacity=(event)=>{
+        setRom(event.target.name)
+    }
     return (
-        <Grid xs={12} container direction="row" spacing={2} justifyContent="left" style={{paddingTop:"50px",marginBottom:"5%",backgroundColor:"#eeeeee"}}>
-                <Grid lg={5} container>
-                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner">
+        <div class="container mt-3">
+        <div class="row">
+                <div class="col-lg-6 col-sm-12 mt-3">
+                    <div id="carouselExampleControls" class=" carousel slide" data-ride="carousel">
+                        <div class="carousel-inner ">
                             <div class="carousel-item active">
-                                <img class="d-block w-100" src={product.image.image1} alt="first slide"></img>
+                                <img class="d-block w-100" src={product.images[0]} alt="first slide"></img>
                             </div>
-                            <div class="carousel-item">
-                                <img class="d-block w-100" src={product.image.image2} alt="Second slide"></img>
-                            </div>
-                            <div class="carousel-item">
-                                <img class="d-block w-100" src={product.image.image3} alt="Third slide"></img>
-                            </div>
+                            {
+                                product.images.map((image,index)=>{
+                                    if(index!==0){
+                                        return (
+                                            <div class="carousel-item">
+                                            <img class="d-block w-100" src={image} alt={"slide" + index }></img>
+                                            </div>   
+                                        )
+                                    }
+                                })
+                            }
+                        </div>
+                        <div class="mt-4 mb-3 shadow" style={{ border: '2px solid #C4C4C4', borderRadius: '12px', textAlign: 'center' }}>
+                            <h3>Thông tin chi tiết sản phẩm</h3>
+                            <table class="table table-striped">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Kích thước màn hình</th>
+                                        <td>{product.screen}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Dung lượng Ram</th>
+                                        <td>{product.Ram + " GB"}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Dung lượng ROM</th>
+                                        <td>{rom}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Dung lượng Pin</th>
+                                        <td>{product.battery}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Màu sắc</th>
+                                        <td>{color}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -120,76 +164,95 @@ export default function Sanphamchitiet() {
                             <span class="sr-only">Next</span>
                         </a>
                     </div>
-                </Grid>
+                </div>
+                <div class="col-lg-6 col-sm-12 mt-3" >       
+                    <div>
+                        <div class="card shadow">
+                        <div class="card-header text-center"><h4 style={{fontWeight:"600"}}>{product.product_name}</h4></div>
+                        <Grid ><p class= "ms-3 mt-3">Hãng: {product.brand}</p></Grid>
 
-                <Grid item xs={12} lg={6} container direction="row" style={{textAlign:"left",paddingLeft:"20px"}} >
-                    <Grid item xs={12} lg={12}>
-                        <Grid ><h4 style={{fontWeight:"600"}}>{product.product_name}</h4></Grid>
-                        <Grid ><Typography>Hãng: {product.brand}</Typography></Grid>
-
-                        <Grid container style={{paddingTop:"10px"}}>
-                            <button type="button" style={{ border:"0.5px solid #C4C4C4", borderRadius:"5%", color:"white", backgroundColor:"#1AC67E" }} class="btn btn-outline-secondary mb-3">{product.capacity.capacity1}</button>
-                            <button type="button" style={{ border:"0.5px solid #C4C4C4", borderRadius:"5%", color:"white", backgroundColor:"#1AC67E", marginLeft: "20px" }} class="btn btn-outline-secondary mb-3">{product.capacity.capacity2}</button>
-                            <button type="button" style={{ border:"0.5px solid #C4C4C4", borderRadius:"5%", color:"white", backgroundColor:"#1AC67E", marginLeft: "20px" }} class="btn btn-outline-secondary mb-3">{product.capacity.capacity3}</button>
-                        </Grid>
-                        
-
-                        <Grid container style={{paddingTop:"10px"}}>       
-                            <button type="button" style={{ border: "0.5px solid #C4C4C4", borderRadius: "5%", color:"white", backgroundColor:"#1AC67E" }} class="btn btn-outline-secondary mb-3">{product.color.color1}</button>
-                            <button type="button" style={{ border: "0.5px solid #C4C4C4", borderRadius: "5%", color:"white", backgroundColor:"#1AC67E", marginLeft: "20px" }} class="btn btn-outline-secondary mb-3">{product.color.color2}</button>
-                            <button type="button" style={{ border: "0.5px solid #C4C4C4", borderRadius: "5%", color:"white", backgroundColor:"#1AC67E", marginLeft: "20px" }} class="btn btn-outline-secondary mb-3">{product.color.color3}</button>
-                        </Grid>
-                        
-                        <Grid item style={{color: "red", paddingTop:"10px", fontWeight:"700"}}><h2>{product.price}đ</h2></Grid>
-                        <Grid ><h4>Ưu đãi khuyến mãi </h4></Grid>
-                        <Grid ><Typography>(áp dụng đến 23h 21/10)</Typography></Grid>
-                        <Grid>
-                            {product.promotion.map(e =>{
-                                    return(
-                                        <div>
-                                            <ul>
-                                                <li>{e}</li>
-                                            </ul>
-                                        </div>
+                        <div class="mx-3 mt-3">
+                            
+                            {
+                                product.capacity.map((capacity,index)=>{
+                                    if(index!==0){
+                                        return (
+                                            <button type="button" style={{ border:"0.5px solid #C4C4C4", borderRadius:"5%", color:"white", backgroundColor:"#1AC67E", marginLeft: "20px" }} name={capacity+ " GB"} class="btn btn-outline-secondary mb-3" onClick={handCapacity}>{capacity + " GB"}</button>
+                                        )
+                                    }
+                                    return (
+                                        <button type="button" style={{ border:"0.5px solid #C4C4C4", borderRadius:"5%", color:"white", backgroundColor:"#1AC67E" }} name={capacity+ " GB"} class="btn btn-outline-secondary mb-3" onClick={handCapacity}>{capacity + " GB"}</button>
                                     )
-                                })}
-                        </Grid>
-                        <Grid container x={12}>
-                            <Grid item xs={5}>
-                            </Grid>
-                            <Grid item xs={3}>
-                            <form style={{backgroundColor:"#eeeeee"}}>
-                                <Button onClick={() => {alert("Nhấn mua hàng");}} appearance="primary" style={{backgroundColor:"#1AC67E"}}>Mua ngay</Button>
-                                </form>
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                </Grid>
+                                })
+                            }
+                            
+                        </div>
+                        
+                        
 
-                <Grid xs={12} container >
-                    <Grid><h4 style={{margin:"0px 0px 20px 20px"}}>Sản phẩm tương tự</h4></Grid>
+                        <div class="mx-3">       
+                        {
+                                product.color.map((color,index)=>{
+                                    if(index!==0){
+                                        return (
+                                            <button type="button" style={{ border:"0.5px solid #C4C4C4", borderRadius:"5%", color:"white", backgroundColor:"#1AC67E", marginLeft: "20px" }} class="btn btn-outline-secondary mb-3" name={color} onClick={(e)=>{setColor(e.target.name)}}>{color }</button>
+                                        )
+                                    }
+                                    return (
+                                        <button type="button" style={{ border:"0.5px solid #C4C4C4", borderRadius:"5%", color:"white", backgroundColor:"#1AC67E" }} class="btn btn-outline-secondary mb-3" name={color} onClick={(e)=>{setColor(e.target.name)}}>{color}</button>
+                                    )
+                                })
+                            }
+                        </div>
+
+                        <Grid item style={{ paddingTop:"10px", fontWeight:"700"}}><h2 class="mx-3">Giá :<span class="float-end" style={{color: "red"}}>{product.price}đ</span></h2></Grid>
+                        </div>
+                            <div class=" card mt-3 shadow">
+                                <div class="card-header text-center"><h4>Ưu đãi khuyến mãi </h4></div>
+                                    <div class="card-body">
+                                        {
+                                            product.promotion.map((e)=>{
+
+                                                return (
+                                                    <p class="card-text"><i class="fa fa-check-circle text-success" aria-hidden="true"></i>{e}</p>
+                                                    
+                                                )
+                                            })
+                                        }
+                                
+                                    </div>
+                            </div>
+                        <div class="d-flex justify-content-center">
+                        <button type="button" class="row btn btn-success mt-4"  onClick={handleSubmit}>
+                            <p class="mb-0"><strong>Mua ngay</strong></p>
+                            <span class="mt-0">Giao hàng tận nơi hoặc nhận tại của hàng</span>
+                        </button>
+                        </div>        
+                    </div>
+                </div>
+                <Grid><h4 style={{margin:"20px 0px 20px 20px"}}>Sản phẩm tương tự</h4></Grid>
                     
-                    <Grid xs={12} container spacing={2} style={{textAlign:"center",paddingLeft:"30px"}}>
-                            {sameproduct.map(e => {
+                <Grid xs={12} container spacing={2} style={{textAlign:"center",paddingLeft:"30px"}}>
+                        {sameproduct.map(e => {
                                     return (
                                         <SameProductCard Opt={e} />
                                     )
-                                })}
-                    </Grid>
+                        })}
+                </Grid>
                     
-                    <Grid><h4 style={{margin:"20px 0px 20px 20px"}}>Mô tả sản phẩm</h4></Grid>
+                    {/* <Grid><h4 style={{margin:"20px 0px 20px 20px"}}>Mô tả sản phẩm</h4></Grid>
                     <Grid item xs={12} style={{textAlign:"left"}}>
                         <div>
                             <ul>
                                 <li>{product.screen}</li>
-                                <li>{product.camera}</li>
-                                <li>{product.ram}</li>
-                                <li>{product.rom}</li>
+                                <li>{product.Ram + " GB"}</li>
+                                <li>{product.Rom + " GB"}</li>
                                 <li>{product.battery}</li>
                             </ul>
                         </div>
-                    </Grid>
-                    <Grid><h4 style={{margin:"5px 0px 10px 20px"}}>Đánh giá và nhận xét</h4></Grid>
+                    </Grid> */}
+                    
+                    {/* <Grid><h4 style={{margin:"5px 0px 10px 20px"}}>Đánh giá và nhận xét</h4></Grid>
                     
                     <Grid container xs={12} >
                         <Grid container direction="row" xs={10} lg={5}>
@@ -197,18 +260,27 @@ export default function Sanphamchitiet() {
                             <Grid item xs={5}><h4 style={{padding:"10px 0px 10px 0px"}}>5<FaStar className="star" color={"#ffc107"} size={30} /> </h4></Grid>
                         </Grid>
 
-                    </Grid>
-                            
+                    </Grid> */}
+                    <div class="mt-5 text-center w-50 shadow" style={{ textAlign: "center", margin:"auto" }}>
+                            <h3 class="pt-2">Đánh giá và nhận xét</h3>
+                            <div class="d-flex justify-content-center">
+                                <div class="content text-center">
+                                    <div class="ratings"> <h3><span class="product-rating">4.6</span><span>/5</span></h3>
+                                        <div class="stars" style={{ fontSize: "18px", color: "#28a745" }}> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                                        <div class="rating-text pt-2"> <span><h3>46 ratings & 15 reviews</h3></span> </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    
                     {/* <Grid container style={{paddingLeft:"20px"}}>
                             <Grid xs={12}>
-                                <Grid container>
-                                    <form>
-
+                                <Grid container><form>
                                     <Grid item xs={6}><textarea placeholder="Viết Nhận xét" cols="75" rows="5"></textarea></Grid>
                                     <Grid item xs={6}><input type="submit" value="Submit" style={{backgroundColor:"#1AC67E",color:"#fff"}}></input> </Grid>
                                 </form> </Grid>
                             </Grid>
-                    </Grid> */}
+                     </Grid> */}
 
                      {/* <Grid container xs={12}>
                             <Grid item xs={12} style={{padding:"10px 0px 0px 20px"}}><h5>Lọc xem theo: </h5></Grid>
@@ -216,8 +288,8 @@ export default function Sanphamchitiet() {
                             <button type="button" style={{ border: "0.5px solid #C4C4C4", borderRadius: "5%", color:"white", backgroundColor:"#1AC67E", marginLeft: "20px" }} class="btn btn-outline-secondary mb-3">Có hình ảnh</button>
                             <button type="button" style={{ border: "0.5px solid #C4C4C4", borderRadius: "5%", color:"white", backgroundColor:"#1AC67E", marginLeft: "20px" }} class="btn btn-outline-secondary mb-3">Đã mua hàng</button>
                     </Grid> */}
-
-                    {/* <Grid container style={{padding:"10px 10px 0px 30px"}}>
+{/* 
+                    <Grid container style={{padding:"10px 10px 0px 30px"}}>
                         <Grid item xs={6}> <hr></hr> </Grid>
                         <Grid item xs={12}>
                             <Grid container direction="row" >
@@ -229,10 +301,9 @@ export default function Sanphamchitiet() {
                             </Grid>
                         </Grid>
                     </Grid> */}
-                </Grid>
 
-                <Grid xs={12}><CommentBox/> </Grid>
-                
-        </Grid>
+                {/* <Grid xs={12}><CommentBox/> </Grid> */}
+        </div>
+        </div>
     )
 }

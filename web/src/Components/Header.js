@@ -15,7 +15,7 @@ export default function Header() {
                             <a class="nav-link active" aria-current="page" href="/about">Giới thiệu chung</a>
                         </li>
 						<li class="nav-item">
-                            <a class="nav-link active" href="/sanpham">Sản phẩm</a>
+                            <a class="nav-link active" href="/">Sản phẩm</a>
                         </li>
 						<li class="nav-item">
                             <a class="nav-link active" href="/tuyendung">Tuyển dụng</a>

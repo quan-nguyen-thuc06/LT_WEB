@@ -208,4 +208,4 @@ function ProductPortfolio(){
 
 
 
-export default ProductPortfolio
+export default ProductPortfolio;
