@@ -1,20 +1,54 @@
 import Banner from '../Components/Banner';
+import React ,{ useState, Fragment, useEffect } from 'react'
+import axios from 'axios'
 function Hiring (){
+    const [data,setData]=useState([])
+    useEffect(async () => {
+        await axios.get('http://localhost/Official/LT_WEB/server/api/employment/read.php')
+        .then(response => {
+            setData(response.data)
+            //console.log(response.data)
+        })
+        .catch(error => console.log(error))
+    }, [])
+    
+    if(data.length>0){
+        console.log(data)
+    }    
+
+    function RenderProduct(){
+        return <Fragment >{data.slice(0, data.length).map((index) => {
+            return(
+            <tr>
+                <td scope="row">{index.id}</td>
+                <td>{index.area}</td>
+                <td>{index.deadline}</td>
+                <td>{index.address}</td>
+            </tr>
+            )
+            
+        })}
+        {console.log(data)}
+        </Fragment>
+    }
+
     return (
       <div className="container">
             <Banner/>
-            <div className="container mt-5">
+            <div className="container mt-5 table-responsive">
+            <div class="table-wrapper">
                 <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col">STT</th>
-                        <th scope="col">Vị trí tuyển dụng</th>
-                        <th scope="col">Hạn nộp</th>
-                        <th scope="col">Địa điểm</th>
+                        <th class="col-1">STT</th>
+                        <th class="col-4">Vị trí tuyển dụng</th>
+                        <th class="col-2">Hạn nộp</th>
+                        <th class="col-5">Địa điểm</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <RenderProduct/>
+                    {/* <tr>
                         <th scope="row">1</th>
                         <td>Kế toán</td>
                         <td>13/1/2022</td>
@@ -61,9 +95,10 @@ function Hiring (){
                         <td >Quản lý</td>
                         <td>31/10/2022</td>
                         <td>Phú Quốc</td>
-                    </tr>
+                    </tr> */}
                 </tbody>
                 </table>
+            </div>
             </div>
       </div>
     );

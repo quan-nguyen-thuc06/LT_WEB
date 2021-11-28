@@ -3,6 +3,8 @@ import { Grid,Card, CardMedia, Typography } from '@material-ui/core';
 import Button from '@atlaskit/button';
 import Rating from './rating'
 import CommentBox from './comment'
+import { useLocation } from "react-router-dom";
+
 
 const product = {
     "product_name": "Điện thoại iphone 11 128GB",
@@ -93,6 +95,8 @@ function SameProductCard({ Opt}){
 }
 
 export default function Sanphamchitiet() {
+    const location = useLocation();
+console.log(location)
 
     return (
         <Grid xs={12} container direction="row" spacing={2} justifyContent="left" style={{paddingTop:"50px",marginBottom:"5%"}}>
