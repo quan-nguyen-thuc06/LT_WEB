@@ -15,7 +15,6 @@ import Tintuc from "./tintuc/Tintuc"
 import Login from "./Login"
 import Register from "./Register"
 import ShoppingCarts from "./ShoppingCarts"
-import ProductPortfolio from "./ProductPortfolio"
 import Sanphamchitiet from "./sanpham/components/Sanphamchitiet";
 import Address from "./Address"
 export default function Routes(){
