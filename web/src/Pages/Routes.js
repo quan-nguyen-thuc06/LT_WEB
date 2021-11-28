@@ -8,6 +8,7 @@ import HomeAdmin from "./HomeAdmin";
 import ManageWebsite from "./ManageWebsite";
 import ManageCustomer from "./ManageProduct";
 import ManageUser from "./ManageUser"
+import ProductPortfolio from './ProductPortfolio';
 import About from "./About"
 import Hiring from "./Hiring"
 import Tintuc from "./tintuc/Tintuc"
@@ -19,6 +20,9 @@ export default function Routes(){
         <div>        
           <Switch>
             <Route exact path="/sanpham">
+              <ProductPortfolio />
+            </Route>
+            <Route exact path="/chitietsanpham">
               <Sanpham />
             </Route>
             <Route exact path="/tuyendung">
