@@ -21,8 +21,8 @@
 	$connect = $db->connect();
 
 	$tb_address = new Address($connect);
+	$tb_address->username =isset($_GET['username'])? $_GET['username']: die();
 	$read = $tb_address -> read();
-
 	$num = $read->rowCount();
 	if($num>0){
 		$address_array=[];

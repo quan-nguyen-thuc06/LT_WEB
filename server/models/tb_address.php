@@ -13,9 +13,9 @@ class Address{
 
 		//read data
 		public function read(){
-			$query = "SELECT * FROM tb_address";
+			$query = "SELECT * FROM tb_address WHERE username=?";
 			$stmt = $this->conn->prepare($query);
-
+			$stmt->bindParam(1,$this->username);
 			$stmt->execute();
 			return $stmt;
 		}

@@ -15,7 +15,8 @@ import ProductPortfolio from './Pages/ProductPortfolio';
 import HomeAdmin from './Pages/HomeAdmin';
 import Hiring from './Pages/Hiring';
 import Login from './Pages/Login';
-import Register from './Pages/Register';
+import OrderConfirm from './Pages/OrderConfirm';
+import Address from './Pages/Address';
 class App extends Component {
   render(){
     return (
