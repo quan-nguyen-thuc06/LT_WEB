@@ -2,13 +2,10 @@ import React from 'react'
 import { Grid,Card, CardMedia, Typography } from '@material-ui/core';
 import Button from '@atlaskit/button';
 import CommentBox from './comment'
-<<<<<<< HEAD
 import { useLocation } from "react-router-dom";
 
-=======
 import './rating.css'
 import { FaStar } from 'react-icons/fa'
->>>>>>> f1f5d42207821c4d9c6a0a3e4b06c595ec0dfe4a
 
 const product = {
     "product_name": "Điện thoại iphone 11 128GB",
