@@ -4,6 +4,7 @@ function OrderConfirm() {
 	const [reload,setReload] = useState(false)
 	let shipment = 500000
 	let info = JSON.parse(localStorage.getItem('cart'))
+	let user = JSON.parse(localStorage.getItem('user'))
 	let address = localStorage.getItem('address')
 	let count=0;
 	let total =0;
@@ -57,7 +58,7 @@ function OrderConfirm() {
 	const handleSubmit = async ()=>{
 		await axios.post('http://localhost/Official/LT_WEB/server/api/order/create.php',{
 			"id": 4,
-			"username": "ngocnguyen",
+			"username": user.fullname,
 			"shipment": 50000,
 			"pay_method": "COD",
 			"belong_to_cart": info.map((info,index)=>{
@@ -137,7 +138,7 @@ function OrderConfirm() {
 					</div>
 					<div class="mb-3 shadow-lg" style={{backgroundColor:'#fff',borderRadius:'15px'}}>
 						<p class="mt-3 text-secondary">Địa chỉ</p>
-						<p style={{fontWeight:'bold'}}>Nguyễn Văn A</p>
+						<p style={{fontWeight:'bold'}}>{user.fullname}</p>
 						<small>{address}</small><br/>
 						<small>
 							<span>
@@ -145,7 +146,7 @@ function OrderConfirm() {
 								<path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
 								</svg>
 							</span>
-							<span class="ms-2">0123456789</span>
+							<span class="ms-2">{user.phone}</span>
 						</small>
 						<p class='mt-3'>
 							<span class='text-secondary'>Phương thức thanh toán</span><br/>
