@@ -51,21 +51,21 @@ export default function About(){
 		<div class="carousel-item active">
 		<img src="https://www.w3schools.com/bootstrap5/la.jpg" alt="Los Angeles" class="d-block" style={{width:"100%"}}/>
 		<div class="carousel-caption">
-			<h3>Los Angeles</h3>
+			<h3>Quảng Bình</h3>
 			<p>Hình ảnh ban lãnh đạo viếng thăm hang Sơn Đoòng</p>
 		</div>
 		</div>
 		<div class="carousel-item">
 		<img src="https://www.w3schools.com/bootstrap5/chicago.jpg" alt="Chicago" class="d-block" style={{width:"100%"}}/>
 		<div class="carousel-caption">
-			<h3>Chicago</h3>
+			<h3>Đà Nẵng</h3>
 			<p>Ban lãnh đạo tại đêm nhạc Midnight Autumn Festival</p>
 		</div> 
 		</div>
 		<div class="carousel-item">
 		<img src="https://www.w3schools.com/bootstrap5/ny.jpg" alt="New York" class="d-block" style={{width:"100%"}}/>
 		<div class="carousel-caption">
-			<h3>New York</h3>
+			<h3>TP Hồ Chí Minh</h3>
 			<p>Đêm mừng khai trương mở chi nhánh mới</p>
 		</div>  
 		</div>
