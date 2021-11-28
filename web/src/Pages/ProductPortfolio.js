@@ -1,13 +1,10 @@
 //import './Aside.css'
 //import '../Contex/Sidebar.js'
 import React from 'react'
-import Header from '../Components/Header';
-import Footer from '../Components/Footer';
 function ProductPortfolio(){
   return(
 
 <div class="container-fluid">
-<Header/>
 <div class="row">
 <div class="col-xs-12 col-sm-4 col-md-3 col-xl-2 l-navbar active-nav" id="sidebarMenu" >
 <nav class=" px-sm-2 px-0 bg-white">
@@ -219,7 +216,6 @@ function ProductPortfolio(){
         </section>
         </div>
   </div>
-  <Footer/>
 </div>
   )
   
