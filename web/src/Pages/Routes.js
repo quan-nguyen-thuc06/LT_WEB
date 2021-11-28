@@ -14,7 +14,7 @@ import Hiring from "./Hiring"
 import Tintuc from "./tintuc/Tintuc"
 import Login from "./Login"
 import Register from "./Register"
-import ProductPortfolio from "./ProductPortfolio";
+import ShoppingCarts from "./ShoppingCarts"
 export default function Routes(){
     return(
         <Router>
@@ -41,14 +41,14 @@ export default function Routes(){
             <Route exact path="/about">
               <About />
             </Route>
+            <Route exact path="/cart">
+              <ShoppingCarts />
+            </Route>
             <Route exact path="/login">
               <Login />
             </Route>
             <Route exact path="/register">
               <Register />
-            </Route>
-            <Route exact path="/chitietsanpham">
-              <Sanpham />
             </Route>
             <Route exact path="/">
               <ProductPortfolio />
