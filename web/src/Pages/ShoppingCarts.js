@@ -1,13 +1,13 @@
 import { useLocation } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 import {useState} from 'react';
 
 function ShoppingCarts() {
 	const [reload,setReload] = useState(false)
 	const [loaddata,setLoaddata] = useState(false)
+	let shipment = 500000
 	let location = useLocation();
 	let infoitem = location.state;
-	if(!loaddata){
+	if(!loaddata && infoitem){
 	if(localStorage.getItem('cart')!== null){
         let info = JSON.parse(localStorage.getItem('cart'))
 		let check = false;
@@ -37,6 +37,12 @@ function ShoppingCarts() {
 	}
 }
 	let info = JSON.parse(localStorage.getItem('cart'))
+	let count=0;
+	let total =0;
+	for(let i =0;i<info.length;i++){
+		count +=info[i].quantity;
+		total +=info[i].quantity*info[i].price;
+	}
 	const HandleIncrese = (event) => {
 		console.log(event.target.name,"value")
 		let info = JSON.parse(localStorage.getItem('cart'));
@@ -65,13 +71,16 @@ function ShoppingCarts() {
     }
 	const HandleDelete = (event)=>{
         let info = JSON.parse(localStorage.getItem('cart'));
-		let index;
+		let index=0;
 		for(let i=0;i<info.length;i++){
-			if(info[i].id== event.target.name){
-				index = i; 
+			if(parseInt(info[i].id) == parseInt(event.target.name)){
+				index = i;
+				break;
 			}
+			console.log( parseInt(info[i].id) - parseInt(event.target.name),"index")
 		}
-		info.splice(index, 1);
+		console.log( index,"i")
+		// index&&info.splice(index, 1);
 		localStorage.setItem('cart',JSON.stringify(info)) 
 		setReload(!reload)
     }
@@ -103,9 +112,7 @@ function ShoppingCarts() {
 												<input  class="form-control" type="text" value={product.quantity} style={{width:'35px'}}/>
 												<button	type="button" class="btn btn-outline-secondary" name={product.id} onClick={HandleIncrese} style={{width:'35px'}}>+</button>
 												<button type="button" class="btn" style={{width:'35px'}} name={product.id} onClick={HandleDelete}>
-													<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-													<path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-													</svg>
+													X
 												</button>
 												</div>
 												</div>
@@ -128,14 +135,13 @@ function ShoppingCarts() {
 			<div class='row'>
 				<div class='row col-md-9' style={{margin:'auto'}}>
 					<div class="shadow" style={{backgroundColor:'#fff',borderRadius:'15px'}}>
-						<p class='mt-3'><span class="text-secondary">Số lượng</span>	<span class='float-end text-danger'>3 sản phẩm</span></p>
-						<p class='mt-3'><span class="text-secondary">Số lượng</span>	<span class='float-end text-danger'>206.000.000</span></p>
-						<p class='mt-3'><span class="text-secondary">Giảm giá</span>	<span class='float-end'><span>(-33%)</span>	<span class='text-danger'>6.700.000</span></span></p>
-						<p class='mt-3'><span class="text-secondary">Phí vận chuyển</span>	<span class='float-end text-danger'>50.000</span></p>
+						<p class='mt-3'><span class="text-secondary">Số lượng</span>	<span class='float-end text-danger'>{count+ " sản phẩm"} </span></p>
+						<p class='mt-3'><span class="text-secondary">Tổng tiền</span>	<span class='float-end text-danger'>{total +" Đ"}</span></p>
+						<p class='mt-3'><span class="text-secondary">Phí vận chuyển</span>	<span class='float-end text-danger'>{shipment +" Đ"}</span></p>
 						<hr class="solid"></hr>
-						<p class='mt-3'><span class="text-secondary">Tổng tiền</span>	<span class='float-end text-danger'>199.999.999</span></p>
+						<p class='mt-3'><span class="text-secondary">Tổng tiền</span>	<span class='float-end text-danger'>{total+ shipment + " Đ"}</span></p>
 					</div>
-					<button type="button" class="btn btn-success mt-3 ms-0" style={{borderRadius:'15px'}}>Xác nhận đơn hàng</button>
+					<button type="button" class="btn btn-success mt-3 ms-0 mb-5" style={{borderRadius:'15px'}} onClick={()=>{window.location.href = "/address"}}>Xác nhận đơn hàng</button>
 				</div>
 			</div>
 			</div>
