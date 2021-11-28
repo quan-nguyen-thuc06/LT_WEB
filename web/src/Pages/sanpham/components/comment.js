@@ -1,5 +1,34 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './comment.css'
+import './rating.css'
+import { FaStar } from 'react-icons/fa'
+
+const Rating = () =>{
+  const [rating,setRating] = useState(null);
+  const [hover,setHover] = useState(null);
+
+  return(
+    <div>
+        {[...Array(5)].map((star,i) => {
+          const ratingValue = i + 1;
+          return (
+            <label>
+              <input type="radio" 
+                name="rating" 
+                value={ratingValue} 
+                onClick={() => setRating(ratingValue)} />
+
+              <FaStar className="star" 
+                color={ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"} 
+                size={35} 
+                onMouseEnter={() => setHover(ratingValue)} 
+                onMouseLeave={() => setHover(null)} />
+            </label>
+          );
+         })}
+    </div>
+  );
+}
 
 export default class CommentBox extends React.Component {
     constructor() {
@@ -8,9 +37,9 @@ export default class CommentBox extends React.Component {
       this.state = {
         showComments: false,
         comments: [
-          {id: 1, author: "landiggity", body: "This is my first comment on this forum so don't be a dick"},
-          {id: 2, author: "scarlett-jo", body: "That's a mighty fine comment you've got there my good looking fellow..."},
-          {id: 3, author: "rosco", body: "What is the meaning of all of this 'React' mumbo-jumbo?"}
+          {id: 1, author: "Nguyễn Văn Bảo Ngọc", body: "Tôi đã mua 3 cái để xài thử và nó thật tuyệt!!", rating:5},
+          {id: 2, author: "Đặng Quốc Thanh", body: "Mặt hàng này quá là oke",rating:5},
+          {id: 3, author: "Nguyễn Thúc Quân", body: "Vote 5 sao!!",rating:5}
         ]
       };
     }
@@ -18,21 +47,21 @@ export default class CommentBox extends React.Component {
     render () {
       const comments = this._getComments();
       let commentNodes;
-      let buttonText = 'Show Comments';
+      let buttonText = 'Hiện bình luận';
       
       if (this.state.showComments) {
-        buttonText = 'Hide Comments';
+        buttonText = 'Ẩn bình luận';
         commentNodes = <div className="comment-list">{comments}</div>;
       }
       
       return(
         <div className="comment-box">
-          <h2>Join the Discussion!</h2>
+          <h2>Để lại nhận xét</h2>
           <CommentForm addComment={this._addComment.bind(this)}/>
           <button id="comment-reveal" onClick={this._handleClick.bind(this)}>
             {buttonText}
           </button>
-          <h3>Comments</h3>
+          <h3>Phần bình luận</h3>
           <h4 className="comment-count">
             {this._getCommentsTitle(comments.length)}
           </h4>
@@ -41,13 +70,14 @@ export default class CommentBox extends React.Component {
       );
     } // end render
     
-    _addComment(author, body) {
+    _addComment(author, body, rating) {
       const comment = {
         id: this.state.comments.length + 1,
         author,
-        body
+        body,
+        rating
       };
-      this.setState({ comments: this.state.comments.concat([comment]) }); // *new array references help React stay fast, so concat works better than push here.
+      this.setState({ comments: this.state.comments.concat([comment]) });
     }
     
     _handleClick() {
@@ -62,6 +92,7 @@ export default class CommentBox extends React.Component {
           <Comment 
             author={comment.author} 
             body={comment.body} 
+            rating={comment.rating}
             key={comment.id} />
         ); 
       });
@@ -73,7 +104,7 @@ export default class CommentBox extends React.Component {
       } else if (commentCount === 1) {
         return "1 comment";
       } else {
-        return `${commentCount} comments`;
+        return `${commentCount} Bình luận`;
       }
     }
   } // end CommentBox component
@@ -83,18 +114,20 @@ export default class CommentBox extends React.Component {
       return (
         <form className="comment-form" onSubmit={this._handleSubmit.bind(this)}>
           <div className="comment-form-fields">
-            <input placeholder="Name" required ref={(input) => this._author = input}></input><br />
-            <textarea placeholder="Comment" rows="4" required ref={(textarea) => this._body = textarea}></textarea>
+            <input placeholder="Nhập tên" required ref={(input) => this._author = input}></input><br />
+            
+            <Rating />
+            <textarea placeholder="Nhập bình luận" rows="4" required ref={(textarea) => this._body = textarea}></textarea>
           </div>
           <div className="comment-form-actions">
-            <button type="submit">Post Comment</button>
+            <button type="submit">Đăng bình luận</button>
           </div>
         </form>
       );
     } // end render
     
     _handleSubmit(event) { 
-      event.preventDefault();   // prevents page from reloading on submit
+      event.preventDefault(); 
       let author = this._author;
       let body = this._body;
       this.props.addComment(author.value, body.value);
@@ -107,14 +140,12 @@ export default class CommentBox extends React.Component {
         <div className="comment">
           <p className="comment-header">{this.props.author}</p>
           <p className="comment-body">- {this.props.body}</p>
+          <p className="comment-body">Đã đánh giá {this.props.rating} <FaStar color={"#ffc107"} /></p>
           <div className="comment-footer">
             
           </div>
         </div>
       );
-    }
-    _deleteComment() {
-      alert("-- DELETE Comment Functionality COMMING SOON...");
     }
   }
   

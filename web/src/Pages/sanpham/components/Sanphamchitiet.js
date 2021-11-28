@@ -1,10 +1,14 @@
 import React from 'react'
 import { Grid,Card, CardMedia, Typography } from '@material-ui/core';
 import Button from '@atlaskit/button';
-import Rating from './rating'
 import CommentBox from './comment'
+<<<<<<< HEAD
 import { useLocation } from "react-router-dom";
 
+=======
+import './rating.css'
+import { FaStar } from 'react-icons/fa'
+>>>>>>> f1f5d42207821c4d9c6a0a3e4b06c595ec0dfe4a
 
 const product = {
     "product_name": "Điện thoại iphone 11 128GB",
@@ -40,11 +44,11 @@ const product = {
     "battery": "Pin, Sạc: 3687 mAh, 20 W.",
 }
 
-const comments = {
-    "username":"Nguyễn Văn A",
-    "content":"Điện thoại rất đẹp",
-    "rating":5,
-}
+// const comments = {
+//     "username":"Nguyễn Văn A",
+//     "content":"Điện thoại rất đẹp",
+//     "rating":5,
+// }
 
 const sameproduct = [
     {
@@ -94,12 +98,17 @@ function SameProductCard({ Opt}){
     )
 }
 
+<<<<<<< HEAD
 export default function Sanphamchitiet() {
     const location = useLocation();
 console.log(location)
+=======
+>>>>>>> f1f5d42207821c4d9c6a0a3e4b06c595ec0dfe4a
 
+
+export default function Sanphamchitiet() {
     return (
-        <Grid xs={12} container direction="row" spacing={2} justifyContent="left" style={{paddingTop:"50px",marginBottom:"5%"}}>
+        <Grid xs={12} container direction="row" spacing={2} justifyContent="left" style={{paddingTop:"50px",marginBottom:"5%",backgroundColor:"#eeeeee"}}>
                 <Grid lg={5} container>
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
@@ -159,8 +168,8 @@ console.log(location)
                         <Grid container x={12}>
                             <Grid item xs={5}>
                             </Grid>
-                            <Grid item xs={6}>
-                            <form>
+                            <Grid item xs={3}>
+                            <form style={{backgroundColor:"#eeeeee"}}>
                                 <Button onClick={() => {alert("Nhấn mua hàng");}} appearance="primary" style={{backgroundColor:"#1AC67E"}}>Mua ngay</Button>
                                 </form>
                             </Grid>
@@ -169,7 +178,7 @@ console.log(location)
                 </Grid>
 
                 <Grid xs={12} container >
-                    <Grid><h4 style={{margin:"20px 0px 20px 20px"}}>Sản phẩm tương tự</h4></Grid>
+                    <Grid><h4 style={{margin:"0px 0px 20px 20px"}}>Sản phẩm tương tự</h4></Grid>
                     
                     <Grid xs={12} container spacing={2} style={{textAlign:"center",paddingLeft:"30px"}}>
                             {sameproduct.map(e => {
@@ -195,32 +204,31 @@ console.log(location)
                     
                     <Grid container xs={12} >
                         <Grid container direction="row" xs={10} lg={5}>
-                            <Grid item xs={2}><h5 style={{padding:"10px 0px 10px 30px"}}>Đánh giá:</h5></Grid>
-                            <Grid item xs={5}><Rating/></Grid>
+                            <Grid item xs={3}><h4 style={{padding:"10px 0px 10px 20px"}}>Đánh giá:</h4></Grid>
+                            <Grid item xs={5}><h4 style={{padding:"10px 0px 10px 0px"}}>5<FaStar className="star" color={"#ffc107"} size={30} /> </h4></Grid>
                         </Grid>
 
                     </Grid>
                             
-                    <Grid container style={{paddingLeft:"20px"}}>
+                    {/* <Grid container style={{paddingLeft:"20px"}}>
                             <Grid xs={12}>
-                                <Grid container><form>
-                                    {/* <Grid item xs={12}><h4>Nhận xét</h4></Grid> */}
+                                <Grid container>
+                                    <form>
 
-                                    
                                     <Grid item xs={6}><textarea placeholder="Viết Nhận xét" cols="75" rows="5"></textarea></Grid>
                                     <Grid item xs={6}><input type="submit" value="Submit" style={{backgroundColor:"#1AC67E",color:"#fff"}}></input> </Grid>
                                 </form> </Grid>
                             </Grid>
-                     </Grid>
+                    </Grid> */}
 
-                     <Grid container xs={12}>
+                     {/* <Grid container xs={12}>
                             <Grid item xs={12} style={{padding:"10px 0px 0px 20px"}}><h5>Lọc xem theo: </h5></Grid>
                             <button type="button" style={{ border: "0.5px solid #C4C4C4", borderRadius: "5%", color:"white", backgroundColor:"#1AC67E", marginLeft: "20px" }} class="btn btn-outline-secondary mb-3">Mới nhất</button>
                             <button type="button" style={{ border: "0.5px solid #C4C4C4", borderRadius: "5%", color:"white", backgroundColor:"#1AC67E", marginLeft: "20px" }} class="btn btn-outline-secondary mb-3">Có hình ảnh</button>
                             <button type="button" style={{ border: "0.5px solid #C4C4C4", borderRadius: "5%", color:"white", backgroundColor:"#1AC67E", marginLeft: "20px" }} class="btn btn-outline-secondary mb-3">Đã mua hàng</button>
-                    </Grid>
+                    </Grid> */}
 
-                    <Grid container style={{padding:"10px 10px 0px 30px"}}>
+                    {/* <Grid container style={{padding:"10px 10px 0px 30px"}}>
                         <Grid item xs={6}> <hr></hr> </Grid>
                         <Grid item xs={12}>
                             <Grid container direction="row" >
@@ -231,10 +239,11 @@ console.log(location)
                                 <Grid item style={{paddingLeft:"50px"}}><h5>{comments.content}</h5></Grid>
                             </Grid>
                         </Grid>
-                    </Grid>
+                    </Grid> */}
                 </Grid>
 
                 <Grid xs={12}><CommentBox/> </Grid>
+                
         </Grid>
     )
 }
