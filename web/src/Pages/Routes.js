@@ -8,22 +8,20 @@ import HomeAdmin from "./HomeAdmin";
 import ManageWebsite from "./ManageWebsite";
 import ManageCustomer from "./ManageProduct";
 import ManageUser from "./ManageUser"
-import ProductPortfolio from './ProductPortfolio';
 import About from "./About"
 import Hiring from "./Hiring"
 import Tintuc from "./tintuc/Tintuc"
 import Login from "./Login"
 import Register from "./Register"
 import ShoppingCarts from "./ShoppingCarts"
+import ProductPortfolio from "./ProductPortfolio"
+import Sanphamchitiet from "./sanpham/components/Sanphamchitiet";
 export default function Routes(){
     return(
         <Router>
         <div>        
           <Switch>
             <Route exact path="/sanpham">
-              <ProductPortfolio />
-            </Route>
-            <Route exact path="/chitietsanpham">
               <Sanpham />
             </Route>
             <Route exact path="/tuyendung">
@@ -37,6 +35,9 @@ export default function Routes(){
             </Route>
             <Route exact path="/tintuc">
               <Tintuc />
+            </Route>
+            <Route exact path="/chitietsanpham">
+              <Sanphamchitiet />
             </Route>
             <Route exact path="/about">
               <About />

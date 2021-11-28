@@ -9,11 +9,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useLocation } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
-const comments = {
-    "username":"Nguyễn Văn A",
-    "content":"Điện thoại rất đẹp",
-    "rating":5,
-}
+// const comments = {
+//     "username":"Nguyễn Văn A",
+//     "content":"Điện thoại rất đẹp",
+//     "rating":5,
+// }
 
 
 function SameProductCard({ Opt}){
@@ -32,6 +32,8 @@ function SameProductCard({ Opt}){
 
 export default function Sanphamchitiet() {
     const history = useHistory();
+    let location = useLocation();
+	let id = location.state.id;
     const [product,setProduct] =useState(
         {
             "id": "",
@@ -71,7 +73,7 @@ export default function Sanphamchitiet() {
 				,
 				{ 
 				  params:{
-					id: 123
+					id: id
 				  }
 				}
 				)
@@ -254,8 +256,8 @@ export default function Sanphamchitiet() {
                     
                     <Grid container xs={12} >
                         <Grid container direction="row" xs={10} lg={5}>
-                            <Grid item xs={2}><h5 style={{padding:"10px 0px 10px 30px"}}>Đánh giá:</h5></Grid>
-                            <Grid item xs={5}><Rating/></Grid>
+                            <Grid item xs={3}><h4 style={{padding:"10px 0px 10px 20px"}}>Đánh giá:</h4></Grid>
+                            <Grid item xs={5}><h4 style={{padding:"10px 0px 10px 0px"}}>5<FaStar className="star" color={"#ffc107"} size={30} /> </h4></Grid>
                         </Grid>
 
                     </Grid> */}
