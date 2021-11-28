@@ -1,5 +1,5 @@
 import {useState} from 'react';
-
+import axios from 'axios'
 function OrderConfirm() {
 	const [reload,setReload] = useState(false)
 	let shipment = 500000
@@ -10,6 +10,9 @@ function OrderConfirm() {
 	for(let i =0;i<info.length;i++){
 		count +=info[i].quantity;
 		total +=info[i].quantity*info[i].price;
+	}
+	if(count==0){
+		window.location.href = "/"
 	}
 	const HandleIncrese = (event) => {
 		console.log(event.target.name,"value")
@@ -43,12 +46,37 @@ function OrderConfirm() {
 		for(let i=0;i<info.length;i++){
 			if(info[i].id== event.target.name){
 				index = i; 
+				break;
 			}
 		}
 		info.splice(index, 1);
 		localStorage.setItem('cart',JSON.stringify(info)) 
 		setReload(!reload)
     }
+
+	const handleSubmit = async ()=>{
+		await axios.post('http://localhost/Official/LT_WEB/server/api/order/create.php',{
+			"id": 4,
+			"username": "ngocnguyen",
+			"shipment": 50000,
+			"pay_method": "COD",
+			"belong_to_cart": info.map((info,index)=>{
+				return {
+					"id": index,
+					"Product_id": info.id,
+					"Quantity": info.quantity,
+					"Color": info.color,
+					"Rom": info.rom.split(" ")[0]
+				}
+			})
+		})
+		.then(response => {
+			console.log(response.data)
+			localStorage.removeItem('cart');
+			localStorage.removeItem('address');
+		})
+		.catch(error => console.log(error))
+	}
 	return (
 		<div class="container-fluid mt-3 mb-5">
 		<div class="mt-3 mb-5">
@@ -66,8 +94,8 @@ function OrderConfirm() {
 								return(
 								<>
 								<div class='row'>
-									<div class='col-md-2 col-2 p-0'>
-										<img class="img-fluid" src={product.image} alt="phone"/>
+									<div class='col-md-2 col-2 p-1'>
+										<img class="img-fluid" src={product.image} alt="phone" style={{border:"none"}}/>
 										</div>
 										<div class='col-md-10 col-10'>
 											<div class='row'>
@@ -77,10 +105,8 @@ function OrderConfirm() {
 												<button type="button" class="btn btn-outline-secondary" name={product.id} onClick={HandleDecrese} style={{width:'35px'}}>-</button>
 												<input  class="form-control" type="text" value={product.quantity} style={{width:'35px'}}/>
 												<button	type="button" class="btn btn-outline-secondary" name={product.id} onClick={HandleIncrese} style={{width:'35px'}}>+</button>
-												<button type="button" class="btn" style={{width:'35px'}} name={product.id} onClick={HandleDelete}>
-													<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-													<path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-													</svg>
+												<button type="button" class="btn btn-danger"  name={product.id} onClick={HandleDelete} >
+													Xóa
 												</button>
 												</div>
 												</div>
@@ -107,7 +133,7 @@ function OrderConfirm() {
 						<p class='mt-3'><span class="text-secondary">Tổng tiền</span>	<span class='float-end text-danger'>{total +" Đ"}</span></p>
 						<p class='mt-3'><span class="text-secondary">Phí vận chuyển</span>	<span class='float-end text-danger'>{shipment +" Đ"}</span></p>
 						<hr class="solid"></hr>
-						<p class='mt-3'><span class="text-secondary">Tổng tiền</span>	<span class='float-end text-danger'>{total+ shipment + " Đ"}</span></p>
+						<p class='mt-3 mb-3'><span class="text-secondary">Tổng tiền</span>	<span class='float-end text-danger'>{total+ shipment + " Đ"}</span></p>
 					</div>
 					<div class="mb-3 shadow-lg" style={{backgroundColor:'#fff',borderRadius:'15px'}}>
 						<p class="mt-3 text-secondary">Địa chỉ</p>
@@ -126,7 +152,7 @@ function OrderConfirm() {
 							<span>COD</span>
 						</p>
 					</div>
-					<button type="button" class="btn btn-success ms-0 mt-4 mb-3" style={{borderRadius:'15px'}}>Đặt hàng</button>
+					<button type="button" class="btn btn-success ms-0 mt-4 mb-3" style={{borderRadius:'15px'}} onClick={handleSubmit}>Đặt hàng</button>
 				</div>
 			</div>
 			</div>

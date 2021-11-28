@@ -62,7 +62,9 @@
 						"id" => $id,
 						"Product_id"=>$Product_id,
 						"Cart_id"=>$Cart_id,
-						"Quantity"=>$Quantity
+						"Quantity"=>$Quantity,
+						"Rom"=>$Rom,
+						"Color"=>$Color
 					);
 		
 					array_push($arr_bl_to_cart,$item);
@@ -74,7 +76,7 @@
 				"username"=>$username,
 				"shipment"=>$shipment,
 				"pay_method"=>$pay_method,
-				"belong_to_cart"=>$arr_bl_to_cart
+				"belong_to_cart"=>$arr_bl_to_cart,
 			);
 
 			array_push($order_product_array,$order_product_item);

@@ -50,8 +50,10 @@
 			$belong_to_cart->Product_id=$arr_bl_to_cart[$i]->Product_id;
 			$belong_to_cart->Cart_id= $data->id;
 			$belong_to_cart->Quantity=$arr_bl_to_cart[$i]->Quantity;
+			$belong_to_cart->Rom=$arr_bl_to_cart[$i]->Rom;
+			$belong_to_cart->Color=$arr_bl_to_cart[$i]->Color;
 			if(!$belong_to_cart->create()){
-				return false;
+				echo json_encode('fail');
 			}
 		}
 	}

@@ -43,6 +43,9 @@ function ShoppingCarts() {
 		count +=info[i].quantity;
 		total +=info[i].quantity*info[i].price;
 	}
+	if(count==0){
+		window.location.href = "/"
+	}
 	const HandleIncrese = (event) => {
 		console.log(event.target.name,"value")
 		let info = JSON.parse(localStorage.getItem('cart'));
@@ -77,10 +80,10 @@ function ShoppingCarts() {
 				index = i;
 				break;
 			}
-			console.log( parseInt(info[i].id) - parseInt(event.target.name),"index")
+			// console.log( parseInt(info[i].id) - parseInt(event.target.name),"index")
 		}
 		console.log( index,"i")
-		// index&&info.splice(index, 1);
+		info.splice(index, 1);
 		localStorage.setItem('cart',JSON.stringify(info)) 
 		setReload(!reload)
     }
@@ -101,7 +104,7 @@ function ShoppingCarts() {
 								<>
 								<div class='row'>
 									<div class='col-md-2 col-2 p-0'>
-										<img class="img-fluid" src={product.image} alt="phone"/>
+										<img class="img-fluid" src={product.image} alt="phone" style={{border:"none"}}/>
 										</div>
 										<div class='col-md-10 col-10'>
 											<div class='row'>
@@ -111,8 +114,8 @@ function ShoppingCarts() {
 												<button type="button" class="btn btn-outline-secondary" name={product.id} onClick={HandleDecrese} style={{width:'35px'}}>-</button>
 												<input  class="form-control" type="text" value={product.quantity} style={{width:'35px'}}/>
 												<button	type="button" class="btn btn-outline-secondary" name={product.id} onClick={HandleIncrese} style={{width:'35px'}}>+</button>
-												<button type="button" class="btn" style={{width:'35px'}} name={product.id} onClick={HandleDelete}>
-													X
+												<button type="button" class="btn btn-danger"  name={product.id} onClick={HandleDelete} >
+													Xóa
 												</button>
 												</div>
 												</div>
@@ -139,7 +142,7 @@ function ShoppingCarts() {
 						<p class='mt-3'><span class="text-secondary">Tổng tiền</span>	<span class='float-end text-danger'>{total +" Đ"}</span></p>
 						<p class='mt-3'><span class="text-secondary">Phí vận chuyển</span>	<span class='float-end text-danger'>{shipment +" Đ"}</span></p>
 						<hr class="solid"></hr>
-						<p class='mt-3'><span class="text-secondary">Tổng tiền</span>	<span class='float-end text-danger'>{total+ shipment + " Đ"}</span></p>
+						<p class='mt-3 mb-3'><span class="text-secondary">Tổng tiền</span>	<span class='float-end text-danger'>{total+ shipment + " Đ"}</span></p>
 					</div>
 					<button type="button" class="btn btn-success mt-3 ms-0 mb-5" style={{borderRadius:'15px'}} onClick={()=>{window.location.href = "/address"}}>Xác nhận đơn hàng</button>
 				</div>

@@ -6,6 +6,8 @@
 		public $Product_id;
 		public $Cart_id;
 		public $Quantity;
+		public $Rom;
+		public $Color;
 	
 		//connect
 		public function __construct($db){
@@ -23,18 +25,22 @@
 		}
 
 		public function create(){
-			$query = "INSERT INTO belong_to_cart SET  id=:id,Product_id=:Product_id, Cart_id=:Cart_id, Quantity=:Quantity";
+			$query = "INSERT INTO belong_to_cart SET  id=:id,Product_id=:Product_id, Cart_id=:Cart_id, Quantity=:Quantity, Rom=:Rom, Color=:Color";
 			$stmt = $this->conn->prepare($query);
 			//clean data
 			$this->id = htmlspecialchars(strip_tags($this->id));
 			$this->Product_id = htmlspecialchars(strip_tags($this->Product_id));
 			$this->Cart_id = htmlspecialchars(strip_tags($this->Cart_id));
 			$this->Quantity = htmlspecialchars(strip_tags($this->Quantity));
-	
+			$this->Rom = htmlspecialchars(strip_tags($this->Rom));
+			$this->Color = htmlspecialchars(strip_tags($this->Color));
+
 			$stmt->bindParam(':id',$this->id);
 			$stmt->bindParam(':Product_id',$this->Product_id);
 			$stmt->bindParam(':Cart_id',$this->Cart_id);
 			$stmt->bindParam(':Quantity',$this->Quantity);
+			$stmt->bindParam(':Rom',$this->Rom);
+			$stmt->bindParam(':Color',$this->Color);
 	
 			if($stmt->execute()){
 				return true;

@@ -1,4 +1,6 @@
+import{useState} from 'react'
 export default function ItemAddress (props){
+	const [text,setText] = useState("Chọn")
 	return (
 		<>
 			<div class='row col-md-10 mb-3 shadow-lg' style={{backgroundColor:'#fff', margin:'auto',borderRadius:'17px'}}>
@@ -17,9 +19,11 @@ export default function ItemAddress (props){
 					</div>
 					<div class="col-md-3 col-sm-3 mb-3" style={{margin:'auto'}}>
 					<div class="d-flex justify-content-end">
-						<button type="button" class="btn btn-success ms-2" onClick={()=>
+						<button type="button" class="btn btn-success ms-2" onClick={()=>{
+							// setText("Đã chọn")
 							localStorage.setItem('address',props.item.address)
-						}>Chọn</button>
+						}
+						}>{text}</button>
 					</div>
 					</div>
 				</div>
