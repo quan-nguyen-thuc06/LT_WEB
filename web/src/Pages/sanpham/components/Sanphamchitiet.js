@@ -2,8 +2,6 @@ import React from 'react'
 import { Grid,Card, CardMedia, Typography } from '@material-ui/core';
 import Button from '@atlaskit/button';
 import CommentBox from './comment'
-import { useLocation } from "react-router-dom";
-
 import './rating.css'
 import { FaStar } from 'react-icons/fa'
 
@@ -95,12 +93,6 @@ function SameProductCard({ Opt}){
     )
 }
 
-<<<<<<< HEAD
-export default function Sanphamchitiet() {
-    const location = useLocation();
-console.log(location)
-=======
->>>>>>> f1f5d42207821c4d9c6a0a3e4b06c595ec0dfe4a
 
 
 export default function Sanphamchitiet() {
