@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 //using for bootstrap
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
-// import './App.css';
 import Demo from './Components/Demo';
 import Routes from './Pages/Routes';
 import Header from './Components/Header'

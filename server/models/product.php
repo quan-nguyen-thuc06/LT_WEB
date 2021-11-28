@@ -11,7 +11,6 @@ class Product{
 		public $capacity;
 		public $color;
         public $promotion;
-		public $same_product;
 		public $screen;
 		public $Rom;
 		public $Ram;
@@ -22,24 +21,44 @@ class Product{
 			$this->conn = $db;	
 		}
 
-		//read data
+		// //read data
+		public function read(){
+			$query = "SELECT * FROM product";
+			$stmt = $this->conn->prepare($query);
+			$stmt->execute();
+			return $stmt;
+		}
+
+		public function show(){
+			$query = "SELECT * FROM product WHERE id=? LIMIT 1";
+			$stmt = $this->conn->prepare($query);
+			$stmt->bindParam(1,$this->id);
+			$stmt->execute();
+			$row = $stmt->fetch(PDO::FETCH_ASSOC);
+			$this->id = $row['id'];
+			$this->product_name = $row['product_name'];
+			$this->price = $row['price'];
+			$this->images = $row['images'];
+			$this->type = $row['type'];
+			$this->brand = $row['brand'];
+			$this->capacity = $row['capacity'];
+			$this->color = $row['color'];
+			$this->promotion = $row['promotion'];
+			$this->Rom = $row['Rom'];
+			$this->Ram = $row['Ram'];
+			$this->screen = $row['screen'];
+			$this->battery = $row['battery'];
+		}
+
 		public function select($fragment){
 			$query = "SELECT * FROM product WHERE product_name LIKE  '%{$fragment}%'";
 			$stmt = $this->conn->prepare($query);
-            
-			//$this->product_name = htmlspecialchars(strip_tags($this->product_name));
-			//$stmt->bindParam(':fragment',$this->product_name);
-            // echo $query;
 			$stmt->execute();
-			//$result = $stmt->fetch(PDO::FETCH_ASSOC);
-			//if($result&&$result['product_name']!=''){
 			return $stmt;
-			//}
-			//return false;
 		}
 
         public function create(){
-			$query = "INSERT INTO product SET id=:id , product_name=:product_name, price=:price, images=:images, type=:type, brand=:brand, capacity=:capacity , color=:color, promotion=:promotion, same_product=:same_product, screen=:screen, Rom=:Rom, Ram=:Ram , battery=:battery";
+			$query = "INSERT INTO product SET id=:id , product_name=:product_name, price=:price, images=:images, type=:type, brand=:brand, capacity=:capacity , color=:color, promotion=:promotion, screen=:screen, Rom=:Rom, Ram=:Ram , battery=:battery";
 			$stmt = $this->conn->prepare($query);
 			//clean data
 			$this->id = htmlspecialchars(strip_tags($this->id));
@@ -51,7 +70,6 @@ class Product{
 			$this->capacity = htmlspecialchars(strip_tags($this->capacity));
 			$this->color = htmlspecialchars(strip_tags($this->color));
             $this->promotion = htmlspecialchars(strip_tags($this->promotion));
-			$this->same_product = htmlspecialchars(strip_tags($this->same_product));
 			$this->screen = htmlspecialchars(strip_tags($this->screen));
 			$this->Rom = htmlspecialchars(strip_tags($this->Rom));
 			$this->Ram = htmlspecialchars(strip_tags($this->Ram));
@@ -66,7 +84,6 @@ class Product{
 			$stmt->bindParam(':capacity',$this->capacity);
 			$stmt->bindParam(':color',$this->color);
             $stmt->bindParam(':promotion',$this->promotion);
-			$stmt->bindParam(':same_product',$this->same_product);
 			$stmt->bindParam(':screen',$this->screen);
 			$stmt->bindParam(':Rom',$this->Rom);
 			$stmt->bindParam(':Ram',$this->Ram);
@@ -80,7 +97,7 @@ class Product{
 		}
         
         public function update(){
-			$query = "UPDATE product SET product_name=:product_name, price=:price, images=:images, type=:type, brand=:brand, capacity=:capacity , color=:color, promotion=:promotion, same_product=:same_product, screen=:screen, Rom=:Rom, Ram=:Ram , battery=:battery WHERE id=:id";
+			$query = "UPDATE product SET product_name=:product_name, price=:price, images=:images, type=:type, brand=:brand, capacity=:capacity , color=:color, promotion=:promotion, screen=:screen, Rom=:Rom, Ram=:Ram , battery=:battery WHERE id=:id";
 			$stmt = $this->conn->prepare($query);
 			//clean data
 			$this->id = htmlspecialchars(strip_tags($this->id));
@@ -92,7 +109,6 @@ class Product{
 			$this->capacity = htmlspecialchars(strip_tags($this->capacity));
 			$this->color = htmlspecialchars(strip_tags($this->color));
             $this->promotion = htmlspecialchars(strip_tags($this->promotion));
-			$this->same_product = htmlspecialchars(strip_tags($this->same_product));
 			$this->screen = htmlspecialchars(strip_tags($this->screen));
 			$this->Rom = htmlspecialchars(strip_tags($this->Rom));
 			$this->Ram = htmlspecialchars(strip_tags($this->Ram));
@@ -107,7 +123,6 @@ class Product{
 			$stmt->bindParam(':capacity',$this->capacity);
 			$stmt->bindParam(':color',$this->color);
             $stmt->bindParam(':promotion',$this->promotion);
-			$stmt->bindParam(':same_product',$this->same_product);
 			$stmt->bindParam(':screen',$this->screen);
 			$stmt->bindParam(':Rom',$this->Rom);
 			$stmt->bindParam(':Ram',$this->Ram);
