@@ -88,10 +88,10 @@ function Login (){
                             
                             <div class="container-fluid row">
                                 <div class="col-6">
-                                    <button class="btn btn-success btn-lg btn-block" type="button" onClick={handleSubmit}>Admin</button>
+                                    <button class="btn btn-success btn-lg btn-block" type="submit" onClick={handleSubmit}>Admin</button>
                                 </div>
                                 <div class="col-6">
-                                    <button class="btn btn-success btn-lg btn-block" type="button" onClick={handleSubmit1}>Login</button>
+                                    <button class="btn btn-success btn-lg btn-block" type="submit" onClick={handleSubmit1}>Login</button>
                                 </div>
                             </div>
                         </form>   
