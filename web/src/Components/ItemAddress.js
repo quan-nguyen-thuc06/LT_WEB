@@ -17,7 +17,9 @@ export default function ItemAddress (props){
 					</div>
 					<div class="col-md-3 col-sm-3 mb-3" style={{margin:'auto'}}>
 					<div class="d-flex justify-content-end">
-						<button type="button" class="btn btn-success ms-2">Chọn</button>
+						<button type="button" class="btn btn-success ms-2" onClick={()=>
+							localStorage.setItem('address',props.item.address)
+						}>Chọn</button>
 					</div>
 					</div>
 				</div>

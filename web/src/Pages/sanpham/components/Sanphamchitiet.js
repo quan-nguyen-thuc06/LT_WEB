@@ -9,12 +9,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useLocation } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
-// const comments = {
-//     "username":"Nguyễn Văn A",
-//     "content":"Điện thoại rất đẹp",
-//     "rating":5,
-// }
-
 
 function SameProductCard({ Opt}){
     return(
@@ -86,29 +80,42 @@ export default function Sanphamchitiet() {
 	    
     },[])
     const handleSubmit= () =>{
-        toast.success('Sản phẩm đã thêm vào giỏ hàng', {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: true,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
-        infor.id = product.id
-        infor.name = product.product_name
-        infor.image = product.images[1]
-        infor.price = product.price
-        infor.oldprice = parseInt(product.price)-3000000
-        infor.color=color;
-        infor.rom = rom;
-        infor.name&&history.push('/Cart',infor)
+        if(color&&rom){
+            toast.success('Sản phẩm đã thêm vào giỏ hàng', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            infor.id = product.id
+            infor.name = product.product_name
+            infor.image = product.images[1]
+            infor.price = product.price
+            infor.oldprice = parseInt(product.price)-3000000
+            infor.color=color;
+            infor.rom = rom;
+            history.push('/Cart',infor)
+            }
+            
+            toast.warning('Bạn chưa chọn rom hoặc màu', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+            });
     }
     const handCapacity=(event)=>{
         setRom(event.target.name)
     }
     return (
         <div class="container mt-3">
+        <ToastContainer/>
         <div class="row">
                 <div class="col-lg-6 col-sm-12 mt-3">
                     <div id="carouselExampleControls" class=" carousel slide" data-ride="carousel">

@@ -1,5 +1,4 @@
 import { useLocation } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 import {useState} from 'react';
 
 function ShoppingCarts() {
@@ -8,7 +7,7 @@ function ShoppingCarts() {
 	let shipment = 500000
 	let location = useLocation();
 	let infoitem = location.state;
-	if(!loaddata){
+	if(!loaddata && infoitem){
 	if(localStorage.getItem('cart')!== null){
         let info = JSON.parse(localStorage.getItem('cart'))
 		let check = false;
@@ -72,13 +71,16 @@ function ShoppingCarts() {
     }
 	const HandleDelete = (event)=>{
         let info = JSON.parse(localStorage.getItem('cart'));
-		let index;
+		let index=0;
 		for(let i=0;i<info.length;i++){
-			if(info[i].id== event.target.name){
-				index = i; 
+			if(parseInt(info[i].id) == parseInt(event.target.name)){
+				index = i;
+				break;
 			}
+			console.log( parseInt(info[i].id) - parseInt(event.target.name),"index")
 		}
-		info.splice(index, 1);
+		console.log( index,"i")
+		// index&&info.splice(index, 1);
 		localStorage.setItem('cart',JSON.stringify(info)) 
 		setReload(!reload)
     }
@@ -110,9 +112,7 @@ function ShoppingCarts() {
 												<input  class="form-control" type="text" value={product.quantity} style={{width:'35px'}}/>
 												<button	type="button" class="btn btn-outline-secondary" name={product.id} onClick={HandleIncrese} style={{width:'35px'}}>+</button>
 												<button type="button" class="btn" style={{width:'35px'}} name={product.id} onClick={HandleDelete}>
-													<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-													<path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-													</svg>
+													X
 												</button>
 												</div>
 												</div>
