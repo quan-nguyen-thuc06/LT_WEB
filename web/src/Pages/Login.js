@@ -17,8 +17,9 @@ function Login (){
             
             }
             )
-            if (res.data == "correct"){
+            if (res.data != "incorrect"){
                 check = true
+                localStorage.setItem('user',JSON.stringify(res.data))
             }
             console.log(res.data)
             console.log(account)
@@ -29,6 +30,7 @@ function Login (){
             console.log(error.message)
         }
         if (check == true) {
+            
             return  (window.location.href= "/admin")
         }
 
@@ -44,8 +46,9 @@ function Login (){
             
             }
             )
-            if (res.data == "correct"){
+            if (res.data != "incorrect"){
                 check = true
+                localStorage.setItem('user',res.data)
             }
             console.log(res.data)
             console.log(account)

@@ -31,10 +31,10 @@ class Client{
 			$stmt->execute();
 			$result = $stmt->fetch(PDO::FETCH_ASSOC);
 			if($result&&$result['username']!=''){
-				$this->username = $row['username'];
-				$this->fullname = $row['fullname'];
-				$this->phone = $row['phone'];
-				$this->image = $row['image'];
+				$this->username = $result['username'];
+				$this->fullname = $result['fullname'];
+				$this->phone = $result['phone'];
+				$this->image = $result['image'];
 				return true;
 			}
 			return false;
