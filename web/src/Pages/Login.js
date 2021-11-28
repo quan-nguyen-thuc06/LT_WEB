@@ -17,8 +17,9 @@ function Login (){
             
             }
             )
-            if (res.data == "correct"){
+            if (res.data != "incorrect"){
                 check = true
+                localStorage.setItem('user',JSON.stringify(res.data))
             }
             console.log(res.data)
             console.log(account)
@@ -29,6 +30,7 @@ function Login (){
             console.log(error.message)
         }
         if (check == true) {
+            
             return  (window.location.href= "/admin")
         }
 
@@ -44,8 +46,9 @@ function Login (){
             
             }
             )
-            if (res.data == "correct"){
+            if (res.data != "incorrect"){
                 check = true
+                localStorage.setItem('user',res.data)
             }
             console.log(res.data)
             console.log(account)
@@ -88,10 +91,10 @@ function Login (){
                             
                             <div class="container-fluid row">
                                 <div class="col-6">
-                                    <button class="btn btn-success btn-lg btn-block" type="button" onClick={handleSubmit}>Admin</button>
+                                    <button class="btn btn-success btn-lg btn-block" type="submit" onClick={handleSubmit}>Admin</button>
                                 </div>
                                 <div class="col-6">
-                                    <button class="btn btn-success btn-lg btn-block" type="button" onClick={handleSubmit1}>Login</button>
+                                    <button class="btn btn-success btn-lg btn-block" type="submit" onClick={handleSubmit1}>Login</button>
                                 </div>
                             </div>
                         </form>   

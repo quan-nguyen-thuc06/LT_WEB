@@ -31,10 +31,10 @@ class Client{
 			$stmt->execute();
 			$result = $stmt->fetch(PDO::FETCH_ASSOC);
 			if($result&&$result['username']!=''){
-				$this->username = $row['username'];
-				$this->fullname = $row['fullname'];
-				$this->phone = $row['phone'];
-				$this->image = $row['image'];
+				$this->username = $result['username'];
+				$this->fullname = $result['fullname'];
+				$this->phone = $result['phone'];
+				$this->image = $result['image'];
 				return true;
 			}
 			return false;
@@ -50,7 +50,7 @@ class Client{
 			$this->phone = htmlspecialchars(strip_tags($this->phone));
 			$this->email = htmlspecialchars(strip_tags($this->email));
 			$this->b_day = htmlspecialchars(strip_tags($this->b_day));
-			$this->image_url = htmlspecialchars(strip_tags($this->image_url));
+			$this->image = htmlspecialchars(strip_tags($this->image));
 			$this->role = htmlspecialchars(strip_tags($this->role));
 
 			$stmt->bindParam(':username',$this->username);
