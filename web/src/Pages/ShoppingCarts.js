@@ -5,6 +5,7 @@ import {useState} from 'react';
 function ShoppingCarts() {
 	const [reload,setReload] = useState(false)
 	const [loaddata,setLoaddata] = useState(false)
+	let shipment = 500000
 	let location = useLocation();
 	let infoitem = location.state;
 	if(!loaddata){
@@ -37,6 +38,12 @@ function ShoppingCarts() {
 	}
 }
 	let info = JSON.parse(localStorage.getItem('cart'))
+	let count=0;
+	let total =0;
+	for(let i =0;i<info.length;i++){
+		count +=info[i].quantity;
+		total +=info[i].quantity*info[i].price;
+	}
 	const HandleIncrese = (event) => {
 		console.log(event.target.name,"value")
 		let info = JSON.parse(localStorage.getItem('cart'));
@@ -128,14 +135,13 @@ function ShoppingCarts() {
 			<div class='row'>
 				<div class='row col-md-9' style={{margin:'auto'}}>
 					<div class="shadow" style={{backgroundColor:'#fff',borderRadius:'15px'}}>
-						<p class='mt-3'><span class="text-secondary">Số lượng</span>	<span class='float-end text-danger'>3 sản phẩm</span></p>
-						<p class='mt-3'><span class="text-secondary">Số lượng</span>	<span class='float-end text-danger'>206.000.000</span></p>
-						<p class='mt-3'><span class="text-secondary">Giảm giá</span>	<span class='float-end'><span>(-33%)</span>	<span class='text-danger'>6.700.000</span></span></p>
-						<p class='mt-3'><span class="text-secondary">Phí vận chuyển</span>	<span class='float-end text-danger'>50.000</span></p>
+						<p class='mt-3'><span class="text-secondary">Số lượng</span>	<span class='float-end text-danger'>{count+ " sản phẩm"} </span></p>
+						<p class='mt-3'><span class="text-secondary">Tổng tiền</span>	<span class='float-end text-danger'>{total +" Đ"}</span></p>
+						<p class='mt-3'><span class="text-secondary">Phí vận chuyển</span>	<span class='float-end text-danger'>{shipment +" Đ"}</span></p>
 						<hr class="solid"></hr>
-						<p class='mt-3'><span class="text-secondary">Tổng tiền</span>	<span class='float-end text-danger'>199.999.999</span></p>
+						<p class='mt-3'><span class="text-secondary">Tổng tiền</span>	<span class='float-end text-danger'>{total+ shipment + " Đ"}</span></p>
 					</div>
-					<button type="button" class="btn btn-success mt-3 ms-0" style={{borderRadius:'15px'}}>Xác nhận đơn hàng</button>
+					<button type="button" class="btn btn-success mt-3 ms-0 mb-5" style={{borderRadius:'15px'}} onClick={()=>{window.location.href = "/address"}}>Xác nhận đơn hàng</button>
 				</div>
 			</div>
 			</div>

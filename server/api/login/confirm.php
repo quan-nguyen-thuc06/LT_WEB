@@ -16,7 +16,13 @@
 	$client->password = $data->password;
 	$client->role = $data->role;
 	if($client->confirm()){
-		echo json_encode('correct');
+		$client_item= array(
+			"username" => $client->username,
+			"fullname"=>$client->fullname,
+			"phone"=>$client->phone,
+			"image"=>$client->image
+		);
+		echo json_encode($client_item);
 	}
 	else{
 		echo json_encode('incorrect');

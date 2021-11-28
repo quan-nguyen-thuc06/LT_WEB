@@ -16,6 +16,7 @@ import Register from "./Register"
 import ShoppingCarts from "./ShoppingCarts"
 import ProductPortfolio from "./ProductPortfolio"
 import Sanphamchitiet from "./sanpham/components/Sanphamchitiet";
+import Address from "./Address"
 export default function Routes(){
     return(
         <Router>
@@ -50,6 +51,9 @@ export default function Routes(){
             </Route>
             <Route exact path="/register">
               <Register />
+            </Route>
+            <Route exact path="/address">
+              <Address />
             </Route>
             <Route exact path="/">
               <ProductPortfolio />
