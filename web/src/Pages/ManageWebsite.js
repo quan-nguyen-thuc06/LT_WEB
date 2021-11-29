@@ -13,6 +13,24 @@ function ManageWebsite(){
         .catch(error => console.log(error))
     }, [])
     
+    const [dataFooter,setDataFooter]=useState([])
+    useEffect(async () => {
+        await axios.get('http://localhost/Official/LT_WEB/server/api/information/read.php')
+        .then(response => {
+            setDataFooter(response.data)
+            console.log(dataFooter)
+        })
+        .catch(error => console.log(error))
+    }, [])
+    function charCount(myChar, str) {
+        let counter = 0;
+        for (let i = 0; i < str.length; i++) 
+        if (str.charAt(i) == myChar) 
+            counter++
+        return counter;
+    }
+    console.log(charCount('+',dataFooter[0].Support))
+
     if(data.length>0){
         console.log(data)
     }  
@@ -275,15 +293,33 @@ function ManageWebsite(){
                 </div>
                 <div class="col-12 col-sm-6">
                     <label for="exampleInput1">Số điện thoại</label>
-                    <input type="number" class="form-control" id="exampleInput1" required></input>
+                    <Form.Control
+                        required
+                        type="number"
+                        id="exampleInput1"
+                        defaultValue={dataFooter[0].Phone}
+                        // onChange={test}
+                    />
                 </div>
                 <div class="col-12 col-sm-6">
                     <label for="exampleInput2">Email</label>
-                    <input type="email" class="form-control" id="exampleInput2" required></input>
+                    <Form.Control
+                        required
+                        type="email"
+                        id="exampleInput2"
+                        defaultValue={dataFooter[0].Email}
+                        // onChange={test}
+                    />
                 </div>
                 <div class="col-12">
                     <label for="exampleInput3">Địa chỉ</label>
-                    <input type="text" class="form-control" id="exampleInput3" required></input>
+                    <Form.Control
+                        required
+                        type="text"
+                        id="exampleInput3"
+                        defaultValue={dataFooter[0].Email}
+                        // onChange={test}
+                    />
                 </div>
             </div>
         </form>       

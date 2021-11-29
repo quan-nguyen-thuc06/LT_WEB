@@ -15,6 +15,12 @@ class Information{
 		}
 
 		//read data
+		public function read(){
+			$query = "SELECT * FROM Information";
+			$stmt = $this->conn->prepare($query);
+			$stmt->execute();
+			return $stmt;
+		}
 
         public function update(){
 			$query = "UPDATE Information SET Email=:Email, Address=:Address, Service=:Service, Support=:Support WHERE Phone=:Phone";
