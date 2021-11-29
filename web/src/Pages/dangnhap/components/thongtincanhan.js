@@ -1,11 +1,44 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { NavLink } from "react-router-dom";
 import { Card, Grid } from '@material-ui/core'
 import { Typography } from "@material-ui/core";
-import Textfield from '@atlaskit/textfield';
-
+import Profile from './components/profile';
 
 export default function Thongtincanhan() {
+
+    const initial = {
+        email:"a@gmail.com",
+        phone:"01234566",
+        name:"customer",
+        dob:"21/12/2021"
+    }
+
+    const [profile, setProfile] = useState(initial);
+    const [error,setError] = useState("");
+
+    const Input = details => {
+        console.log(details);
+
+        if(details.email !=="" && details.phone !=="" && details.name !=="" && details.dob !==""){
+        console.log(alert("lưu thông tin thành công"));
+
+        setProfile({
+            email: details.email,
+            phone: details.phone,
+            name: details.name,
+            dob: details.dob
+        });
+        }
+        else{
+            console.log(alert("thông tin chưa hợp lệ"));
+            setProfile({
+                email: "",
+                phone: "",
+                name: "",
+                dob: ""
+            })
+        }
+    }
 
     return (
         <Grid container direction="row" spacing={3} justifyContent="center" style={{marginBottom:"5%"}}>
@@ -43,25 +76,11 @@ export default function Thongtincanhan() {
                                 <Grid item xs={12}><Typography style={{fontWeight: "600",textAlign: "left"}}>THÔNG TIN CÁ NHÂN</Typography></Grid>
                                 
                                 <Grid item xs={12}>
-                                    <Grid item xs={12}><Typography>Email</Typography></Grid>
-                                    <Textfield name="email" placehoder="In put email" />
+                                    <div className="profile">
+                                        <Profile Input={Input} error={error} />
+                                    </div>
                                 </Grid>
-                                <Grid item xs={12}>
-                                    <Grid item xs={12} ><Typography>Số điện thoại</Typography></Grid>
-                                    <Textfield name="phone" placehoder="Input số điện thoại" />
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <Grid item xs={12}><Typography>Họ và tên</Typography></Grid>
-                                    <Textfield name='name' placehoder='Input Họ và tên' />
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <Grid item xs={12}><Typography>Ngày sinh</Typography></Grid>
-                                    <Textfield name='name' placehoder='Input Ngày sinh' />
-                                </Grid>
-                
-                                <Grid item xs={12} style={{paddingTop: "10px"}}>       
-                                    <Grid item ><button onClick={() => {alert("Đã lưu thông tin");}} style={{backgroundColor: "#1AC67E", color: "white", borderRadius: "15px", height: "50px",width: "150px"}}>Lưu thông tin</button></Grid>
-                                </Grid>
+
                             </Grid>
                         </Grid>
                     </Grid>

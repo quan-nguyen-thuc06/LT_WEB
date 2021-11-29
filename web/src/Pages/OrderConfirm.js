@@ -1,5 +1,7 @@
 import {useState} from 'react';
 import axios from 'axios'
+import {ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function OrderConfirm() {
 	const [reload,setReload] = useState(false)
 	let shipment = 500000
@@ -57,8 +59,7 @@ function OrderConfirm() {
 
 	const handleSubmit = async ()=>{
 		await axios.post('http://localhost/Official/LT_WEB/server/api/order/create.php',{
-			"id": 4,
-			"username": user.fullname,
+			"username": user.username,
 			"shipment": 50000,
 			"pay_method": "COD",
 			"belong_to_cart": info.map((info,index)=>{
@@ -73,13 +74,26 @@ function OrderConfirm() {
 		})
 		.then(response => {
 			console.log(response.data)
-			localStorage.removeItem('cart');
-			localStorage.removeItem('address');
+			if(response.data == "success"){
+				localStorage.removeItem('cart');
+				localStorage.removeItem('address');
+				toast.success('Đặt hàng thành công:)', {
+					position: "top-right",
+					autoClose: 700,
+					hideProgressBar: false,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: undefined,
+				});
+				setTimeout(()=>{window.location.href = "/"},600)
+			}
 		})
 		.catch(error => console.log(error))
 	}
 	return (
 		<div class="container-fluid mt-3 mb-5">
+			<ToastContainer/>
 		<div class="mt-3 mb-5">
 		<div class='row col-lg-8'>
 		<div class='row col-md-10' style={{margin:'auto'}}>

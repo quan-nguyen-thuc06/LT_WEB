@@ -20,6 +20,16 @@ class Order_product{
 			$stmt->execute();
 			return $stmt;
 		}
+		//read data
+		public function getmaxid(){
+			$query = "SELECT max(id) as 'id' FROM order_product WHERE username=?";
+			$stmt = $this->conn->prepare($query);
+			$stmt = $this->conn->prepare($query);
+			$stmt->bindParam(1,$this->username);
+			$stmt->execute();
+			$row = $stmt->fetch(PDO::FETCH_ASSOC);
+			return $row['id'];
+		}
 
 		public function create(){
 			$query = "INSERT INTO order_product SET username=:username, id=:id, shipment=:shipment, pay_method=:pay_method";

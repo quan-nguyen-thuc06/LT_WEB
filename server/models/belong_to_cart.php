@@ -23,6 +23,16 @@
 			$stmt->execute();
 			return $stmt;
 		}
+		//read data
+		public function getmaxid(){
+			$query = "SELECT max(id) as 'id' FROM belong_to_cart WHERE Cart_id=:Cart_id";
+			$stmt = $this->conn->prepare($query);
+			$this->Cart_id = htmlspecialchars(strip_tags($this->Cart_id));
+			$stmt->bindParam(':Cart_id',$this->Cart_id);
+			$stmt->execute();
+			$row = $stmt->fetch(PDO::FETCH_ASSOC);
+			return $row['id'];
+		}
 
 		public function create(){
 			$query = "INSERT INTO belong_to_cart SET  id=:id,Product_id=:Product_id, Cart_id=:Cart_id, Quantity=:Quantity, Rom=:Rom, Color=:Color";
