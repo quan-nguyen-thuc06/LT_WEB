@@ -1,6 +1,4 @@
 import './ManageProduct.css'
-import Header from '../Components/HeaderAdmin';
-import Footer from '../Components/Footer';
 import React, { useContext, useEffect, useState }  from 'react'
 function ManageWebsite(){
 

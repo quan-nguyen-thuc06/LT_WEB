@@ -97,6 +97,13 @@ class Client{
 			return false;
 		}
 
+		public function read(){
+			$query = "SELECT * FROM client WHERE role = 'client' OR role = 'block'";
+			$stmt = $this->conn->prepare($query);
+			$stmt->execute();
+			return $stmt;
+		}
+
 		public function delete(){
 			$query = "DELETE a,c FROM tb_address a JOIN client c ON c.username = a.username WHERE c.username=:username";
 			$stmt = $this->conn->prepare($query);
