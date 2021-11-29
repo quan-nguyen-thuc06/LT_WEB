@@ -18,6 +18,9 @@ import ShoppingCarts from "./ShoppingCarts"
 import Sanphamchitiet from "./sanpham/components/Sanphamchitiet";
 import Address from "./Address"
 import OrderConfirm from "./OrderConfirm"
+import Thongtincanhan from './dangnhap/components/thongtincanhan'
+import Diachithanhtoan from './dangnhap/components/diachithanhtoan'
+import Doimatkhau from './dangnhap/components/doimatkhau'
 export default function Routes(){
     return(
         <Router>
@@ -58,6 +61,15 @@ export default function Routes(){
             </Route>
             <Route exact path="/address/orderconfirm">
               <OrderConfirm />
+            </Route>
+            <Route exact path="/thongtincanhan">
+              <Thongtincanhan />
+            </Route>
+            <Route exact path="/diachithanhtoan">
+              <Diachithanhtoan />
+            </Route>
+            <Route exact path="/doimatkhau">
+              <Doimatkhau />
             </Route>
             <Route exact path="/">
               <ProductPortfolio />

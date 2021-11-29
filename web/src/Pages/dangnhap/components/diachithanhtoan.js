@@ -54,6 +54,7 @@ export default function Diachithanhtoan() {
         }
     }
     const remove= async (event)=>{
+        if(address.length>1){
         let id = parseInt(event.target.name)
         try {
             const res =await axios.post('http://localhost/Official/LT_WEB/server/api/address/delete_address.php'
@@ -69,6 +70,7 @@ export default function Diachithanhtoan() {
           } catch (error) {
             console.log(error.message)
           }
+        }
     }
     return (
         <Grid container direction="row" spacing={3} justifyContent="center" style={{marginBottom:"5%"}}>
@@ -123,7 +125,7 @@ export default function Diachithanhtoan() {
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Nhập địa chỉ mới</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">

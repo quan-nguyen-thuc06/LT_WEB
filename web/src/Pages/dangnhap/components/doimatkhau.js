@@ -3,43 +3,71 @@ import { Card, Grid } from '@material-ui/core'
 import { NavLink } from "react-router-dom";
 import { Typography } from "@material-ui/core";
 import Password from './components/password'
+import {ToastContainer,toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from "axios";
 
 export default function Doimatkhau() {
 
     const initial = {
-        oldPass:"12345",
-        newPass:"1234",
-        Verify:"1234",
+        newPass:"",
+        Verify:"",
     }
 
     const [profile, setProfile] = useState(initial);
     const [error,setError] = useState("");
+    let user = JSON.parse(localStorage.getItem('user'))
 
-    const Input = details => {
+    const Input =async (details) => {
         console.log(details);
-
-        if(details.oldPass !=="" && details.newPass !=="" && details.Verify !=="" && details.newPass === details.Verify){
-        console.log(alert("Đổi mật khẩu thành công"));
-
+        if( details.newPass >7 && details.Verify >7 && details.newPass === details.Verify){
+            try {
+                const res = await axios.put('http://localhost/Official/LT_WEB/server/api/login/changepwd.php'
+                ,
+                {
+                    "username": user.username,
+                    "password": details.newPass
+                }
+                )
+              } catch (error) {
+                console.log(error.message)
+            }
+        toast.success('Đổi mật khẩu thành công:)', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
         setProfile({
-            oldPass: details.oldPass,
             newPass: details.newPass,
             Verify: details.Verify,
         });
+        // updatepw();
         }
         else{
-            console.log(alert("thông tin chưa hợp lệ"));
+            // console.log(alert("thông tin chưa hợp lệ"));
+            toast.warning('thông tin chưa hợp lệ:)', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
             setProfile({
-                oldPass: "",
                 newPass: "",
                 Verify: "",
             })
         }
     }
-
+   
     return (
         <Grid container direction="row" spacing={3} justifyContent="center" style={{marginBottom:"5%"}}>
-
+            <ToastContainer />
             <Grid item xs={6} sm={4} md={3} lg={2} >
                 <Card style={{
                         marginTop: "50px",

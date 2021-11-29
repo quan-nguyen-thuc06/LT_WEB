@@ -138,7 +138,7 @@ export default function Header() {
                         </li>
                     </ul>
                     <a class="nav-link text-danger" href="#" onClick={()=>{
-                        if (JSON.parse(localStorage.getItem('cart'))==null){
+                        if (JSON.parse(localStorage.getItem('cart'))==null||JSON.parse(localStorage.getItem('cart')).length==0){
                             toast.warning('Giỏ hàng đang trống:)', {
                                 position: "top-right",
                                 autoClose: 5000,

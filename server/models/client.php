@@ -97,6 +97,48 @@ class Client{
 			return false;
 		}
 
+		public function updateinfo(){
+			$query = "UPDATE client SET  fullname=:fullname, phone=:phone, email=:email, b_day=:b_day, image=:image WHERE username=:username";
+			$stmt = $this->conn->prepare($query);
+			//clean data
+			$this->username = htmlspecialchars(strip_tags($this->username));
+			$this->fullname = htmlspecialchars(strip_tags($this->fullname));
+			$this->phone = htmlspecialchars(strip_tags($this->phone));
+			$this->email = htmlspecialchars(strip_tags($this->email));
+			$this->b_day = htmlspecialchars(strip_tags($this->b_day));
+			$this->image = htmlspecialchars(strip_tags($this->image));
+
+			$stmt->bindParam(':username',$this->username);
+			$stmt->bindParam(':fullname',$this->fullname);
+			$stmt->bindParam(':phone',$this->phone);
+			$stmt->bindParam(':email',$this->email);
+			$stmt->bindParam(':b_day',$this->b_day);
+			$stmt->bindParam(':image',$this->image);
+
+			if($stmt->execute()){
+				return true;
+			}
+			printf("error %s.\n",$stmt->error);
+			return false;
+		}
+
+
+		public function updatepw(){
+			$query = "UPDATE client SET password=:password WHERE username=:username";
+			$stmt = $this->conn->prepare($query);
+			//clean data
+			$this->username = htmlspecialchars(strip_tags($this->username));
+			$this->password = htmlspecialchars(strip_tags($this->password));
+
+			$stmt->bindParam(':username',$this->username);
+			$stmt->bindParam(':password',$this->password);
+			if($stmt->execute()){
+				return true;
+			}
+			printf("error %s.\n",$stmt->error);
+			return false;
+		}
+
 		public function read(){
 			$query = "SELECT * FROM client WHERE role = 'client' OR role = 'block'";
 			$stmt = $this->conn->prepare($query);
