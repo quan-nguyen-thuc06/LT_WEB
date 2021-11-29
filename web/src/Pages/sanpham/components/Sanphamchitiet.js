@@ -11,12 +11,21 @@ import { useHistory } from "react-router-dom";
 
 
 function SameProductCard({ Opt}){
+    const history = useHistory();
+    const rerender = ()=>{
+                
+        let data ={
+            "id": Opt.id
+        }
+        console.log(Opt.id,"id")
+        history.push('/chitietsanpham',data)
+    }
     return(
         <div class="col-xl-2 col-lg-3 col-md-4 col-6 ">
-            <div class="card card-sm card-product-grid shadow">
-                <a href="#" class="img-wrap"> <img src={Opt.image} /> </a>
+            <div class="card card-sm card-product-grid shadow "onClick={rerender}>
+            <a href="/chitietsanpham"  class="img-wrap" onClick={rerender}><img src={Opt.image} /> </a>
                 <figcaption class="info-wrap">
-                    <a href="#" class="title">{Opt.name}</a>
+                    <a href="/chitietsanpham" class="title" onClick={rerender}>{Opt.name}</a>
                     <div class="price mt-1">{Opt.price}</div> 
                 </figcaption>
             </div>
@@ -28,6 +37,7 @@ export default function Sanphamchitiet() {
     const history = useHistory();
     let location = useLocation();
 	let id = location.state.id;
+    console.log(location.state.id)
     const [product,setProduct] =useState(
         {
             "id": "",

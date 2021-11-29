@@ -235,24 +235,6 @@ class AddItem extends Component{
 					Phần này không được để trống.
 				</Form.Control.Feedback>
 				</Form.Group>
-
-				<Form.Group  controlId="validationCustom03"style={{margin:'10px 0 2px'}}>
-				<Form.Label>Thông tin mã giảm giá</Form.Label>
-				<div class="row">
-					<div class="col-md-6 col-sm-6">
-					<div class="input-group mb-3">
-						<span class="input-group-text">Code</span>
-						<input type="text" class="form-control" name="Id_Discount" value={this.state.Id_Discount} onChange={this.handleInputChange}/>
-					</div>
-					</div>
-					<div class="col-md-6 col-sm-6">
-					<div class="input-group mb-3">
-						<span class="input-group-text">Giá</span>
-						<input type="number" class="form-control" name="Price" value={this.state.Price} onChange={this.handleInputChange}/>
-					</div>
-					</div>
-				</div>
-				</Form.Group>
 		
 			</div>
 			<div class="col-md-5 col-sm-12 " style={{marginTop:'30px'}}>

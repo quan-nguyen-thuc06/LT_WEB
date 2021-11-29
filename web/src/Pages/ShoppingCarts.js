@@ -36,6 +36,7 @@ function ShoppingCarts() {
 		localStorage.setItem('cart',JSON.stringify(info))
 	}
 }
+	
 	let info = JSON.parse(localStorage.getItem('cart'))
 	let count=0;
 	let total =0;
