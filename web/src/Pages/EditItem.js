@@ -5,6 +5,7 @@ import {useEffect,useState} from "react"
 import axios from "axios";
 function EditItem(){
 	const location = useLocation();
+	console.log(location)
 	const id =parseInt(location.state);
 	const [product,setProduct] = useState({})
 	const [check,setCheck] = useState(false) //chua co data

@@ -11,17 +11,17 @@ function Hiring (){
     const [b_day_, setB_day] = useState('')
     const [image_, setImage] = useState('')
     let check = false
-    let info={
-        'username': '',
-        'password': '',
-        'confirmPassword': '',
-        'fullname': '',
-        'phone': '',
-        'email': '',
-        'b_day': '',
-        'image': 'khongconull',
-        'role': 'client'
-    };
+    // let info={
+    //     'username': '',
+    //     'password': '',
+    //     'confirmPassword': '',
+    //     'fullname': '',
+    //     'phone': '',
+    //     'email': '',
+    //     'b_day': '',
+    //     'image': 'khongconull',
+    //     'role': 'client'
+    // };
     function checksubmit (){
         if(username_ != '' && password_ != '' && email_ != '' && phone_ != '' && fullname_ != '' && b_day_ != '' && image_ != '' && confirmPassword_ == password_){
             handleSubmit()
