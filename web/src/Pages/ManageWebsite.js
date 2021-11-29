@@ -8,7 +8,7 @@ function ManageWebsite(){
   return(
     <div class="container">
         <div class="table-responsive">
-            <div class="table-wrapper">
+            <div class="table-wrapper table-striped">
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-8"><h2>Tuyển dụng</h2></div>

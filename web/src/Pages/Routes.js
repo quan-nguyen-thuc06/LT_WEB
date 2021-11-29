@@ -6,8 +6,8 @@ import EditItem from './EditItem'
 import AddItem from './AddItem'
 import HomeAdmin from "./HomeAdmin";
 import ManageWebsite from "./ManageWebsite";
-import ManageCustomer from "./ManageProduct";
-import ManageUser from "./ManageUser"
+import ManageProduct from "./ManageProduct";
+import ManageCustomer from "./ManageUser"
 import ProductPortfolio from "./ProductPortfolio"
 import About from "./About"
 import Hiring from "./Hiring"
@@ -69,13 +69,10 @@ export default function Routes(){
               <ManageWebsite />
             </Route>
             <Route exact path="/admin/product">
+              <ManageProduct />
+            </Route>
+            <Route exact path="/admin/user">
               <ManageCustomer />
-            </Route>
-            <Route exact path="/admin/user">
-              <ManageUser />
-            </Route>
-            <Route exact path="/admin/user">
-              <ManageUser />
             </Route>
             <Route exact path="/admin/additem">
               <AddItem />
