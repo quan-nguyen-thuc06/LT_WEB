@@ -683,31 +683,10 @@ VALUES (
 INSERT INTO company.Information (phone, Email, Address, Service, Support)
 VALUES (
         0123987654,
-        'tiencompany@gmail.com',
-        'AH1 KTX khu A, DHQG, Thanh pho Ho Chi Minh',
-        'Dich vu sua chua + dich vu bao tri',
-        'Ho tro ky thuat'
-    ),
-    (
-        0346320749,
-        'ngoc.nguyenkhmt@hcmut.edu.vn',
-        'Tan An City, Long An province',
-        'Dich vu tu van khach hang',
-        'Ho tro huong dan mua hang online + giao hang + thanh toan'
-    ),
-    (
-        0123456789,
-        'thanhdang@gmail.com',
-        'Tay Ninh province',
-        'Dich vu gui gop y, khieu nai + Dich vu bao hanh + Dich vu doi tra',
-        'Ho tro goi khieu nai + Ho tro goi bao hanh'
-    ),
-    (
-        0135792468,
-        'quan.idol@hcmut.edu.vn',
-        'Thanh pho Ho Chi Minh',
-        'Dich vu van chuyen + Dich vu lap dat',
-        'Ho tro giao hang + Ho tro lap dat + Ho tro ky thuat'
+        'abcxyz@gmail.com',
+        '268 Lý Thường Kiệt, Phường 14, Quận 10, Thành phố Hồ Chí Minh',
+        'Mua hàng từ xa + Quy định đổi trả',
+        'Dịch vụ sửa chữa + Nâng cấp phần cứng + Bảo hành sản phẩm'
     );
 INSERT INTO company.order_product (id, username, shipment, pay_method)
 VALUES (1, 'ngocnguyen', 33000, 'Tien mat'),
