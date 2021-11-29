@@ -6,13 +6,13 @@ import axios from "axios";
 function EditItem(){
 	const location = useLocation();
 	console.log(location)
-	const id =parseInt(location.state);
+	const id =parseInt(location.state.id);
 	const [product,setProduct] = useState({})
 	const [check,setCheck] = useState(false) //chua co data
 	useEffect(()=>{
 		async function fetchData() {
 		try {
-			const res = await axios.get('http://localhost:8080/product/detail'
+			const res = await axios.get('http://localhost/Official/LT_WEB/server/api/product/show.php'
 			,
 			{ 
 			params:{
@@ -33,39 +33,36 @@ function EditItem(){
 	let url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCzuDh9Fdpo9ntG5_YunFM2Wd_g_Kt4CyR8Q&usqp=CAU";
 	if(check){
 		productData={
-			id: product.product.Id,
-			textName: product.product.Product_Name,
-			textType: product.product.Product_Type,
-			textColor: product.product.Color,
-			txtBattery: product.product.battery,
-			txtOs: product.product.Os, 
-			txtDisplaySize: product.product.DisplaySize, 
-			txtChip: product.product.chip, 
-			txtInStock: product.product.InStock,
-			textDiscount: product.product.Discount,
-
-			txtMemory: product.memory[0].Ram_Capacity,
-			txtRom: product.memory.map((memory,index)=>{
-				let string = memory.Rom_Capacity + " - " + memory.Price +", "
-				return string
-			}).reduce((total,current)=>{
-				return total + current;
-			}).slice( 0, -2),
-
-			image: product.image[0] ? product.image[0].Url : url,
-			image1: product.image[1] ? product.image[1].Url : url,
-			image2: product.image[2] ? product.image[2].Url : url,
-			image3: product.image[3] ? product.image[3].Url : url,
-			image4: product.image[4] ? product.image[4].Url : url,
-			
-			Id_Discount : null,
-			Price : null
-		  };
-		  if(product.discountCode){
-			  productData.Id_Discount = product.discountCode.Id_Discount;
-			  productData.Price = product.discountCode.Price
+			id: product.id,
+			textbranch: product.brand,
+			textType: product.type,
+			textName: product.product_name,
+			textColor: "",
+			txtBattery: product.battery,
+			txtPromotion: product.promotion,
+			txtPrice: product.price,
+			txtDisplaySize: product.screen, 
+			txtRom: product.Rom,
+			txtMemory: product.Ram,
+			txtInStock: product.capacity[0],
+			image: product.images[0] ? product.images[0] : url,
+			image1: product.images[1] ? product.images[1] : url,
+			image2: product.images[2] ? product.images[2] : url,
+			image3: product.images[3] ? product.images[3] : url,
+			image4: product.images[4] ? product.images[4] : url,
 		  }
-		//   console.log(product)
+		let promotion=product.promotion[0];
+		for(let i=1;i<product.promotion.length;i++){
+			promotion = promotion+ "\n"+ product.promotion[i]
+		}
+		productData.txtPromotion = promotion;
+
+		let color=product.color[0];
+		for(let i=1;i<product.color.length;i++){
+			color = color+ ", "+ product.color[i]
+		}
+		productData.textColor = color;
+		console.log(productData)
 	}
 
 	if(productData){

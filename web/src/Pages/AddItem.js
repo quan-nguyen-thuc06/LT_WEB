@@ -2,7 +2,7 @@ import './EditItem.css'
 import React, {Component} from 'react'
 import {Form, Button } from 'react-bootstrap'
 import axios from 'axios';
-import { toast } from 'react-toastify';
+import {ToastContainer, toast } from 'react-toastify';
 
 const image_const = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCzuDh9Fdpo9ntG5_YunFM2Wd_g_Kt4CyR8Q&usqp=CAU"
 class AddItem extends Component{
@@ -88,6 +88,17 @@ class AddItem extends Component{
 							console.log(error);
 						});
 					}
+					else{
+						toast.warning('Xin hãy nhập đầy đủ thông tin :)', {
+							position: "top-right",
+							autoClose: 5000,
+							hideProgressBar: false,
+							closeOnClick: true,
+							pauseOnHover: true,
+							draggable: true,
+							progress: undefined,
+						});
+					}
 		};
 
 	    handleInputChange(event) {
@@ -109,6 +120,7 @@ class AddItem extends Component{
 
 	return(
 		<div class='container-fluid' id='product-list'>
+			<ToastContainer/>
 		<div class ='row' style={{backgroundColor:"#EAEAEA"}}>
 		<div class="col-md-8 col-sm-12" style={{margin:'auto'}} >
 		<Form noValidate validated={this.state.validated}>

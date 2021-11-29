@@ -55,8 +55,8 @@ export default class CommentBox extends React.Component {
       }
       
       return(
-        <div className="comment-box">
-          <h2>Để lại nhận xét</h2>
+        <div className="comment-box mt-3">
+          <h4>Để lại nhận xét</h4>
           <CommentForm addComment={this._addComment.bind(this)}/>
           <button id="comment-reveal" onClick={this._handleClick.bind(this)}>
             {buttonText}

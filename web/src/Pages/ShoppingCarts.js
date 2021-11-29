@@ -123,8 +123,8 @@ function ShoppingCarts() {
 													
 											</div>
 											<small><span>Đơn giá: </span>	<span class='text-danger'>{product.price}</span>		<span class="ms-2 text-decoration-line-through text-secondary">{product.oldprice}</span></small><br/>
-											<small><span>512 GB</span></small><br/>
-											<small><span>Màu sắc: </span>	<span>Đỏ</span></small>	<span class='float-end text-danger'>{product.price * product.quantity}</span>
+											<small><span>{product.rom}</span></small><br/>
+											<small><span>Màu sắc: </span>	<span>{product.color}</span></small>	<span class='float-end text-danger'>{product.price * product.quantity}</span>
 										</div>
 									</div>
 									<hr class="solid" ></hr>

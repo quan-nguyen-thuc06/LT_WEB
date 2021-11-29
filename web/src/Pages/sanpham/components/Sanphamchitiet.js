@@ -2,7 +2,7 @@ import React,{useEffect,useState} from 'react'
 import { Grid,Card, CardMedia, Typography } from '@material-ui/core';
 import Button from '@atlaskit/button';
 import Rating from './rating'
-import comment from './comment'
+import CommentBox from './comment'
 import axios from 'axios';
 import {ToastContainer,toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -108,8 +108,8 @@ export default function Sanphamchitiet() {
             infor.color=color;
             infor.rom = rom;
             history.push('/Cart',infor)
-            }
-            
+        }
+        else{
             toast.warning('Bạn chưa chọn rom hoặc màu', {
                     position: "top-center",
                     autoClose: 5000,
@@ -119,6 +119,7 @@ export default function Sanphamchitiet() {
                     draggable: true,
                     progress: undefined,
             });
+        }
     }
     const handCapacity=(event)=>{
         setRom(event.target.name)
@@ -247,7 +248,7 @@ export default function Sanphamchitiet() {
                         </div>        
                     </div>
                 </div>
-                <Grid><h4 style={{margin:"20px 0px 20px 20px"}}>Sản phẩm tương tự</h4></Grid>
+                <Grid><h4 style={{margin:"20px 0px 20px 0px"}}>Sản phẩm tương tự</h4></Grid>
                     
                 <Grid xs={12} container spacing={2} style={{textAlign:"center",paddingLeft:"30px"}}>
                         {sameproduct.map(e => {
@@ -257,28 +258,7 @@ export default function Sanphamchitiet() {
                         })}
                 </Grid>
                     
-                    {/* <Grid><h4 style={{margin:"20px 0px 20px 20px"}}>Mô tả sản phẩm</h4></Grid>
-                    <Grid item xs={12} style={{textAlign:"left"}}>
-                        <div>
-                            <ul>
-                                <li>{product.screen}</li>
-                                <li>{product.Ram + " GB"}</li>
-                                <li>{product.Rom + " GB"}</li>
-                                <li>{product.battery}</li>
-                            </ul>
-                        </div>
-                    </Grid> */}
-                    
-                    {/* <Grid><h4 style={{margin:"5px 0px 10px 20px"}}>Đánh giá và nhận xét</h4></Grid>
-                    
-                    <Grid container xs={12} >
-                        <Grid container direction="row" xs={10} lg={5}>
-                            <Grid item xs={3}><h4 style={{padding:"10px 0px 10px 20px"}}>Đánh giá:</h4></Grid>
-                            <Grid item xs={5}><h4 style={{padding:"10px 0px 10px 0px"}}>5<FaStar className="star" color={"#ffc107"} size={30} /> </h4></Grid>
-                        </Grid>
-
-                    </Grid> */}
-                    <div class="mt-5 text-center w-50 shadow" style={{ textAlign: "center", margin:"auto" }}>
+                    {/* <div class="mt-5 text-center w-50 shadow" style={{ textAlign: "center", margin:"auto" }}>
                             <h3 class="pt-2">Đánh giá và nhận xét</h3>
                             <div class="d-flex justify-content-center">
                                 <div class="content text-center">
@@ -288,38 +268,10 @@ export default function Sanphamchitiet() {
                                     </div>
                                 </div>
                             </div>
-                    </div>
+                    </div> */}
                     
-                    {/* <Grid container style={{paddingLeft:"20px"}}>
-                            <Grid xs={12}>
-                                <Grid container><form>
-                                    <Grid item xs={6}><textarea placeholder="Viết Nhận xét" cols="75" rows="5"></textarea></Grid>
-                                    <Grid item xs={6}><input type="submit" value="Submit" style={{backgroundColor:"#1AC67E",color:"#fff"}}></input> </Grid>
-                                </form> </Grid>
-                            </Grid>
-                     </Grid> */}
 
-                     {/* <Grid container xs={12}>
-                            <Grid item xs={12} style={{padding:"10px 0px 0px 20px"}}><h5>Lọc xem theo: </h5></Grid>
-                            <button type="button" style={{ border: "0.5px solid #C4C4C4", borderRadius: "5%", color:"white", backgroundColor:"#1AC67E", marginLeft: "20px" }} class="btn btn-outline-secondary mb-3">Mới nhất</button>
-                            <button type="button" style={{ border: "0.5px solid #C4C4C4", borderRadius: "5%", color:"white", backgroundColor:"#1AC67E", marginLeft: "20px" }} class="btn btn-outline-secondary mb-3">Có hình ảnh</button>
-                            <button type="button" style={{ border: "0.5px solid #C4C4C4", borderRadius: "5%", color:"white", backgroundColor:"#1AC67E", marginLeft: "20px" }} class="btn btn-outline-secondary mb-3">Đã mua hàng</button>
-                    </Grid> */}
-{/* 
-                    <Grid container style={{padding:"10px 10px 0px 30px"}}>
-                        <Grid item xs={6}> <hr></hr> </Grid>
-                        <Grid item xs={12}>
-                            <Grid container direction="row" >
-                                <Grid item direction="column" >
-                                    <Grid><h5>{comments.username}</h5></Grid>
-                                    <Grid>Đã đánh giá {comments.rating}</Grid>
-                                </Grid>
-                                <Grid item style={{paddingLeft:"50px"}}><h5>{comments.content}</h5></Grid>
-                            </Grid>
-                        </Grid>
-                    </Grid> */}
-
-                {/* <Grid xs={12}><CommentBox/> </Grid> */}
+                <CommentBox/>
         </div>
         </div>
     )

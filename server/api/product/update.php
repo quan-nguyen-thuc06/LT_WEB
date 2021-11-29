@@ -21,7 +21,7 @@
 	$product->capacity = $data->capacity;
 	$product->color = $data->color;
     $product->promotion = $data->promotion;
-	$product->same_product = $data->same_product;
+	$product->same_product ="";
 	$product->screen = $data->screen;
 	$product->Rom = $data->Rom;
 	$product->Ram = $data->Ram;
