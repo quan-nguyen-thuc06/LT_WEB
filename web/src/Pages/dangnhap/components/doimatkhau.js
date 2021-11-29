@@ -1,10 +1,41 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Card, Grid } from '@material-ui/core'
 import { NavLink } from "react-router-dom";
 import { Typography } from "@material-ui/core";
-import Textfield from '@atlaskit/textfield';
+import Password from './components/password'
 
 export default function Doimatkhau() {
+
+    const initial = {
+        oldPass:"12345",
+        newPass:"1234",
+        Verify:"1234",
+    }
+
+    const [profile, setProfile] = useState(initial);
+    const [error,setError] = useState("");
+
+    const Input = details => {
+        console.log(details);
+
+        if(details.oldPass !=="" && details.newPass !=="" && details.Verify !=="" && details.newPass === details.Verify){
+        console.log(alert("Đổi mật khẩu thành công"));
+
+        setProfile({
+            oldPass: details.oldPass,
+            newPass: details.newPass,
+            Verify: details.Verify,
+        });
+        }
+        else{
+            console.log(alert("thông tin chưa hợp lệ"));
+            setProfile({
+                oldPass: "",
+                newPass: "",
+                Verify: "",
+            })
+        }
+    }
 
     return (
         <Grid container direction="row" spacing={3} justifyContent="center" style={{marginBottom:"5%"}}>
@@ -41,22 +72,8 @@ export default function Doimatkhau() {
                             <Grid container direction="column" spacing={2}>
                                 <Grid item xs={12}><Typography style={{fontWeight: "600",textAlign: "left"}}>TẠO LẠI MẬT KHẨU</Typography></Grid>
                                 
-                                <Grid item xs={12}>
-                                    <Grid item xs={12}><Typography>Mật khẩu hiện tại</Typography></Grid>
-                                    <Textfield name="oldpass" placehoder="In put mật khẩu" />
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <Grid item xs={12} ><Typography>Mật khẩu mới</Typography></Grid>
-                                    <Textfield name="newpass" placehoder="Input mật khẩu mới" />
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <Grid item xs={12}><Typography>Nhập lại mật khẩu mới</Typography></Grid>
-                                    <Textfield name='renewpass' placehoder='nhập lại mật khẩu mới' />
-                                </Grid>
-                
-                                <Grid item xs={12} style={{paddingTop: "10px"}} >
-                                    <button onClick={() => {alert("Đổi mật khẩu thành công");}} style={{backgroundColor: "#1AC67E", color: "white", borderRadius: "15px", height: "50px",width: "150px"}}>Đổi mật khẩu</button>
-                                </Grid>
+                                <Grid item xs={12}><Password Input={Input} error={error} /></Grid>
+
                             </Grid>
                         </Grid>
                     </Grid>

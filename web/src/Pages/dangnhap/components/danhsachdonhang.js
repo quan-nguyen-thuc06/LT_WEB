@@ -47,38 +47,40 @@ function ItemCard({Opt}){
 
 function DonhangCard({Opt}){
     return(
-        <Grid item xs={12}>
-            <Card style={{boxShadow: "0 10px 20px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23)", borderRadius: "15px"}}>
-                <Grid item xs={12} style={{textAlign: "left", padding: "20px"}}>
-                    <Grid container style={{paddingBottom: "10px"}}>
-                        <Grid item xs={10} ><Typography style={{fontWeight: "600"}}>{item.i1.code}</Typography></Grid>
-                        <Grid item xs={2}><Typography onClick={() => {alert("Xác nhận đơn hàng");}} style={{color: "#1AC67E",fontWeight: "600", textAlign:"right"}}>Hoàn thành</Typography></Grid>
-                    </Grid>
+        <Grid container direction="column" spacing={10} justifyContent="center">
+            <Grid item xs={12}>
+                <Card style={{boxShadow: "0 10px 20px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23)", borderRadius: "15px"}}>
+                    <Grid item xs={12} style={{textAlign: "left", padding: "20px"}}>
+                        <Grid container style={{paddingBottom: "10px"}}>
+                            <Grid item xs={10} ><Typography style={{fontWeight: "600"}}>{Opt.code}</Typography></Grid>
+                            <Grid item xs={2}><Typography onClick={() => {alert("Xác nhận đơn hàng");}} style={{color: "#1AC67E",fontWeight: "600", textAlign:"right"}}>Hoàn thành</Typography></Grid>
+                        </Grid>
                                 
-                    <Grid container style={{borderBottom:"1px solid #C0C0C0"}}>
-                        <ItemCard Opt={item.i1} />
-                        <ItemCard Opt={item.i2} />
-                    </Grid>
+                        <Grid container style={{borderBottom:"1px solid #C0C0C0"}}>
+                            <ItemCard Opt={item.i1} />
+                            <ItemCard Opt={item.i2} />
+                        </Grid>
 
-                    <Grid container justifyContent="right" style={{paddingTop:"20px"}}>
-                        <Grid item xs={12} container direction="row">
-                            <Grid item xs={2} lg={2}></Grid>
-                            <Grid item xs={7} lg={9}><Typography style={{paddingBottom:"5px",textAlign:"right"}}>Tổng giá trị: </Typography></Grid>
-                            <Grid item xs={2} lg={1} style={{color: "red", paddingLeft:"5px"}}><Typography>{item.i1.price+ item.i2.price}đ</Typography></Grid>
-                        </Grid>
-                        <Grid item xs={12} container direction="row">
-                            <Grid item xs={2} lg={2}></Grid>
-                            <Grid item xs={7} lg={9}><Typography style={{paddingBottom:"5px",textAlign:"right"}}>Phí vận chuyển: </Typography></Grid>
-                            <Grid item xs={2} lg={1} style={{color: "red", paddingLeft:"5px"}}><Typography>100.000đ</Typography></Grid>
-                        </Grid>
-                        <Grid item xs={12} container direction="row">
-                            <Grid item xs={2} lg={2}></Grid>   
-                            <Grid item xs={7} lg={9}><Typography style={{paddingBottom:"5px",textAlign:"right"}}>Tổng giá trị: </Typography></Grid>
-                            <Grid item xs={2} lg={1} style={{color: "red", paddingLeft:"5px"}}><Typography>70.100.000đ</Typography></Grid>
+                        <Grid container justifyContent="right" style={{paddingTop:"20px"}}>
+                            <Grid item xs={12} container direction="row">
+                                <Grid item xs={2} lg={2}></Grid>
+                                <Grid item xs={7} lg={9}><Typography style={{paddingBottom:"5px",textAlign:"right"}}>Tổng giá trị: </Typography></Grid>
+                                <Grid item xs={2} lg={1} style={{color: "red", paddingLeft:"5px"}}><Typography>{item.i1.price+ item.i2.price}đ</Typography></Grid>
+                            </Grid>
+                            <Grid item xs={12} container direction="row">
+                                <Grid item xs={2} lg={2}></Grid>
+                                <Grid item xs={7} lg={9}><Typography style={{paddingBottom:"5px",textAlign:"right"}}>Phí vận chuyển: </Typography></Grid>
+                                <Grid item xs={2} lg={1} style={{color: "red", paddingLeft:"5px"}}><Typography>100.000đ</Typography></Grid>
+                            </Grid>
+                            <Grid item xs={12} container direction="row">
+                                <Grid item xs={2} lg={2}></Grid>   
+                                <Grid item xs={7} lg={9}><Typography style={{paddingBottom:"5px",textAlign:"right"}}>Tổng giá trị: </Typography></Grid>
+                                <Grid item xs={2} lg={1} style={{color: "red", paddingLeft:"5px"}}><Typography>70.100.000đ</Typography></Grid>
+                            </Grid>
                         </Grid>
                     </Grid>
-                </Grid>
-            </Card>
+                </Card>
+            </Grid>
         </Grid>
     )
 }
@@ -113,11 +115,9 @@ export default function Danhsachdonhang() {
                     <Grid item xs={12}><Typography style={{fontWeight: "600",textAlign: "left", paddingBottom: "20px"}}>DANH SÁCH ĐƠN HÀNG</Typography></Grid>
                 </Grid>
 
-                <Grid container direction="column" spacing={10} justifyContent="center">
-                    <DonhangCard Opt={item.i1} />
-                    <DonhangCard Opt={item.i2} />
-                </Grid>
-                
+                <DonhangCard Opt={item.i1} />
+                <DonhangCard Opt={item.i2} />
+          
             </Grid>
         </Grid>
     )

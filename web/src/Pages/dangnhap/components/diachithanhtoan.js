@@ -5,30 +5,38 @@ import { NavLink } from "react-router-dom";
 const diachi = [
     {
         "name": "Nguyễn Văn A",
-        "duong": "268 Lý Thường Kiệt",
-        "phuong": "Phường 14",
-        "quan": "Quận 10",
-        "tp": "Thành phố Hồ Chí Minh"
+        "address":{
+            "duong": "268 Lý Thường Kiệt",
+            "phuong": "Phường 14",
+            "quan": "Quận 10"
         },
-    {
-        "name": "Trần Văn B",
-        "duong": "Tòa H6",
-        "phuong": "Phường Đông Hòa",
-        "quan": "Thị xã Dĩ An",
-        "tp": "Tỉnh Bình Dương"
+        "tp": "Thành phố Hồ Chí Minh"
     },
     {
         "name": "Trần Văn B",
-        "duong": "Tòa H6",
-        "phuong": "Phường Đông Hòa",
-        "quan": "Thị xã Dĩ An",
+        "address":{
+            "duong": "Tòa H6",
+            "phuong": "Phường Đông Hòa",
+            "quan": "Thị xã Dĩ An"
+        },
         "tp": "Tỉnh Bình Dương"
     },
     {
+        "name": "Nguyễn Văn A",
+        "address":{
+            "duong": "268 Lý Thường Kiệt",
+            "phuong": "Phường 14",
+            "quan": "Quận 10"
+        },
+        "tp": "Thành phố Hồ Chí Minh"
+    },
+    {
         "name": "Trần Văn B",
-        "duong": "Tòa H6",
-        "phuong": "Phường Đông Hòa",
-        "quan": "Thị xã Dĩ An",
+        "address":{
+            "duong": "Tòa H6",
+            "phuong": "Phường Đông Hòa",
+            "quan": "Thị xã Dĩ An"
+        },
         "tp": "Tỉnh Bình Dương"
     }
 ]
@@ -42,12 +50,11 @@ function DiachiCard({Opt}){
                             <Grid item xs={9} sm={8} lg={10}><Typography style={{fontWeight: "600"}}>{Opt.name}</Typography></Grid>
                             <Grid item xs={3} sm={4} lg={2}><Typography onClick={() => {alert("Xóa địa chỉ");}} style={{color: "red"}}>Xóa địa chỉ</Typography></Grid>
                         </Grid>
-                    <Grid item xs={12}><Typography style={{ paddingBottom: "10px"}}>{Opt.duong}</Typography></Grid>
-                    <Grid item xs={12}><Typography style={{ paddingBottom: "10px"}}>{Opt.phuong}</Typography></Grid>
-                    <Grid item xs={12}><Typography style={{ paddingBottom: "10px"}}>{Opt.quan}</Typography></Grid>
+                    <Grid item xs={12}><Typography style={{ paddingBottom: "10px"}}>{Opt.address.duong}</Typography></Grid>
+                    <Grid item xs={12}><Typography style={{ paddingBottom: "10px"}}>{Opt.address.phuong}</Typography></Grid>
+                    <Grid item xs={12}><Typography style={{ paddingBottom: "10px"}}>{Opt.address.quan}</Typography></Grid>
                     <Grid item xs={12} container >
                         <Grid item xs={9} lg={10}><Typography style={{paddingBottom: "10px"}}>{Opt.tp}</Typography></Grid>
-                        <Grid item xs={2} lg={2}><Typography style={{color: "#1AC67E",fontWeight: "600"}}>Mặc định</Typography></Grid>
                     </Grid>
                 </Grid>
             </Card>
@@ -85,13 +92,11 @@ export default function Diachithanhtoan() {
                     <Grid item xs={5} sm={3} lg={2} ><button onClick={() => {alert("Modal thêm địa chỉ");}} style={{backgroundColor: "#1AC67E", color: "white", borderRadius: "15px", height: "50px",width: "150px"}}>Thêm địa chỉ</button></Grid>
                 </Grid>
                 <Grid container direction="row" spacing={10} justifyContent="center">
-                    {
-                        diachi.map(e => {
+                    {diachi.map(e => {
                                 return (
                                     <DiachiCard Opt={e} />
                                 )
-                            })
-                    }
+                            })}
                 </Grid>
             </Grid>
         </Grid>

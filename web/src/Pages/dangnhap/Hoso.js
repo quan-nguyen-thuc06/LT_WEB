@@ -1,5 +1,5 @@
 import React from 'react'
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import {BrowserRouter as Router, Route} from "react-router-dom";
 import Thongtincanhan from './components/thongtincanhan'
 import Diachithanhtoan from './components/diachithanhtoan'
 import Danhsachdonhang from './components/danhsachdonhang'
