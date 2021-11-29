@@ -12,7 +12,6 @@
 
 	$product = new Product($connect);
 	$data = json_decode(file_get_contents("php://input"));
-	$product->id = $data->id;
 	$product->product_name = $data->product_name;
 	$product->price = $data->price;
 	$product->images = $data->images;
@@ -21,7 +20,7 @@
 	$product->capacity = $data->capacity;
 	$product->color = $data->color;
     $product->promotion = $data->promotion;
-	$product->same_product = $data->same_product;
+	$product->same_product = "";
 	$product->screen = $data->screen;
 	$product->Rom = $data->Rom;
 	$product->Ram = $data->Ram;

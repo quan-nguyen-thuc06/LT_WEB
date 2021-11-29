@@ -21,7 +21,7 @@
 	$client->phone = $data->phone;
 	$client->email = $data->email;
 	$client->b_day = $data->b_day;
-	$client->image_url = $data->image_url;
+	$client->image = $data->image;
 	$client->role = $data->role;
 	if($client->update()){
 		echo json_encode('success');

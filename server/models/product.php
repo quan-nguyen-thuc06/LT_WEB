@@ -58,10 +58,9 @@ class Product{
 		}
 
         public function create(){
-			$query = "INSERT INTO product SET id=:id , product_name=:product_name, price=:price, images=:images, type=:type, brand=:brand, capacity=:capacity , color=:color, promotion=:promotion, screen=:screen, Rom=:Rom, Ram=:Ram , battery=:battery";
+			$query = "INSERT INTO product SET  product_name=:product_name, price=:price, images=:images, type=:type, brand=:brand, capacity=:capacity , color=:color, promotion=:promotion, screen=:screen, Rom=:Rom, Ram=:Ram , battery=:battery";
 			$stmt = $this->conn->prepare($query);
 			//clean data
-			$this->id = htmlspecialchars(strip_tags($this->id));
 			$this->product_name = htmlspecialchars(strip_tags($this->product_name));
 			$this->price = htmlspecialchars(strip_tags($this->price));
 			$this->images = htmlspecialchars(strip_tags($this->images));
@@ -75,7 +74,6 @@ class Product{
 			$this->Ram = htmlspecialchars(strip_tags($this->Ram));
             $this->battery = htmlspecialchars(strip_tags($this->battery));
 
-			$stmt->bindParam(':id',$this->id);
 			$stmt->bindParam(':product_name',$this->product_name);
 			$stmt->bindParam(':price',$this->price);
 			$stmt->bindParam(':images',$this->images);
