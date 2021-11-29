@@ -24,7 +24,6 @@ class Order_product{
 		public function getmaxid(){
 			$query = "SELECT max(id) as 'id' FROM order_product WHERE username=?";
 			$stmt = $this->conn->prepare($query);
-			$stmt = $this->conn->prepare($query);
 			$stmt->bindParam(1,$this->username);
 			$stmt->execute();
 			$row = $stmt->fetch(PDO::FETCH_ASSOC);

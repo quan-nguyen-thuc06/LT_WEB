@@ -19,9 +19,14 @@
 	
 	$tb_address = new Address($connect);
 	$data = json_decode(file_get_contents("php://input"));
+	//get id
+	$order = new Address($connect);
+	$order->username = $data->username;
+	$num = $order->getmaxid();
+
 	$tb_address->username = $data->username;
 	$tb_address->address = $data->address;
-	$tb_address->id = $data->id;
+	$tb_address->id = $num+1;
 	if($tb_address->create()){
 		echo json_encode('success');
 	}

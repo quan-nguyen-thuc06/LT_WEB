@@ -19,7 +19,14 @@ class Address{
 			$stmt->execute();
 			return $stmt;
 		}
-
+		public function getmaxid(){
+			$query = "SELECT max(id) as 'id' FROM tb_address WHERE username=?";
+			$stmt = $this->conn->prepare($query);
+			$stmt->bindParam(1,$this->username);
+			$stmt->execute();
+			$row = $stmt->fetch(PDO::FETCH_ASSOC);
+			return $row['id'];
+		}
 		public function create(){
 			$query = "INSERT INTO tb_address SET username=:username , address=:address, id=:id";
 			$stmt = $this->conn->prepare($query);

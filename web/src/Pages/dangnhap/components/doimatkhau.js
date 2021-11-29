@@ -52,9 +52,9 @@ export default function Doimatkhau() {
                                 <Grid>
                                 <NavLink style={{textDecoration: "none"}} to={"/thongtincanhan"}><Typography style={{paddingBottom: "10px",color:"black"}}>Thông tin cá nhân</Typography></NavLink> 
                                 <NavLink style={{textDecoration: "none"}} to={"/diachithanhtoan"}><Typography style={{paddingBottom: "10px",color:"black"}}>Địa chỉ thanh toán</Typography></NavLink> 
-                                <NavLink style={{textDecoration: "none"}} to={"/danhsachdonhang"}><Typography style={{paddingBottom: "10px",color:"black"}}>Danh sách đơn hàng</Typography></NavLink> 
+                                {/* <NavLink style={{textDecoration: "none"}} to={"/danhsachdonhang"}><Typography style={{paddingBottom: "10px",color:"black"}}>Danh sách đơn hàng</Typography></NavLink>  */}
                                 <NavLink style={{textDecoration: "none"}} to={"/doimatkhau"}><Typography style={{paddingBottom: "10px",color:"black"}}>Đổi mật khẩu</Typography></NavLink> 
-                                <NavLink style={{textDecoration: "none"}} to={"/"}><Typography style={{color: "red"}}>Đăng xuất</Typography></NavLink> 
+                                {/* <NavLink style={{textDecoration: "none"}} to={"/"}><Typography style={{color: "red"}}>Đăng xuất</Typography></NavLink>  */}
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -70,7 +70,7 @@ export default function Doimatkhau() {
                     <Grid container direction="row" justifyContent="space-between">
                         <Grid item xs={12}  style={{textAlign: "left", padding: "20px"}}>
                             <Grid container direction="column" spacing={2}>
-                                <Grid item xs={12}><Typography style={{fontWeight: "600",textAlign: "left"}}>TẠO LẠI MẬT KHẨU</Typography></Grid>
+                                <Grid item xs={12}><Typography style={{fontWeight: "600",textAlign: "left", padding: "20px"}}>TẠO LẠI MẬT KHẨU</Typography></Grid>
                                 
                                 <Grid item xs={12}><Password Input={Input} error={error} /></Grid>
 

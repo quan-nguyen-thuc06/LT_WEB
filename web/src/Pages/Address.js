@@ -15,7 +15,7 @@ function Address (){
 				,
 				{ 
 				  params:{
-					username: "ngocnguyen"
+					username: user.username
 				  }
 				}
 				)
