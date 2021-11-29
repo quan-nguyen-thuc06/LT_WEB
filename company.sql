@@ -28,7 +28,9 @@ CREATE TABLE `belong_to_cart` (
   `id` int(11) NOT NULL,
   `Product_id` int(11) NOT NULL,
   `Cart_id` int(11) NOT NULL,
-  `Quantity` int(11) NOT NULL
+  `Quantity` int(11) NOT NULL,
+  `Rom` int(11) NOT NULL,
+  `Color` varchar(30) NOT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 --
 -- Dumping data for table `belong_to_cart`
