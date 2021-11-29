@@ -3,6 +3,8 @@ import React, {Component} from 'react'
 import {Form, Button } from 'react-bootstrap'
 import axios from 'axios';
 import { toast } from 'react-toastify';
+
+const image_const = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCzuDh9Fdpo9ntG5_YunFM2Wd_g_Kt4CyR8Q&usqp=CAU"
 class AddItem extends Component{
 	constructor(props) {
 		super(props);
@@ -12,26 +14,24 @@ class AddItem extends Component{
 		  validated: false,
 		  textName: "",
 		  textType: "",
+		  textbranch: "",
 		  textColor: "",
 		  txtBattery:"",
 		  txtMemory:"",
 		  txtRom: "",
-		  txtOs:"", 
 		  txtDisplaySize:"", 
-		  txtChip:"", 
 		  txtInStock:"",
+		  txtPromotion:"",
+		  txtPrice: "",
 		  image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCzuDh9Fdpo9ntG5_YunFM2Wd_g_Kt4CyR8Q&usqp=CAU",
 		  image1: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCzuDh9Fdpo9ntG5_YunFM2Wd_g_Kt4CyR8Q&usqp=CAU",
 		  image2: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCzuDh9Fdpo9ntG5_YunFM2Wd_g_Kt4CyR8Q&usqp=CAU",
 		  image3: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCzuDh9Fdpo9ntG5_YunFM2Wd_g_Kt4CyR8Q&usqp=CAU",
-		  image4: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCzuDh9Fdpo9ntG5_YunFM2Wd_g_Kt4CyR8Q&usqp=CAU",
-		  
-			Id_Discount : "",
-			Price :""
+		  image4: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCzuDh9Fdpo9ntG5_YunFM2Wd_g_Kt4CyR8Q&usqp=CAU"
 		};
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
-	      }
+	}
 		  
 		handleSubmit =(event)=> {
 		      const form = event.currentTarget;
@@ -40,93 +40,54 @@ class AddItem extends Component{
 				event.stopPropagation();
 		      }  
 		      this.setState({validated: true});
-			  if(this.state.textName&&this.state.textType&&this.state.textColor&&this.state.txtBattery&&this.state.txtMemory&&this.state.txtOs&&this.state.txtRom&&this.state.txtDisplaySize&&this.state.txtChip&&this.state.txtInStock){
-					let txtMemory = this.state.txtMemory;
-					let tableMemory; 
-					if(this.state.txtRom.split(', ').length==0){
-						let arr = this.state.txtRom.split(' - ');
-						tableMemory = {
-							Id : 1,
-							Rom_Capacity: parseInt(arr[0]),
-							Ram_Capacity : parseInt(txtMemory),
-							Price : parseInt(arr[1])
-						}
-					}else{
-						tableMemory = this.state.txtRom.split(', ').map(function(rom,index){
-							let arr = rom.split(' - ');
-							return {
-								Id : index+1,
-								Rom_Capacity: parseInt(arr[0]),
-								Ram_Capacity : parseInt(txtMemory),
-								Price : parseInt(arr[1])
+			  if(this.state.textbranch&&this.state.textType&&this.state.textName&&this.state.textColor&&this.state.txtBattery&&this.state.txtPrice&&this.state.txtDisplaySize&&this.state.txtDisplaySize&&this.state.txtRom&&this.state.txtMemory&&this.state.txtInStock&&this.state.image!=image_const){
+				let arrcolor = 	this.state.textColor.split(", ");
+				let textColor =arrcolor[0];
+				for(let i=1;i<arrcolor.length-1;i++){
+					textColor = textColor + " + " + arrcolor[i];
+				}
+				textColor = textColor + " + " + arrcolor[arrcolor.length-1];
+				let image = "";
+				if (this.state.image!=image_const) image+=this.state.image
+				if (this.state.image1!=image_const) image= image + " + " + this.state.image1
+				if (this.state.image2!=image_const) image= image + " + " + this.state.image2
+				if (this.state.image3!=image_const) image= image + " + " + this.state.image3
+				if (this.state.image4!=image_const) image= image + " + " + this.state.image4
+				console.log(textColor,image)
+				const res = axios.post('http://localhost/Official/LT_WEB/server/api/product/create.php', {
+		
+						brand: this.state.textbranch,
+						type: this.state.textType,
+						product_name: this.state.textName,
+						color: textColor,
+						battery: this.state.txtBattery,
+						promotion: "",
+						price: this.state.txtPrice,
+						screen: this.state.txtDisplaySize, 
+						Rom: this.state.txtRom,
+						Ram: this.state.txtMemory,
+						capacity: parseInt(this.state.txtInStock),
+						images: image
+						}) 
+						.then(function (response) {
+							console.log(response.data=="success")
+							if(response.data=="success"){
+								toast.success('Thêm sản phẩm thành công :)', {
+									position: "top-right",
+									autoClose: 700,
+									hideProgressBar: false,
+									closeOnClick: true,
+									pauseOnHover: true,
+									draggable: true,
+									progress: undefined,
+								});
+								setTimeout(()=>{window.location.href = "/admin/product"},600)
 							}
 						})
-
-					}
-				
-				const res = axios.post('http://localhost:8080/product/add', {
-					product:{
-						Product_Type: this.state.textType,
-						Product_Name: this.state.textName,
-						Color: this.state.textColor,
-						Discount: 0,
-						battery: this.state.txtBattery,
-						Os: this.state.txtOs,
-						DisplaySize: this.state.txtDisplaySize, 
-						chip: this.state.txtChip,
-						InStock: parseInt(this.state.txtInStock)
-					},
-					image:[
-						{
-							Id : 1,
-							Url : this.state.image
-						},
-						{
-							Id : 2,
-							Url : this.state.image1
-						},
-						{
-							Id : 3,
-							Url : this.state.image2
-						},
-						{
-							Id : 4,
-							Url : this.state.image3
-						},
-
-						{
-							Id : 5,
-							Url : this.state.image4
-						}
-
-					],
-					discountCode:[
-						{
-							Id_Discount : this.state.Id_Discount,
-							Price : (this.state.Price)? parseInt(this.state.Price) : ""
-						}
-					],
-					// 512 - 20000000, 128 - 15000000
-					memory: tableMemory
-				}) 
-				.then(function (response) {
-					if(res.data){
-						toast.success('Thêm sản phẩm thành công :)', {
-							position: "top-right",
-							autoClose: 700,
-							hideProgressBar: false,
-							closeOnClick: true,
-							pauseOnHover: true,
-							draggable: true,
-							progress: undefined,
+						.catch(function (error) {
+							console.log(error);
 						});
-						setTimeout(()=>{window.location.href = "/managerItem"},600)
 					}
-				})
-				.catch(function (error) {
-					console.log(error);
-				});
-			}
 		};
 
 	    handleInputChange(event) {
@@ -148,8 +109,6 @@ class AddItem extends Component{
 
 	return(
 		<div class='container-fluid' id='product-list'>
-		{/* <Header/> */}
-		
 		<div class ='row' style={{backgroundColor:"#EAEAEA"}}>
 		<div class="col-md-8 col-sm-12" style={{margin:'auto'}} >
 		<Form noValidate validated={this.state.validated}>
@@ -166,7 +125,23 @@ class AddItem extends Component{
 				
 				<Form.Group  controlId="validationCustom03"style={{margin:'10px 0 2px'}}>
 				<Form.Label>Loại</Form.Label>
-				<Form.Control type="text" placeholder="Nhập hãng sản phẩm" style={{borderRadius:'9px'}} name="textType" value={this.state.textType} onChange={this.handleInputChange} required />
+				<Form.Control type="text" placeholder="Nhập loại sản phẩm" style={{borderRadius:'9px'}} name="textType" value={this.state.textType} onChange={this.handleInputChange} required />
+				<Form.Control.Feedback type="invalid">
+					Phần này không được để trống.
+				</Form.Control.Feedback>
+				</Form.Group>
+
+				<Form.Group  controlId="validationCustom03"style={{margin:'10px 0 2px'}}>
+				<Form.Label>Hãng</Form.Label>
+				<Form.Control type="text" placeholder="Nhập hãng sản phẩm" style={{borderRadius:'9px'}} name="textbranch" value={this.state.textbranch} onChange={this.handleInputChange} required />
+				<Form.Control.Feedback type="invalid">
+					Phần này không được để trống.
+				</Form.Control.Feedback>
+				</Form.Group>
+				
+				<Form.Group  controlId="validationCustom03"style={{margin:'10px 0 2px'}}>
+				<Form.Label>Gía</Form.Label>
+				<Form.Control type="number" placeholder="Nhập giá" style={{borderRadius:'9px'}} required name="txtPrice" value={this.state.txtPrice} onChange={this.handleInputChange}required/>
 				<Form.Control.Feedback type="invalid">
 					Phần này không được để trống.
 				</Form.Control.Feedback>
@@ -189,8 +164,8 @@ class AddItem extends Component{
 				</Form.Group>
 				
 				<Form.Group  controlId="validationCustom03"style={{margin:'10px 0 2px'}}>
-				<Form.Label>Dung lượng bộ nhớ - Giá</Form.Label>
-				<Form.Control type="text" placeholder="<dung lượng 1 - giá>,..." style={{borderRadius:'9px'}} required name="txtRom" value={this.state.txtRom} onChange={this.handleInputChange}required/>
+				<Form.Label>Dung lượng bộ nhớ</Form.Label>
+				<Form.Control type="number" placeholder="Nhập dung lượng rom" style={{borderRadius:'9px'}} required name="txtRom" value={this.state.txtRom} onChange={this.handleInputChange}required/>
 				<Form.Control.Feedback type="invalid">
 					Phần này không được để trống.
 				</Form.Control.Feedback>
@@ -205,32 +180,21 @@ class AddItem extends Component{
 				</Form.Group>
 
 				<Form.Group  controlId="validationCustom03"style={{margin:'10px 0 2px'}}>
-				<Form.Label>Hệ điều hành</Form.Label>
-				<Form.Control type="text" placeholder="Nhập hệ điều hành" style={{borderRadius:'9px'}} required name="txtOs" value={this.state.txtOs} onChange={this.handleInputChange}required/>
-				<Form.Control.Feedback type="invalid">
-					Phần này không được để trống.
-				</Form.Control.Feedback>
-				</Form.Group>
-
-				<Form.Group  controlId="validationCustom03"style={{margin:'10px 0 2px'}}>
 				<Form.Label>Kích thước màn hình</Form.Label>
 				<Form.Control type="text" placeholder="Nhập kích thước màn hình" style={{borderRadius:'9px'}} required name="txtDisplaySize" value={this.state.txtDisplaySize} onChange={this.handleInputChange}/>
 				<Form.Control.Feedback type="invalid">
 					Phần này không được để trống.
 				</Form.Control.Feedback>
 				</Form.Group>
-				
-				<Form.Group  controlId="validationCustom03"style={{margin:'10px 0 2px'}}>
-				<Form.Label>Chip</Form.Label>
-				<Form.Control type="text" placeholder="Nhập chip" style={{borderRadius:'9px'}} required name="txtChip" value={this.state.txtChip} onChange={this.handleInputChange}required/>
-				<Form.Control.Feedback type="invalid">
-					Phần này không được để trống.
-				</Form.Control.Feedback>
-				</Form.Group>
+
+				{/* <Form.Group controlId="exampleForm.ControlTextarea1" style={{margin:'10px 0 2px'}}>
+					<Form.Label>Chi tiết khuyến mãi</Form.Label>
+					<Form.Control as="textarea" rows={3} name="txtPromotion" value={this.state.txtPromotion} onChange={this.handleInputChange}/>
+				</Form.Group> */}
 
 				<Form.Group  controlId="validationCustom03"style={{margin:'10px 0 2px'}}>
 				<Form.Label>Số lượng</Form.Label>
-				<Form.Control type="number" placeholder="Nhập số lượng" style={{borderRadius:'9px'}} required name="txtInStock" value={this.state.txtInStock} onChange={this.handleInputChange}required/>
+				<Form.Control type="number" placeholder="Nhập số lượng" style={{borderRadius:'9px'}}  name="txtInStock" value={this.state.txtInStock} onChange={this.handleInputChange}required/>
 				<Form.Control.Feedback type="invalid">
 					Phần này không được để trống.
 				</Form.Control.Feedback>
@@ -238,9 +202,6 @@ class AddItem extends Component{
 		
 			</div>
 			<div class="col-md-5 col-sm-12 " style={{marginTop:'30px'}}>
-				{/* <input type="file" style={{display:'none'}} accept="image/gif,image/jpeg,image/jpg,image/png,video/mp4,video/x-m4v" 
-				onChange={this.imageHandler} id="chosefile"
-          			ref={fileInput => this.fileInput=fileInput}/> */}
 				<button type="button" data-bs-toggle="modal" data-bs-target="#myModal" id="openmodal" style={{display:'none'}}>Open modal</button>
 				<div class ='row'>
 				<div class="col-md-9 col-sm-9 col-9 mw-100" style={{margin:'auto'}}>
@@ -275,7 +236,7 @@ class AddItem extends Component{
 		</div>
 		<div class="d-flex justify-content-end container mt-3">
 		<Button type="button" variant="success" onClick={this.handleSubmit}>Thêm sản phẩm</Button>
-		<button type="button" class="btn btn-success" id="exit"  onClick={()=>{window.location.href = "/managerItem"}}>Hủy</button>
+		<button type="button" class="btn btn-success" id="exit"  onClick={()=>{window.location.href = "/admin/product"}}>Hủy</button>
 		</div>
 		</Form>
 		{/* <!-- The Modal --> */}
