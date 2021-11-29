@@ -2,6 +2,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {ToastContainer,toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 export default function Header() {
+    if(window.location.pathname.includes("admin")&&localStorage.getItem("role")!="admin"){
+        if(localStorage.getItem("role")=="client"){
+            window.location.href = "/";
+        }
+        else window.location.href = "/Login";
+    }
     function Logout(){
         localStorage.removeItem('cart');
 		localStorage.removeItem('address');
@@ -112,7 +118,7 @@ export default function Header() {
         }
     }
     return (<>
-        <nav class=" navbar navbar-expand-lg navbar-light bg-light" id="header">
+        <nav class=" navbar navbar-expand-lg navbar-light" id="header" style={{ backgroundColor: "#f8e0dc" }}>
         <ToastContainer/>
             <div class="container-fluid">
                 <a class="navbar-brand " href="/" style={{ fontFamily: "Roboto", fontSize: "36px" }}>Logo</a>

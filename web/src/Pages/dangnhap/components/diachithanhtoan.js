@@ -3,7 +3,8 @@ import { Card, Grid,Typography } from '@material-ui/core'
 import { NavLink } from "react-router-dom";
 import {useEffect,useState} from 'react'
 import axios from "axios";
-
+import {ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Diachithanhtoan() {
     const [address, setAddress] = useState([]);
@@ -70,6 +71,16 @@ export default function Diachithanhtoan() {
           } catch (error) {
             console.log(error.message)
           }
+        }else{
+            toast.warning('Bạn cần phải có ít nhất 1 địa chỉ:)', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         }
     }
     return (

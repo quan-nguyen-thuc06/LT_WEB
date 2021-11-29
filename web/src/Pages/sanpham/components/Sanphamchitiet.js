@@ -1,8 +1,9 @@
 import React,{useEffect,useState} from 'react'
-import { Grid,Card, CardMedia, Typography } from '@material-ui/core';
-import Button from '@atlaskit/button';
-import Rating from './rating'
-import CommentBox from './comment'
+// import { Grid,Card, CardMedia, Typography } from '@material-ui/core';
+// import Button from '@atlaskit/button';
+// import Rating from './rating'
+// import CommentBox from './comment'
+import { Grid} from '@material-ui/core';
 import axios from 'axios';
 import {ToastContainer,toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -271,7 +272,7 @@ export default function Sanphamchitiet() {
                     </div> */}
                     
 
-                <CommentBox/>
+                {/* <CommentBox/> */}
         </div>
         </div>
     )

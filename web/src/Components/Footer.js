@@ -2,7 +2,7 @@ export default function Footer() {
     return (
         <>
         {/* <div id="footer"> */}
-            <footer style={{ backgroundColor: '#F3F819' }} className="container-fluid " id="footer">
+            <footer style={{ backgroundColor: "#f8e0dc" }} className="container-fluid " id="footer">
                 <div className="row text-center ">
                     <div className="col-sm-3 mt-4 mb-4">
                         <h3>Tên và Logo cửa hàng</h3>
