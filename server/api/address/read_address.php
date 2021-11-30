@@ -24,8 +24,8 @@
 	$tb_address->username =isset($_GET['username'])? $_GET['username']: die();
 	$read = $tb_address -> read();
 	$num = $read->rowCount();
+	$address_array=[];
 	if($num>0){
-		$address_array=[];
 		while($row=$read->fetch(PDO::FETCH_ASSOC)){
 			extract($row);
 
@@ -39,6 +39,9 @@
 		}
 		echo json_encode($address_array);
 	}
+	// else{
+
+	// }
 
 
 

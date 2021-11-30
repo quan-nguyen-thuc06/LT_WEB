@@ -24,7 +24,8 @@ export default function Diachithanhtoan() {
 				  }
 				}
 				)
-				setAddress(res.data)
+                if(res.data)
+				    setAddress(res.data)
 				
 			  } catch (error) {
 				console.log(error.message)

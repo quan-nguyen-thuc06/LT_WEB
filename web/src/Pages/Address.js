@@ -19,7 +19,8 @@ function Address (){
 				  }
 				}
 				)
-				setItems(res.data)
+				if(res.data)
+					setItems(res.data)
 				
 			  } catch (error) {
 				console.log(error.message)

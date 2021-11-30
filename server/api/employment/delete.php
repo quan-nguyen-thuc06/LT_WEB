@@ -1,9 +1,4 @@
 <?php
-	// delele client and tb_address
-	// {
-	// 	"username": "admin2"
-	// }
-
 	header('Access-Control-Allow-Origin:*');
 	header('Content-type: application/json');
 	header('Access-Control-Allow-Methods: DELETE');

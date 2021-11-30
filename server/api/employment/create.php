@@ -1,9 +1,9 @@
 <?php
 
 	// {
-	// 	"area":"tuyen nhan vien sale",
-	// 	"deadline": "2021-11-30",
-	// 	"address": "tp HCM"
+		// "area":"tuyen nhan vien sale",
+		// "deadline": "2021-11-30",
+		// "address": "tp HCM"
 	// }
 
 	header('Access-Control-Allow-Origin:*');
