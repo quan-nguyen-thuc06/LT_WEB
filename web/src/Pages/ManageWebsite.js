@@ -1,10 +1,9 @@
 import './ManageProduct.css'
 import React ,{ useState, Fragment, useEffect } from 'react'
 import axios from 'axios'
-import {Form, SplitButton} from 'react-bootstrap'
+import {Form} from 'react-bootstrap'
 function ManageWebsite(){
     const [data,setData]=useState([])
-    const [reload,setReload] = useState(false)
     useEffect(async () => {
         await axios.get('http://localhost/Official/LT_WEB/server/api/employment/read.php')
         .then(response => {
@@ -12,7 +11,7 @@ function ManageWebsite(){
             //console.log(response.data)
         })
         .catch(error => console.log(error))
-    }, [reload])
+    }, [])
     
     const [dataFooter,setDataFooter]=useState([])
     useEffect(async () => {
@@ -22,16 +21,16 @@ function ManageWebsite(){
             //console.log(dataFooter)
         })
         .catch(error => console.log(error))
-    }, [reload])
+    }, [])
     console.log(dataFooter)
 
-    // function charCount(myChar, str) {
-    //     let counter = 0;
-    //     for (let i = 0; i < str.length; i++) 
-    //     if (str.charAt(i) == myChar) 
-    //         counter++
-    //     return counter;
-    // }
+    function charCount(myChar, str) {
+        let counter = 0;
+        for (let i = 0; i < str.length; i++) 
+        if (str.charAt(i) == myChar) 
+            counter++
+        return counter;
+    }
     function nthIndex(str, pat, n){
         var L= str.length, i= -1;
         while(n-- && i++<L){
@@ -43,69 +42,40 @@ function ManageWebsite(){
 
     let arrService = [];
     let arrSupport = [];
-    var temp=''
     if(dataFooter.length >0){
-        arrSupport = dataFooter[0].Support.split(" + ")
+        console.log(charCount('+',dataFooter[0].Support))
+        var temp=''
+        for (let i = 0; i < charCount('+',dataFooter[0].Support); i++){
+            if(i==0){
+                temp=dataFooter[0].Support.slice(0,nthIndex(dataFooter[0].Support, '+', 1)-1)
+                arrService.push(temp)
+            }
+            else{
+                temp=dataFooter[0].Support.slice(nthIndex(dataFooter[0].Support, '+', i)+2,nthIndex(dataFooter[0].Support, '+', i+1)-1)
+                arrService.push(temp)
+            }
+        }
+            temp=dataFooter[0].Support.slice(nthIndex(dataFooter[0].Support, '+', charCount('+',dataFooter[0].Support))+2,dataFooter[0].Support.length)
+            arrService.push(temp)
 
-        // console.log(charCount('+',dataFooter[0].Support))
-        // for (let i = 0; i < charCount('+',dataFooter[0].Support); i++){
-        //     if(i==0){
-        //         temp=dataFooter[0].Support.slice(0,nthIndex(dataFooter[0].Support, '+', 1)-1)
-        //         arrService.push(temp)
-        //     }
-        //     else{
-        //         temp=dataFooter[0].Support.slice(nthIndex(dataFooter[0].Support, '+', i)+2,nthIndex(dataFooter[0].Support, '+', i+1)-1)
-        //         arrService.push(temp)
-        //     }
-        // }
-        //     temp=dataFooter[0].Support.slice(nthIndex(dataFooter[0].Support, '+', charCount('+',dataFooter[0].Support))+2,dataFooter[0].Support.length)
-        //     arrService.push(temp)
 
-
-        // for (let i = 0; i < charCount('+',dataFooter[0].Service); i++){
-        //     if(i==0){
-        //         temp=dataFooter[0].Service.slice(0,nthIndex(dataFooter[0].Service, '+', 1)-1)
-        //         arrSupport.push(temp)
-        //     }
-        //     else{
-        //         temp=dataFooter[0].Service.slice(nthIndex(dataFooter[0].Service, '+', i)+2,nthIndex(dataFooter[0].Service, '+', i+1)-1)
-        //         arrSupport.push(temp)
-        //     }
-        // }
-        //     temp=dataFooter[0].Service.slice(nthIndex(dataFooter[0].Service, '+', charCount('+',dataFooter[0].Service))+2,dataFooter[0].Service.length)
-        //     arrSupport.push(temp)
+        for (let i = 0; i < charCount('+',dataFooter[0].Service); i++){
+            if(i==0){
+                temp=dataFooter[0].Service.slice(0,nthIndex(dataFooter[0].Service, '+', 1)-1)
+                arrSupport.push(temp)
+            }
+            else{
+                temp=dataFooter[0].Service.slice(nthIndex(dataFooter[0].Service, '+', i)+2,nthIndex(dataFooter[0].Service, '+', i+1)-1)
+                arrSupport.push(temp)
+            }
+        }
+            temp=dataFooter[0].Service.slice(nthIndex(dataFooter[0].Service, '+', charCount('+',dataFooter[0].Service))+2,dataFooter[0].Service.length)
+            arrSupport.push(temp)
     }
     if(data.length>0){
         console.log(data)
     }  
-    // $infor->Phone = $data->Phone;
-	// $infor->Email = $data->Email;
-	// $infor->Address = $data->Address;
-	// $infor->Service = $data->Service;
-	// $infor->Support = $data->Support;
-    async function update_contact(){
-        let Phone = document.getElementById('sdt').value;
-        let Email = document.getElementById('email').value;
-        let Address = document.getElementById('address_contact').value;
-        let Service = dataFooter[0].Service;
-        let Support = dataFooter[0].Support;
-        console.log(Phone,Email,Address,Service,Support);
-        if(Phone&&Email&&Address){
-        await axios.put('http://localhost/Official/LT_WEB/server/api/information/update.php',
-            {
-                Phone: Phone,
-                Email:Email,
-                Address: Address,
-                Service: Service,
-                Support: Support
-            }
-        )
-        .then(response => {
-            setReload(!reload)
-        })
-        .catch(error => console.log(error))
-        }
-    }
+
     const [item, setItemt]= useState({
         id: 0,
         area: "",
@@ -117,56 +87,6 @@ function ManageWebsite(){
         setItemt(data.filter(item => item.id == event.target.name)[0])
         document.getElementById("openmodal").click()
         
-    }
-    async function handleDele(index){
-        await axios.post('http://localhost/Official/LT_WEB/server/api/employment/delete.php',
-            {
-                id: index.id
-            }
-        )
-        .then(response => {
-            setReload(!reload)
-        })
-        .catch(error => console.log(error))
-    }
-    async function handleAdd(){
-        let area = document.getElementById('area').value;
-        let deadline = document.getElementById('deadline').value;
-        let address = document.getElementById('address').value;
-        if(area&&deadline&&address){
-        await axios.post('http://localhost/Official/LT_WEB/server/api/employment/create.php',
-            {
-                area:area,
-                deadline: deadline,
-                address: address
-            }
-        )
-        .then(response => {
-            setReload(!reload)
-        })
-        .catch(error => console.log(error))
-        }
-    }
-    async function handleUpdate(){
-        let id = document.getElementById('sttEdit').value;
-        let area = document.getElementById('areaEdit').value;
-        let deadline = document.getElementById('deadlineEdit').value;
-        let address = document.getElementById('addressEdit').value;
-        // console.log(id,area,deadline,address);
-        if(area&&deadline&&address){
-        await axios.put('http://localhost/Official/LT_WEB/server/api/employment/update.php',
-            {
-                id: id,
-                area:area,
-                deadline: deadline,
-                address: address
-            }
-        )
-        .then(response => {
-            setReload(!reload)
-        })
-        .catch(error => console.log(error))
-        }
     }
     function RenderHiring(){
         return <Fragment >{data.slice(0, data.length).map((index) => {
@@ -188,7 +108,7 @@ function ManageWebsite(){
                     <button class="edit" type="button" class="btn btn-warning ms-2" title="Edit" data-toggle="tooltip" name={index.id} onClick={handleEdit} >
                         Sửa
                     </button>
-                    <button class="delete" type="button" class="btn btn-danger ms-2" title="Delete" data-toggle="tooltip" onClick={()=>handleDele(index)}>
+                    <button class="delete" type="button" class="btn btn-danger ms-2" title="Delete" data-toggle="tooltip">
                         Xóa
                     </button>
                     </div>
@@ -304,26 +224,26 @@ function ManageWebsite(){
                                 <div class="table-title row">
                                     <div class="col-12">
                                         <label for="exampleInput3">Vị trí tuyển dụng</label>
-                                        <input type="text" class="form-control" id="area" required></input>
+                                        <input type="text" class="form-control" id="exampleInput1" required></input>
                                     </div>
                                     <div class="col-6">
                                         <label for="exampleInput3">STT</label>
-                                        <input type="number" class="form-control" id="stt" required></input>
+                                        <input type="number" class="form-control" id="exampleInput0" required></input>
                                     </div>
                                     <div class="col-6">
                                         <label for="exampleInput3">Han nộp</label>
-                                        <input type="date" class="form-control" id="deadline" required></input>
+                                        <input type="date" class="form-control" id="exampleInput2" required></input>
                                     </div>
                                     <div class="col-12">
                                         <label for="exampleInput3">Địa điểm</label>
-                                        <input type="text" class="form-control" id="address" required></input>
+                                        <input type="text" class="form-control" id="exampleInput3" required></input>
                                     </div>
                                 </div>
                             </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onClick={handleAdd}>Save changes</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
                         </div>
                         </div>
                     </div>
@@ -353,45 +273,41 @@ function ManageWebsite(){
                         <form class="needs-validation" novalidate>
                             <div class="table-title row">
                                 <div class="col-12">
-                                <label for="areaEdit">Vị trí tuyển dụng</label>
-                                    {/* <input type="text" class="form-control" id="exampleInput1" value={index.area} onChange={test} required></input> */}
+                                    <label for="exampleInput1">Vị trí tuyển dụng</label>
                                     <Form.Control
                                         required
                                         type="text"
-                                        id="areaEdit"
+                                        id="exampleInput1"
                                         defaultValue={item.area}
                                         // onChange={test}
                                     />
                                 </div>
                                 <div class="col-6">
-                                    <label for="sttEdit">STT</label>
-                                    {/* <input type="number" class="form-control" id="exampleInput0" value={index.id} onChange={test} required></input> */}
+                                    <label for="exampleInput0">STT</label>
                                     <Form.Control
                                         required
                                         type="number"
-                                        id="sttEdit"
+                                        id="exampleInput0"
                                         value={item.id}
                                         // onChange={test}
                                     />
                                 </div>
                                 <div class="col-6">
-                                    <label for="deadlineEdit">Han nộp</label>
-                                    {/* <input type="date" class="form-control" id="exampleInput2" value={index.deadline} onChange={test} required></input> */}
+                                    <label for="exampleInput2">Han nộp</label>
                                     <Form.Control
                                         required
                                         type="date"
-                                        id="deadlineEdit"
+                                        id="exampleInput2"
                                         defaultValue={item.deadline}
                                         // onChange={test}
                                     />
                                 </div>
                                 <div class="col-12">
-                                    <label for="addressEdit">Địa điểm</label>
-                                    {/* <input type="text" class="form-control" id="exampleInput3" value={index.address} onChange={test} required></input> */}
+                                    <label for="exampleInput3">Địa điểm</label>
                                     <Form.Control
                                         required
                                         type="text"
-                                        id="addressEdit"
+                                        id="exampleInput3"
                                         defaultValue={item.address}
                                         // onChange={test}
                                     />
@@ -401,7 +317,7 @@ function ManageWebsite(){
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onClick={handleUpdate}>Save changes</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
                         </div>
                         </div>
                     </div>
@@ -418,34 +334,34 @@ function ManageWebsite(){
             <div class="table-title row">
                 <div class="col-sm-8"><h2>Liên hệ</h2></div>
                 <div class="col-sm-4">
-                    <button type="submit" class="btn btn-info add-new" onClick={update_contact}>Thay đổi</button>
+                    <button type="submit" class="btn btn-info add-new">Thay đổi</button>
                 </div>
                 <div class="col-12 col-sm-6">
-                    <label for="sdt">Số điện thoại</label>
+                    <label for="exampleInput1">Số điện thoại</label>
                     <Form.Control
                         required
-                        type="text"
-                        id="sdt"
+                        type="number"
+                        id="exampleInput1"
                         defaultValue={dataFooter[0].Phone}
                         // onChange={test}
                     />
                 </div>
                 <div class="col-12 col-sm-6">
-                    <label for="email">Email</label>
+                    <label for="exampleInput2">Email</label>
                     <Form.Control
                         required
                         type="email"
-                        id="email"
+                        id="exampleInput2"
                         defaultValue={dataFooter[0].Email}
                         // onChange={test}
                     />
                 </div>
                 <div class="col-12">
-                    <label for="address_contact">Địa chỉ</label>
+                    <label for="exampleInput3">Địa chỉ</label>
                     <Form.Control
                         required
                         type="text"
-                        id="address_contact"
+                        id="exampleInput3"
                         defaultValue={dataFooter[0].Address}
                         // onChange={test}
                     />
