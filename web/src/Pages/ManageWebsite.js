@@ -103,13 +103,13 @@ function ManageWebsite(){
         let deadline = document.getElementById('deadline').value;
         let address = document.getElementById('address').value;
         if(area&&deadline&&address){
-        await axios.post('http://localhost/Official/LT_WEB/server/api/employment/create.php',
-            {
-                area:area,
-                deadline: deadline,
-                address: address
-            }
-        )
+            await axios.post('http://localhost/Official/LT_WEB/server/api/employment/create.php',
+                {
+                    area:area,
+                    deadline: deadline,
+                    address: address
+                }
+            )
         .then(response => {
             setReload(!reload)
             window.location.reload();

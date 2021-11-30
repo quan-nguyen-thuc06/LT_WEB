@@ -47,10 +47,10 @@ export default function Sanphamchitiet() {
             "images": [],
             "type": "",
             "brand": "",
-            "capacity": [],
+            "capacity": "",
             "color": [],
             "promotion": [],
-            "Rom": "",
+            "Rom": [],
             "Ram": "",
             "screen": "",
             "battery": "",
@@ -193,7 +193,7 @@ export default function Sanphamchitiet() {
                         <div class="mx-3 mt-3">
                             
                             {
-                                product.capacity.map((capacity,index)=>{
+                                product.Rom.map((capacity,index)=>{
                                     if(index!==0){
                                         return (
                                             <button type="button" style={{ border:"0.5px solid #C4C4C4", borderRadius:"5%", color:"white", backgroundColor:"#1AC67E", marginLeft: "20px" }} name={capacity+ " GB"} class="btn btn-outline-secondary mb-3" onClick={handCapacity}>{capacity + " GB"}</button>
