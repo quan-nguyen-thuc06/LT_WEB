@@ -1,7 +1,7 @@
 import './ManageProduct.css'
 import React ,{ useState, Fragment, useEffect } from 'react'
 import axios from 'axios'
-import {Form} from 'react-bootstrap'
+import {Form, SplitButton} from 'react-bootstrap'
 function ManageWebsite(){
     const [data,setData]=useState([])
     const [reload,setReload] = useState(false)
@@ -22,16 +22,16 @@ function ManageWebsite(){
             //console.log(dataFooter)
         })
         .catch(error => console.log(error))
-    }, [])
+    }, [reload])
     console.log(dataFooter)
 
-    function charCount(myChar, str) {
-        let counter = 0;
-        for (let i = 0; i < str.length; i++) 
-        if (str.charAt(i) == myChar) 
-            counter++
-        return counter;
-    }
+    // function charCount(myChar, str) {
+    //     let counter = 0;
+    //     for (let i = 0; i < str.length; i++) 
+    //     if (str.charAt(i) == myChar) 
+    //         counter++
+    //     return counter;
+    // }
     function nthIndex(str, pat, n){
         var L= str.length, i= -1;
         while(n-- && i++<L){
@@ -44,39 +44,68 @@ function ManageWebsite(){
     let arrService = [];
     let arrSupport = [];
     var temp=''
-    // if(dataFooter.length >0){
-    //     console.log(charCount('+',dataFooter[0].Support))
-    //     for (let i = 0; i < charCount('+',dataFooter[0].Support); i++){
-    //         if(i==0){
-    //             temp=dataFooter[0].Support.slice(0,nthIndex(dataFooter[0].Support, '+', 1)-1)
-    //             arrService.push(temp)
-    //         }
-    //         else{
-    //             temp=dataFooter[0].Support.slice(nthIndex(dataFooter[0].Support, '+', i)+2,nthIndex(dataFooter[0].Support, '+', i+1)-1)
-    //             arrService.push(temp)
-    //         }
-    //     }
-    //         temp=dataFooter[0].Support.slice(nthIndex(dataFooter[0].Support, '+', charCount('+',dataFooter[0].Support))+2,dataFooter[0].Support.length)
-    //         arrService.push(temp)
+    if(dataFooter.length >0){
+        arrSupport = dataFooter[0].Support.split(" + ")
+
+        // console.log(charCount('+',dataFooter[0].Support))
+        // for (let i = 0; i < charCount('+',dataFooter[0].Support); i++){
+        //     if(i==0){
+        //         temp=dataFooter[0].Support.slice(0,nthIndex(dataFooter[0].Support, '+', 1)-1)
+        //         arrService.push(temp)
+        //     }
+        //     else{
+        //         temp=dataFooter[0].Support.slice(nthIndex(dataFooter[0].Support, '+', i)+2,nthIndex(dataFooter[0].Support, '+', i+1)-1)
+        //         arrService.push(temp)
+        //     }
+        // }
+        //     temp=dataFooter[0].Support.slice(nthIndex(dataFooter[0].Support, '+', charCount('+',dataFooter[0].Support))+2,dataFooter[0].Support.length)
+        //     arrService.push(temp)
 
 
-    //     for (let i = 0; i < charCount('+',dataFooter[0].Service); i++){
-    //         if(i==0){
-    //             temp=dataFooter[0].Service.slice(0,nthIndex(dataFooter[0].Service, '+', 1)-1)
-    //             arrSupport.push(temp)
-    //         }
-    //         else{
-    //             temp=dataFooter[0].Service.slice(nthIndex(dataFooter[0].Service, '+', i)+2,nthIndex(dataFooter[0].Service, '+', i+1)-1)
-    //             arrSupport.push(temp)
-    //         }
-    //     }
-    //         temp=dataFooter[0].Service.slice(nthIndex(dataFooter[0].Service, '+', charCount('+',dataFooter[0].Service))+2,dataFooter[0].Service.length)
-    //         arrSupport.push(temp)
-    // }
+        // for (let i = 0; i < charCount('+',dataFooter[0].Service); i++){
+        //     if(i==0){
+        //         temp=dataFooter[0].Service.slice(0,nthIndex(dataFooter[0].Service, '+', 1)-1)
+        //         arrSupport.push(temp)
+        //     }
+        //     else{
+        //         temp=dataFooter[0].Service.slice(nthIndex(dataFooter[0].Service, '+', i)+2,nthIndex(dataFooter[0].Service, '+', i+1)-1)
+        //         arrSupport.push(temp)
+        //     }
+        // }
+        //     temp=dataFooter[0].Service.slice(nthIndex(dataFooter[0].Service, '+', charCount('+',dataFooter[0].Service))+2,dataFooter[0].Service.length)
+        //     arrSupport.push(temp)
+    }
     if(data.length>0){
         console.log(data)
     }  
-
+    // $infor->Phone = $data->Phone;
+	// $infor->Email = $data->Email;
+	// $infor->Address = $data->Address;
+	// $infor->Service = $data->Service;
+	// $infor->Support = $data->Support;
+    async function update_contact(){
+        let Phone = document.getElementById('sdt').value;
+        let Email = document.getElementById('email').value;
+        let Address = document.getElementById('address_contact').value;
+        let Service = dataFooter[0].Service;
+        let Support = dataFooter[0].Support;
+        console.log(Phone,Email,Address,Service,Support);
+        if(Phone&&Email&&Address){
+        await axios.put('http://localhost/Official/LT_WEB/server/api/information/update.php',
+            {
+                Phone: Phone,
+                Email:Email,
+                Address: Address,
+                Service: Service,
+                Support: Support
+            }
+        )
+        .then(response => {
+            setReload(!reload)
+        })
+        .catch(error => console.log(error))
+        }
+    }
     const [item, setItemt]= useState({
         id: 0,
         area: "",
@@ -389,34 +418,34 @@ function ManageWebsite(){
             <div class="table-title row">
                 <div class="col-sm-8"><h2>Liên hệ</h2></div>
                 <div class="col-sm-4">
-                    <button type="submit" class="btn btn-info add-new">Thay đổi</button>
+                    <button type="button" class="btn btn-info add-new" onClick={update_contact}>Thay đổi</button>
                 </div>
                 <div class="col-12 col-sm-6">
-                    <label for="exampleInput1">Số điện thoại</label>
+                    <label for="sdt">Số điện thoại</label>
                     <Form.Control
                         required
-                        type="number"
-                        id="exampleInput1"
+                        type="text"
+                        id="sdt"
                         defaultValue={dataFooter[0].Phone}
                         // onChange={test}
                     />
                 </div>
                 <div class="col-12 col-sm-6">
-                    <label for="exampleInput2">Email</label>
+                    <label for="email">Email</label>
                     <Form.Control
                         required
                         type="email"
-                        id="exampleInput2"
+                        id="email"
                         defaultValue={dataFooter[0].Email}
                         // onChange={test}
                     />
                 </div>
                 <div class="col-12">
-                    <label for="exampleInput3">Địa chỉ</label>
+                    <label for="address_contact">Địa chỉ</label>
                     <Form.Control
                         required
                         type="text"
-                        id="exampleInput3"
+                        id="address_contact"
                         defaultValue={dataFooter[0].Address}
                         // onChange={test}
                     />

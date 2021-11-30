@@ -5,7 +5,7 @@
 	header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type,Access-Control-Allow-Methods,Authorization,X-Requested-With');
 	
 	include_once('../../config/db.php');
-	include_once('../../models/information.php');
+	include_once('../../models/Information.php');
 
 	$db = new db();
 
