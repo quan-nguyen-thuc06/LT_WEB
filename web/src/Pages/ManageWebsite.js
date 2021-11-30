@@ -427,6 +427,7 @@ function ManageWebsite(){
                         type="text"
                         id="sdt"
                         defaultValue={dataFooter[0].Phone}
+                        disabled="disabled"
                         // onChange={test}
                     />
                 </div>
