@@ -50,9 +50,15 @@ export default function Footer() {
                     </div>
                     <div className="col-sm-3 mt-4 mb-4">
                         <h3>Liên hệ</h3>
+                        {
+                            dataFooter.length >0 ?
+                            <>
                         <p><i className="fas fa-phone-alt"></i> {dataFooter[0].Phone}</p>
                         <p><i className="fas fa-mail-bulk"></i> {dataFooter[0].Email}</p>
                         <p><i className="fas fa-map-marker-alt"></i>{dataFooter[0].Address}</p>
+                        </>
+                            : null
+                        }
                     </div>
                     <div className="col-sm-3 mt-4 mb-4">
                         <h3>Hỗ trợ khách hàng</h3>
