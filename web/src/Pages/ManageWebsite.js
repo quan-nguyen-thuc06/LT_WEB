@@ -418,7 +418,7 @@ function ManageWebsite(){
             <div class="table-title row">
                 <div class="col-sm-8"><h2>Liên hệ</h2></div>
                 <div class="col-sm-4">
-                    <button type="button" class="btn btn-info add-new" onClick={update_contact}>Thay đổi</button>
+                    <button type="submit" class="btn btn-info add-new" onClick={update_contact}>Thay đổi</button>
                 </div>
                 <div class="col-12 col-sm-6">
                     <label for="sdt">Số điện thoại</label>
